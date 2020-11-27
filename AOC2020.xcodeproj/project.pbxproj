@@ -17,6 +17,7 @@
 		BF60D42F2571B56500DA3C27 /* Puzzles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D42E2571B56500DA3C27 /* Puzzles.swift */; };
 		BF60D4342571B6A500DA3C27 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4332571B6A500DA3C27 /* Puzzle.swift */; };
 		BF60D4392571BCD500DA3C27 /* SolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4382571BCD500DA3C27 /* SolutionView.swift */; };
+		BF60D4412571C10A00DA3C27 /* PuzzleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4402571C10A00DA3C27 /* PuzzleDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		BF60D42E2571B56500DA3C27 /* Puzzles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzles.swift; sourceTree = "<group>"; };
 		BF60D4332571B6A500DA3C27 /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		BF60D4382571BCD500DA3C27 /* SolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolutionView.swift; sourceTree = "<group>"; };
+		BF60D4402571C10A00DA3C27 /* PuzzleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				BF60D3F42571B42700DA3C27 /* MainView.swift */,
 				BF60D42E2571B56500DA3C27 /* Puzzles.swift */,
 				BF60D4332571B6A500DA3C27 /* Puzzle.swift */,
+				BF60D4402571C10A00DA3C27 /* PuzzleDetails.swift */,
 				BF60D4292571B53A00DA3C27 /* PuzzleCard.swift */,
 				BF60D4382571BCD500DA3C27 /* SolutionView.swift */,
 				BF60D3F62571B42800DA3C27 /* Assets.xcassets */,
@@ -275,6 +278,7 @@
 				BF60D3F52571B42700DA3C27 /* MainView.swift in Sources */,
 				BF60D42F2571B56500DA3C27 /* Puzzles.swift in Sources */,
 				BF60D4392571BCD500DA3C27 /* SolutionView.swift in Sources */,
+				BF60D4412571C10A00DA3C27 /* PuzzleDetails.swift in Sources */,
 				BF60D42A2571B53A00DA3C27 /* PuzzleCard.swift in Sources */,
 				BF60D3F32571B42700DA3C27 /* AOC2020App.swift in Sources */,
 			);

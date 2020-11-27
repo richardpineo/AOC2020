@@ -18,12 +18,28 @@ struct MainView: View {
 				VStack {
 					LazyVGrid(columns: columns) {
 						ForEach(puzzles.puzzles) { puzzle in
-							NavigationLink(
-								destination: /*@START_MENU_TOKEN@*/Text("Destination")/*@END_MENU_TOKEN@*/
-							) {
-								PuzzleCard(puzzle: puzzle)
+							if puzzle.hasDetailView {
+								NavigationLink(
+									destination: puzzle.detailView()
+								) {
+									PuzzleCard(puzzle: puzzle)
+								}
+								.buttonStyle(PlainButtonStyle())
 							}
-							.buttonStyle(PlainButtonStyle())
+							else {
+								ZStack {
+									VStack {
+									HStack {
+										Spacer()
+										Image(systemName: "eye.slash")
+											.padding()
+									}
+										Spacer()
+									}
+									
+									PuzzleCard(puzzle: puzzle)
+								}
+							}
 						}
 					}
 					.padding()
@@ -32,6 +48,7 @@ struct MainView: View {
 				}
 				.navigationTitle("Advent of Code 2020")
 			}
+			.background(Color(.systemGreen).opacity(0.1))
 		}
 		.navigationViewStyle(StackNavigationViewStyle())
 	}
