@@ -1,0 +1,9 @@
+# Don't muck with Pods or generated files
+--exclude **/Pods, **/Generated
+
+# Because spaces are for heathens
+--indent tab
+--tabwidth 4
+
+# Tell swiftformat what version we are using
+--swiftversion 5.2.4

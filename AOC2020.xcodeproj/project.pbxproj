@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		BF60D3F32571B42700DA3C27 /* AOC2020App.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D3F22571B42700DA3C27 /* AOC2020App.swift */; };
-		BF60D3F52571B42700DA3C27 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D3F42571B42700DA3C27 /* ContentView.swift */; };
+		BF60D3F52571B42700DA3C27 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D3F42571B42700DA3C27 /* MainView.swift */; };
 		BF60D3F72571B42800DA3C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF60D3F62571B42800DA3C27 /* Assets.xcassets */; };
 		BF60D3FA2571B42800DA3C27 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF60D3F92571B42800DA3C27 /* Preview Assets.xcassets */; };
 		BF60D4052571B42800DA3C27 /* AOC2020Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4042571B42800DA3C27 /* AOC2020Tests.swift */; };
 		BF60D4102571B42800DA3C27 /* AOC2020UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D40F2571B42800DA3C27 /* AOC2020UITests.swift */; };
+		BF60D42A2571B53A00DA3C27 /* PuzzleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4292571B53A00DA3C27 /* PuzzleCard.swift */; };
+		BF60D42F2571B56500DA3C27 /* Puzzles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D42E2571B56500DA3C27 /* Puzzles.swift */; };
+		BF60D4342571B6A500DA3C27 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4332571B6A500DA3C27 /* Puzzle.swift */; };
+		BF60D4392571BCD500DA3C27 /* SolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4382571BCD500DA3C27 /* SolutionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +39,7 @@
 /* Begin PBXFileReference section */
 		BF60D3EF2571B42700DA3C27 /* AOC2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOC2020.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF60D3F22571B42700DA3C27 /* AOC2020App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2020App.swift; sourceTree = "<group>"; };
-		BF60D3F42571B42700DA3C27 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BF60D3F42571B42700DA3C27 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		BF60D3F62571B42800DA3C27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF60D3F92571B42800DA3C27 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BF60D3FB2571B42800DA3C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +49,10 @@
 		BF60D40B2571B42800DA3C27 /* AOC2020UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOC2020UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF60D40F2571B42800DA3C27 /* AOC2020UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2020UITests.swift; sourceTree = "<group>"; };
 		BF60D4112571B42800DA3C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF60D4292571B53A00DA3C27 /* PuzzleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleCard.swift; sourceTree = "<group>"; };
+		BF60D42E2571B56500DA3C27 /* Puzzles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzles.swift; sourceTree = "<group>"; };
+		BF60D4332571B6A500DA3C27 /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
+		BF60D4382571BCD500DA3C27 /* SolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolutionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +104,11 @@
 			isa = PBXGroup;
 			children = (
 				BF60D3F22571B42700DA3C27 /* AOC2020App.swift */,
-				BF60D3F42571B42700DA3C27 /* ContentView.swift */,
+				BF60D3F42571B42700DA3C27 /* MainView.swift */,
+				BF60D42E2571B56500DA3C27 /* Puzzles.swift */,
+				BF60D4332571B6A500DA3C27 /* Puzzle.swift */,
+				BF60D4292571B53A00DA3C27 /* PuzzleCard.swift */,
+				BF60D4382571BCD500DA3C27 /* SolutionView.swift */,
 				BF60D3F62571B42800DA3C27 /* Assets.xcassets */,
 				BF60D3FB2571B42800DA3C27 /* Info.plist */,
 				BF60D3F82571B42800DA3C27 /* Preview Content */,
@@ -259,7 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF60D3F52571B42700DA3C27 /* ContentView.swift in Sources */,
+				BF60D4342571B6A500DA3C27 /* Puzzle.swift in Sources */,
+				BF60D3F52571B42700DA3C27 /* MainView.swift in Sources */,
+				BF60D42F2571B56500DA3C27 /* Puzzles.swift in Sources */,
+				BF60D4392571BCD500DA3C27 /* SolutionView.swift in Sources */,
+				BF60D42A2571B53A00DA3C27 /* PuzzleCard.swift in Sources */,
 				BF60D3F32571B42700DA3C27 /* AOC2020App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,7 +446,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pineo.AOC2020;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -452,7 +468,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pineo.AOC2020;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
