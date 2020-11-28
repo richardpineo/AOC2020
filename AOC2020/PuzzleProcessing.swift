@@ -9,7 +9,7 @@ struct PuzzleProcessingId: Hashable {
 class PuzzleProcessing: ObservableObject {
 	enum ProcessingStatus {
 		case idle
-		case processing
+		case processing(Date)
 	}
 	
 	init(puzzles: Puzzles) {
@@ -22,7 +22,7 @@ class PuzzleProcessing: ObservableObject {
 	
 	static func preview(puzzles: Puzzles) -> PuzzleProcessing {
 		let processing = PuzzleProcessing(puzzles: puzzles)
-		processing.status[.init(id: 1, isA: true)] = .processing
+		processing.status[.init(id: 1, isA: true)] = .processing(Date())
 		return processing
 	}
 		
@@ -34,15 +34,31 @@ class PuzzleProcessing: ObservableObject {
 		guard let found = status[id] else {
 			return false
 		}
-		
-		return found == .processing
+		switch found {
+		case .processing: return true
+		default:
+			return false
+		}
+	}
+	
+	// Amount of time processing, if processing or nil otherwise.
+	func elapsed(_ id: PuzzleProcessingId) -> TimeInterval? {
+		guard let found = status[id] else {
+			return nil
+		}
+		switch found {
+		case let .processing(start):
+			return start.distance(to: Date())
+		default:
+			return nil
+		}
 	}
 	
 	func startProcessing(_ id: PuzzleProcessingId) {
 		if isProcessing(id) {
 			return
 		}
-		status[id] = .processing
+		status[id] = .processing(Date())
 		DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
 			let newSolution = Int.random(in: 1000...1000000).description
 			if id.isA {

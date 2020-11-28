@@ -3,21 +3,29 @@
 import SwiftUI
 
 struct SolutionView: View {
+	@EnvironmentObject var processing: PuzzleProcessing
+	
 	var puzzle: Puzzle
 	var isA: Bool
+	@State var processingStep: Int = 0
 
 	var body: some View {
 		HStack {
 			Spacer()
 			VStack {
-				if let sol = isA ? puzzle.solutionA : puzzle.solutionB {
-					Text(sol)
-				} else {
-					Text("UNSOLVED")
+				if processing.isProcessing(processingId) {
+					Text(elapsed)
+				}
+				else {
+					if let sol = isA ? puzzle.solutionA : puzzle.solutionB {
+						Text(sol)
+					} else {
+						Text("UNSOLVED")
+					}
 				}
 			}
 			Spacer()
-			PuzzleProcessingView(processingId: PuzzleProcessingId(id: puzzle.id, isA: isA))
+			PuzzleProcessingView(processingStep: processingStep, processingId: PuzzleProcessingId(id: puzzle.id, isA: isA))
 		}
 		.padding()
 		.frame(maxWidth: .infinity)
@@ -26,6 +34,24 @@ struct SolutionView: View {
 		.overlay(
 			RoundedRectangle(cornerRadius: 10)
 				.stroke(Color.black, lineWidth: 2))
+		.onReceive(self.timer) { _ in
+			self.processingStep = self.processingStep + 1
+		}
+	}
+	
+	private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+
+	private var elapsed: String {
+		guard let elapsed = processing.elapsed(processingId) else {
+			return ""
+		}
+		let rounded = lround(elapsed.magnitude)
+		return "\(rounded) seconds elapsed"
+	}
+	
+	private var processingId: PuzzleProcessingId {
+		PuzzleProcessingId(id: puzzle.id, isA: isA)
 	}
 }
 

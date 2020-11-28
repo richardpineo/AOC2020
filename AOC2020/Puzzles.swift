@@ -18,7 +18,7 @@ class Puzzles: ObservableObject {
 		// Load the previous answers
 		for id in 0 ... 30 {
 			puzzles.puzzles[id].solutionA = UserDefaults.standard.string(forKey: Puzzle.userDefaultKey(id: id, isA: true))
-			puzzles.puzzles[id].solutionA = UserDefaults.standard.string(forKey: Puzzle.userDefaultKey(id: id, isA: false))
+			puzzles.puzzles[id].solutionB = UserDefaults.standard.string(forKey: Puzzle.userDefaultKey(id: id, isA: false))
 		}
 		
 		return puzzles
