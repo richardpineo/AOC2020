@@ -3,15 +3,21 @@
 import SwiftUI
 
 struct SolutionView: View {
-	var solution: String?
+	var puzzle: Puzzle
+	var isA: Bool
 
 	var body: some View {
-		VStack {
-			if let sol = solution {
-				Text(sol)
-			} else {
-				Text("UNSOLVED")
+		HStack {
+			Spacer()
+			VStack {
+				if let sol = isA ? puzzle.solutionA : puzzle.solutionB {
+					Text(sol)
+				} else {
+					Text("UNSOLVED")
+				}
 			}
+			Spacer()
+			PuzzleProcessingView(processingId: PuzzleProcessingId(id: puzzle.id, isA: isA))
 		}
 		.padding()
 		.frame(maxWidth: .infinity)
@@ -19,18 +25,20 @@ struct SolutionView: View {
 		.cornerRadius(10)
 		.overlay(
 			RoundedRectangle(cornerRadius: 10)
-				.stroke(Color.black, lineWidth: 2)
-		)
+				.stroke(Color.black, lineWidth: 2))
 	}
 }
 
 struct Solutionview_Previews: PreviewProvider {
 	static var previews: some View {
 		Group {
-			SolutionView(solution: nil)
-			SolutionView(solution: "12345678")
-			SolutionView(solution: "ABC")
+			SolutionView(puzzle: PuzzlePreview.unsolved, isA: true)
+			SolutionView(puzzle: PuzzlePreview.solved, isA: true)
+			SolutionView(puzzle: PuzzlePreview.partSolved, isA: true)
+			SolutionView(puzzle: PuzzlePreview.partSolved, isA: false)
 		}
+		.environmentObject(PuzzlePreview.puzzles())
+		.environmentObject(PuzzlePreview.processing())
 		.previewLayout(.fixed(width: 200, height: 100))
 	}
 }

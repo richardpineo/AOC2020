@@ -25,18 +25,17 @@ struct MainView: View {
 									PuzzleCard(puzzle: puzzle)
 								}
 								.buttonStyle(PlainButtonStyle())
-							}
-							else {
+							} else {
 								ZStack {
 									VStack {
-									HStack {
+										HStack {
+											Spacer()
+											Image(systemName: "eye.slash")
+												.padding()
+										}
 										Spacer()
-										Image(systemName: "eye.slash")
-											.padding()
 									}
-										Spacer()
-									}
-									
+
 									PuzzleCard(puzzle: puzzle)
 								}
 							}

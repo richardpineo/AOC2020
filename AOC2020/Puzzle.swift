@@ -18,4 +18,8 @@ struct Puzzle: Identifiable {
 
 	var solutionA: String?
 	var solutionB: String?
+
+	static func userDefaultKey(id: Int, isA: Bool) -> String {
+		"puzzle_\(id)_\(isA ? "A" : "B")"
+	}
 }

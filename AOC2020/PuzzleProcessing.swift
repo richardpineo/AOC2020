@@ -1,0 +1,59 @@
+
+import Foundation
+
+struct PuzzleProcessingId: Hashable {
+	var id: Int
+	var isA: Bool
+}
+
+class PuzzleProcessing: ObservableObject {
+	enum ProcessingStatus {
+		case idle
+		case processing
+	}
+	
+	init(puzzles: Puzzles) {
+		self.puzzles = puzzles
+	}
+	
+	static func application(puzzles: Puzzles) -> PuzzleProcessing {
+		PuzzleProcessing(puzzles: puzzles)
+	}
+	
+	static func preview(puzzles: Puzzles) -> PuzzleProcessing {
+		let processing = PuzzleProcessing(puzzles: puzzles)
+		processing.status[.init(id: 1, isA: true)] = .processing
+		return processing
+	}
+		
+	// A map from puzzle ID and A/B to current processing status
+	// If the value isn't in the map, then it's not processing.
+	@Published var status: [PuzzleProcessingId: ProcessingStatus] = [:]
+	
+	func isProcessing(_ id: PuzzleProcessingId) -> Bool {
+		guard let found = status[id] else {
+			return false
+		}
+		
+		return found == .processing
+	}
+	
+	func startProcessing(_ id: PuzzleProcessingId) {
+		if isProcessing(id) {
+			return
+		}
+		status[id] = .processing
+		DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+			let newSolution = Int.random(in: 1000...1000000).description
+			if id.isA {
+				self.puzzles.puzzles[id.id].solutionA = newSolution
+			} else {
+				self.puzzles.puzzles[id.id].solutionB = newSolution
+			}
+			self.status[id] = .idle
+		}
+	}
+
+	private var puzzles: Puzzles
+	
+}

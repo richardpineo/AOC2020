@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF5641792571C66500FC14B7 /* PuzzlePreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5641782571C66500FC14B7 /* PuzzlePreviewData.swift */; };
+		BF56417E2571C70900FC14B7 /* PuzzleProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56417D2571C70900FC14B7 /* PuzzleProcessing.swift */; };
 		BF60D3F32571B42700DA3C27 /* AOC2020App.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D3F22571B42700DA3C27 /* AOC2020App.swift */; };
 		BF60D3F52571B42700DA3C27 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D3F42571B42700DA3C27 /* MainView.swift */; };
 		BF60D3F72571B42800DA3C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF60D3F62571B42800DA3C27 /* Assets.xcassets */; };
@@ -18,6 +20,7 @@
 		BF60D4342571B6A500DA3C27 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4332571B6A500DA3C27 /* Puzzle.swift */; };
 		BF60D4392571BCD500DA3C27 /* SolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4382571BCD500DA3C27 /* SolutionView.swift */; };
 		BF60D4412571C10A00DA3C27 /* PuzzleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4402571C10A00DA3C27 /* PuzzleDetails.swift */; };
+		BF60D4462571C5E500DA3C27 /* PuzzleProcessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4452571C5E500DA3C27 /* PuzzleProcessingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF5641782571C66500FC14B7 /* PuzzlePreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePreviewData.swift; sourceTree = "<group>"; };
+		BF56417D2571C70900FC14B7 /* PuzzleProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleProcessing.swift; sourceTree = "<group>"; };
 		BF60D3EF2571B42700DA3C27 /* AOC2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOC2020.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF60D3F22571B42700DA3C27 /* AOC2020App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2020App.swift; sourceTree = "<group>"; };
 		BF60D3F42571B42700DA3C27 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -55,6 +60,7 @@
 		BF60D4332571B6A500DA3C27 /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		BF60D4382571BCD500DA3C27 /* SolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolutionView.swift; sourceTree = "<group>"; };
 		BF60D4402571C10A00DA3C27 /* PuzzleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleDetails.swift; sourceTree = "<group>"; };
+		BF60D4452571C5E500DA3C27 /* PuzzleProcessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleProcessingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,8 @@
 				BF60D4402571C10A00DA3C27 /* PuzzleDetails.swift */,
 				BF60D4292571B53A00DA3C27 /* PuzzleCard.swift */,
 				BF60D4382571BCD500DA3C27 /* SolutionView.swift */,
+				BF60D4452571C5E500DA3C27 /* PuzzleProcessingView.swift */,
+				BF56417D2571C70900FC14B7 /* PuzzleProcessing.swift */,
 				BF60D3F62571B42800DA3C27 /* Assets.xcassets */,
 				BF60D3FB2571B42800DA3C27 /* Info.plist */,
 				BF60D3F82571B42800DA3C27 /* Preview Content */,
@@ -123,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				BF60D3F92571B42800DA3C27 /* Preview Assets.xcassets */,
+				BF5641782571C66500FC14B7 /* PuzzlePreviewData.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -280,7 +289,10 @@
 				BF60D4392571BCD500DA3C27 /* SolutionView.swift in Sources */,
 				BF60D4412571C10A00DA3C27 /* PuzzleDetails.swift in Sources */,
 				BF60D42A2571B53A00DA3C27 /* PuzzleCard.swift in Sources */,
+				BF56417E2571C70900FC14B7 /* PuzzleProcessing.swift in Sources */,
 				BF60D3F32571B42700DA3C27 /* AOC2020App.swift in Sources */,
+				BF60D4462571C5E500DA3C27 /* PuzzleProcessingView.swift in Sources */,
+				BF5641792571C66500FC14B7 /* PuzzlePreviewData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

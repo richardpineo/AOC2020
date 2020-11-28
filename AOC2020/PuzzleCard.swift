@@ -15,7 +15,7 @@ struct PuzzleCard: View {
 			VStack {
 				Spacer()
 
-				Text("Day \(puzzle.id)")
+				Text("Day \(puzzle.id + 1)")
 					.font(.system(size: 24, weight: .semibold))
 					.padding(.bottom, 10)
 
@@ -24,10 +24,10 @@ struct PuzzleCard: View {
 					.padding(.horizontal)
 					.fixedSize(horizontal: false, vertical: true)
 
-				SolutionView(solution: puzzle.solutionA)
+				SolutionView(puzzle: puzzle, isA: true)
 					.padding()
 
-				SolutionView(solution: puzzle.solutionB)
+				SolutionView(puzzle: puzzle, isA: false)
 					.padding()
 
 				Spacer()
@@ -49,15 +49,11 @@ struct PuzzleCard: View {
 }
 
 struct PuzzleCard_Previews: PreviewProvider {
-	static let solved = Puzzle(id: 1, name: "An easy one", state: .solved, solutionA: "69420", solutionB: "12345")
-	static let partSolved = Puzzle(id: 7, name: "Almost! This one has a really long name", state: .solvedA, solutionA: "FOOO")
-	static let unsolved = Puzzle(id: 42, name: "A Hard One", state: .unsolved)
-
 	static var previews: some View {
 		Group {
-			PuzzleCard(puzzle: unsolved)
-			PuzzleCard(puzzle: partSolved)
-			PuzzleCard(puzzle: solved)
+			PuzzleCard(puzzle: PuzzlePreview.unsolved)
+			PuzzleCard(puzzle: PuzzlePreview.partSolved)
+			PuzzleCard(puzzle: PuzzlePreview.solved)
 		}
 		.previewLayout(.fixed(width: 300, height: 300))
 	}
