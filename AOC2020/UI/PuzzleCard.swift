@@ -19,10 +19,18 @@ struct PuzzleCard: View {
 					.font(.system(size: 24, weight: .semibold))
 					.padding(.bottom, 10)
 
-				Text(puzzle.name)
-					.font(.system(size: 24)).italic()
-					.padding(.horizontal)
-					.fixedSize(horizontal: false, vertical: true)
+				Group {
+					if puzzle.name.isEmpty {
+						Text("Not revealed")
+							.font(.system(size: 18)).italic()
+							.foregroundColor(.secondary)
+					} else {
+						Text(puzzle.name)
+							.font(.system(size: 24))
+					}
+				}
+				.padding(.horizontal)
+				.fixedSize(horizontal: false, vertical: true)
 
 				SolutionView(puzzle: puzzle, isA: true)
 					.padding()
@@ -51,9 +59,9 @@ struct PuzzleCard: View {
 struct PuzzleCard_Previews: PreviewProvider {
 	static var previews: some View {
 		Group {
-			PuzzleCard(puzzle: PuzzlePreview.unsolved)
-			PuzzleCard(puzzle: PuzzlePreview.partSolved)
-			PuzzleCard(puzzle: PuzzlePreview.solved)
+			PuzzleCard(puzzle: PuzzlePreview.unsolved())
+			PuzzleCard(puzzle: PuzzlePreview.partSolved())
+			PuzzleCard(puzzle: PuzzlePreview.solved())
 		}
 		.previewLayout(.fixed(width: 300, height: 300))
 	}

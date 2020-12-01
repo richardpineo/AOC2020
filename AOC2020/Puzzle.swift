@@ -8,27 +8,39 @@ enum SolutionState {
 }
 
 struct Puzzle: Identifiable {
+	init(id: Int, name: String = "", maker: (() -> PuzzleSolver)? = nil) {
+		self.id = id
+		self.name = name
+		makeSolver = maker
+
+		solutionA = UserDefaults.standard.string(forKey: Puzzle.userDefaultKey(id: id, isA: true)) ?? ""
+		solutionB = UserDefaults.standard.string(forKey: Puzzle.userDefaultKey(id: id, isA: false)) ?? ""
+	}
+
 	var id: Int
 	var name: String
+	var makeSolver: (() -> PuzzleSolver)?
 
-	var state: SolutionState = .unsolved
-
-	var inputA: String?
-	var inputB: String?
-
-	var solutionA: String? {
+	var state: SolutionState {
+		if solutionA.isEmpty {
+			return .unsolved
+		}
+		return solutionB.isEmpty ? .solvedA : .solved
+	}
+	
+	var solutionA: String {
 		didSet {
 			UserDefaults.standard.set(solutionA, forKey: Puzzle.userDefaultKey(id: id, isA: true))
 		}
 	}
 
-	var solutionB: String? {
+	var solutionB: String {
 		didSet {
 			UserDefaults.standard.set(solutionB, forKey: Puzzle.userDefaultKey(id: id, isA: false))
 		}
 	}
 
-	static func userDefaultKey(id: Int, isA: Bool) -> String {
+	private static func userDefaultKey(id: Int, isA: Bool) -> String {
 		"puzzle_\(id)_\(isA ? "A" : "B")"
 	}
 }

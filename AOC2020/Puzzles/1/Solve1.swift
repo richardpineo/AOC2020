@@ -1,7 +1,7 @@
 
 import Foundation
 
-class Solve1 {
+class Solve1: PuzzleSolver {
 	func exampleA() -> String {
 		solveA(filename: "Example")
 	}
@@ -10,11 +10,11 @@ class Solve1 {
 		solveB(filename: "Example")
 	}
 
-	func a() -> String {
+	func solveA() -> String {
 		solveA(filename: "InputA")
 	}
 
-	func b() -> String {
+	func solveB() -> String {
 		solveB(filename: "InputA")
 	}
 

@@ -16,10 +16,12 @@ struct SolutionView: View {
 				if processing.isProcessing(processingId) {
 					Text(elapsed)
 				} else {
-					if let sol = isA ? puzzle.solutionA : puzzle.solutionB {
-						Text(sol)
-					} else {
+					let sol = isA ? puzzle.solutionA : puzzle.solutionB
+
+					if sol.isEmpty {
 						Text("UNSOLVED")
+					} else {
+						Text(sol)
 					}
 				}
 			}
@@ -38,14 +40,21 @@ struct SolutionView: View {
 		}
 	}
 
-	private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+	private static let updateHz = 0.1
+	private let timer = Timer.publish(every: updateHz, on: .main, in: .common).autoconnect()
 
 	private var elapsed: String {
 		guard let elapsed = processing.elapsed(processingId) else {
 			return ""
 		}
-		let rounded = lround(elapsed.magnitude)
-		return "\(rounded) seconds elapsed"
+		let sec = elapsed.magnitude
+		if sec < 3 {
+			let rounded = lround(sec * 1000)
+			return "\(rounded) ms"
+		} else {
+			let rounded = Double(lround(sec * 10)) / 10.0
+			return "\(rounded) sec"
+		}
 	}
 
 	private var processingId: PuzzleProcessingId {
@@ -56,10 +65,10 @@ struct SolutionView: View {
 struct Solutionview_Previews: PreviewProvider {
 	static var previews: some View {
 		Group {
-			SolutionView(puzzle: PuzzlePreview.unsolved, isA: true)
-			SolutionView(puzzle: PuzzlePreview.solved, isA: true)
-			SolutionView(puzzle: PuzzlePreview.partSolved, isA: true)
-			SolutionView(puzzle: PuzzlePreview.partSolved, isA: false)
+			SolutionView(puzzle: PuzzlePreview.unsolved(), isA: true)
+			SolutionView(puzzle: PuzzlePreview.solved(), isA: true)
+			SolutionView(puzzle: PuzzlePreview.partSolved(), isA: true)
+			SolutionView(puzzle: PuzzlePreview.partSolved(), isA: false)
 		}
 		.environmentObject(PuzzlePreview.puzzles())
 		.environmentObject(PuzzlePreview.processing())

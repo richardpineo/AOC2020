@@ -4,6 +4,10 @@ import Foundation
 struct PuzzleProcessingId: Hashable {
 	var id: Int
 	var isA: Bool
+
+	var description: String {
+		"Day \(id + 1), Part \(isA ? "A" : "B")"
+	}
 }
 
 class PuzzleProcessing: ObservableObject {
@@ -59,15 +63,40 @@ class PuzzleProcessing: ObservableObject {
 			return
 		}
 		status[id] = .processing(Date())
-		DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-			let newSolution = Int.random(in: 1000 ... 1_000_000).description
-			if id.isA {
-				self.puzzles.puzzles[id.id].solutionA = newSolution
-			} else {
-				self.puzzles.puzzles[id.id].solutionB = newSolution
+
+		DispatchQueue.global().async {
+			// Solve it
+			let solution = self.solve(id)
+
+			// Report out
+			DispatchQueue.main.async {
+				var puzzle = self.puzzles.puzzles[id.id]
+				Self.log(id, "Solution found: \(solution)")
+				if id.isA {
+					puzzle.solutionA = solution
+				} else {
+					puzzle.solutionB = solution
+				}
+				
+				self.status[id] = .idle
 			}
-			self.status[id] = .idle
 		}
+	}
+
+	private func solve(_ id: PuzzleProcessingId) -> String {
+		let puzzle = puzzles.puzzles[id.id]
+
+		guard let solver = puzzle.makeSolver?() else {
+			Self.log(id, "NO SOLVER")
+			return ""
+		}
+
+		Self.log(id, "Begin solving")
+		return id.isA ? solver.solveA() : solver.solveB()
+	}
+
+	private static func log(_ id: PuzzleProcessingId, _ text: String) {
+		print("\(id.description): \(text)")
 	}
 
 	private var puzzles: Puzzles
