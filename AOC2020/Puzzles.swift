@@ -3,9 +3,8 @@ import Foundation
 
 class Puzzles: ObservableObject {
 	static func application() -> Puzzles {
-		
 		let puzzles = Puzzles()
-		
+
 		puzzles.puzzles = [
 			Puzzle(id: 0, name: "The first one"),
 			Puzzle(id: 1, name: "The second one"),
@@ -20,16 +19,16 @@ class Puzzles: ObservableObject {
 			puzzles.puzzles[id].solutionA = UserDefaults.standard.string(forKey: Puzzle.userDefaultKey(id: id, isA: true))
 			puzzles.puzzles[id].solutionB = UserDefaults.standard.string(forKey: Puzzle.userDefaultKey(id: id, isA: false))
 		}
-		
+
 		return puzzles
 	}
-	
+
 	static func preview() -> Puzzles {
 		let puzzles = Puzzles()
-		
-		puzzles.puzzles.append( PuzzlePreview.solved)
-		puzzles.puzzles.append( PuzzlePreview.partSolved)
-		puzzles.puzzles.append( PuzzlePreview.unsolved)
+
+		puzzles.puzzles.append(PuzzlePreview.solved)
+		puzzles.puzzles.append(PuzzlePreview.partSolved)
+		puzzles.puzzles.append(PuzzlePreview.unsolved)
 
 		return puzzles
 	}

@@ -4,7 +4,7 @@ import SwiftUI
 
 struct SolutionView: View {
 	@EnvironmentObject var processing: PuzzleProcessing
-	
+
 	var puzzle: Puzzle
 	var isA: Bool
 	@State var processingStep: Int = 0
@@ -15,8 +15,7 @@ struct SolutionView: View {
 			VStack {
 				if processing.isProcessing(processingId) {
 					Text(elapsed)
-				}
-				else {
+				} else {
 					if let sol = isA ? puzzle.solutionA : puzzle.solutionB {
 						Text(sol)
 					} else {
@@ -38,9 +37,8 @@ struct SolutionView: View {
 			self.processingStep = self.processingStep + 1
 		}
 	}
-	
-	private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
+	private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
 	private var elapsed: String {
 		guard let elapsed = processing.elapsed(processingId) else {
@@ -49,7 +47,7 @@ struct SolutionView: View {
 		let rounded = lround(elapsed.magnitude)
 		return "\(rounded) seconds elapsed"
 	}
-	
+
 	private var processingId: PuzzleProcessingId {
 		PuzzleProcessingId(id: puzzle.id, isA: isA)
 	}

@@ -21,6 +21,7 @@ struct Puzzle: Identifiable {
 			UserDefaults.standard.set(solutionA, forKey: Puzzle.userDefaultKey(id: id, isA: true))
 		}
 	}
+
 	var solutionB: String? {
 		didSet {
 			UserDefaults.standard.set(solutionB, forKey: Puzzle.userDefaultKey(id: id, isA: false))

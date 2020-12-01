@@ -2,27 +2,54 @@
 import Foundation
 
 class Solve1 {
-	
-	func example() -> String {
-		return solveA(filename: "Example")
+	func exampleA() -> String {
+		solveA(filename: "Example")
 	}
-	
+
+	func exampleB() -> String {
+		solveB(filename: "Example")
+	}
+
 	func a() -> String {
-		return solveA(filename: "InputA")
+		solveA(filename: "InputA")
 	}
-	
+
+	func b() -> String {
+		solveB(filename: "InputA")
+	}
+
 	private func solveA(filename: String) -> String {
 		guard let example = FileHelper.load(filename) else {
 			return ""
 		}
-		
+
 		let numbers = example.compactMap { Int($0) }
-		
-		for index in 0..<numbers.count {
-			for index2 in index..<numbers.count {
+
+		for index in 0 ..< numbers.count {
+			for index2 in index ..< numbers.count {
 				let val = numbers[index] + numbers[index2]
 				if val == 2020 {
 					return (numbers[index] * numbers[index2]).description
+				}
+			}
+		}
+		return ""
+	}
+
+	private func solveB(filename: String) -> String {
+		guard let example = FileHelper.load(filename) else {
+			return ""
+		}
+
+		let numbers = example.compactMap { Int($0) }
+
+		for index in 0 ..< numbers.count {
+			for index2 in index ..< numbers.count {
+				for index3 in index ..< numbers.count {
+					let val = numbers[index] + numbers[index2] + numbers[index3]
+					if val == 2020 {
+						return (numbers[index] * numbers[index2] * numbers[index3]).description
+					}
 				}
 			}
 		}
