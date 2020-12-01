@@ -2,14 +2,14 @@
 import Foundation
 
 class Solve1: PuzzleSolver {
-	func exampleA() -> String {
-		solveA(filename: "Example")
+	func solveAExamples() -> Bool {
+		return "514579" == solveA(filename: "Example")
 	}
-
-	func exampleB() -> String {
-		solveB(filename: "Example")
+	
+	func solveBExamples() -> Bool {
+		return "241861950" == solveB(filename: "Example")
 	}
-
+	
 	func solveA() -> String {
 		solveA(filename: "InputA")
 	}

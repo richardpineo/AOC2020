@@ -29,6 +29,7 @@
 		BF60D4462571C5E500DA3C27 /* PuzzleProcessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4452571C5E500DA3C27 /* PuzzleProcessingView.swift */; };
 		BF9513A925761E8C002C3100 /* ControlCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513A825761E8C002C3100 /* ControlCenter.swift */; };
 		BF9513AE257624C7002C3100 /* PuzzleSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125C022576107100B6C3B3 /* PuzzleSolver.swift */; };
+		BF9513B62576255D002C3100 /* TestPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513B52576255D002C3100 /* TestPuzzle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		BF60D4402571C10A00DA3C27 /* PuzzleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleDetails.swift; sourceTree = "<group>"; };
 		BF60D4452571C5E500DA3C27 /* PuzzleProcessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleProcessingView.swift; sourceTree = "<group>"; };
 		BF9513A825761E8C002C3100 /* ControlCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlCenter.swift; sourceTree = "<group>"; };
+		BF9513B52576255D002C3100 /* TestPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 		BF60D4032571B42800DA3C27 /* AOC2020Tests */ = {
 			isa = PBXGroup;
 			children = (
+				BF9513B52576255D002C3100 /* TestPuzzle.swift */,
 				BF125BD225760BDB00B6C3B3 /* TestPuzzle1.swift */,
 				BF60D4062571B42800DA3C27 /* Info.plist */,
 			);
@@ -310,6 +313,7 @@
 			files = (
 				BF125BD325760BDB00B6C3B3 /* TestPuzzle1.swift in Sources */,
 				BF125BD725760C0C00B6C3B3 /* Solve1.swift in Sources */,
+				BF9513B62576255D002C3100 /* TestPuzzle.swift in Sources */,
 				BF9513AE257624C7002C3100 /* PuzzleSolver.swift in Sources */,
 				BF125BDB25760C2900B6C3B3 /* FileHelper.swift in Sources */,
 			);

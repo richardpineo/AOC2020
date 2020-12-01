@@ -12,7 +12,7 @@ class Puzzles: ObservableObject {
 		]
 
 		let totalPuzzles = 25
-		for id in puzzles.puzzles.count ... totalPuzzles {
+		for id in puzzles.puzzles.count ..< totalPuzzles {
 			puzzles.puzzles.append(Puzzle(id: id))
 		}
 
