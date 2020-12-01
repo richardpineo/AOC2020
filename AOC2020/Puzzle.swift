@@ -7,7 +7,7 @@ enum SolutionState {
 	case solvedA
 }
 
-struct Puzzle: Identifiable {
+class Puzzle: Identifiable, ObservableObject {
 	init(id: Int, name: String = "", maker: (() -> PuzzleSolver)? = nil) {
 		self.id = id
 		self.name = name
@@ -28,13 +28,13 @@ struct Puzzle: Identifiable {
 		return solutionB.isEmpty ? .solvedA : .solved
 	}
 	
-	var solutionA: String {
+	@Published var solutionA: String {
 		didSet {
 			UserDefaults.standard.set(solutionA, forKey: Puzzle.userDefaultKey(id: id, isA: true))
 		}
 	}
 
-	var solutionB: String {
+	@Published var solutionB: String {
 		didSet {
 			UserDefaults.standard.set(solutionB, forKey: Puzzle.userDefaultKey(id: id, isA: false))
 		}

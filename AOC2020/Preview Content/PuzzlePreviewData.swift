@@ -4,14 +4,14 @@ import Foundation
 
 class PuzzlePreview {
 	static func solved() -> Puzzle {
-		var p = Puzzle(id: 0, name: "An easy one")
+		let p = Puzzle(id: 0, name: "An easy one")
 		p.solutionA = "69420"
 		p.solutionB = "12345"
 		return p
 	}
 
 	static func partSolved() -> Puzzle {
-		var p = Puzzle(id: 1, name: "Almost! This one has a really long name")
+		let p = Puzzle(id: 1, name: "Almost! This one has a really long name")
 		p.solutionA = "FOOO"
 		return p
 	}

@@ -27,6 +27,7 @@
 		BF60D4392571BCD500DA3C27 /* SolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4382571BCD500DA3C27 /* SolutionView.swift */; };
 		BF60D4412571C10A00DA3C27 /* PuzzleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4402571C10A00DA3C27 /* PuzzleDetails.swift */; };
 		BF60D4462571C5E500DA3C27 /* PuzzleProcessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D4452571C5E500DA3C27 /* PuzzleProcessingView.swift */; };
+		BF9513A925761E8C002C3100 /* ControlCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513A825761E8C002C3100 /* ControlCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		BF60D4382571BCD500DA3C27 /* SolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolutionView.swift; sourceTree = "<group>"; };
 		BF60D4402571C10A00DA3C27 /* PuzzleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleDetails.swift; sourceTree = "<group>"; };
 		BF60D4452571C5E500DA3C27 /* PuzzleProcessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleProcessingView.swift; sourceTree = "<group>"; };
+		BF9513A825761E8C002C3100 /* ControlCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				BF60D3F42571B42700DA3C27 /* MainView.swift */,
+				BF9513A825761E8C002C3100 /* ControlCenter.swift */,
 				BF60D4402571C10A00DA3C27 /* PuzzleDetails.swift */,
 				BF60D4292571B53A00DA3C27 /* PuzzleCard.swift */,
 				BF60D4382571BCD500DA3C27 /* SolutionView.swift */,
@@ -292,6 +295,7 @@
 				BF60D4412571C10A00DA3C27 /* PuzzleDetails.swift in Sources */,
 				BF60D42A2571B53A00DA3C27 /* PuzzleCard.swift in Sources */,
 				BF56417E2571C70900FC14B7 /* PuzzleProcessing.swift in Sources */,
+				BF9513A925761E8C002C3100 /* ControlCenter.swift in Sources */,
 				BF60D3F32571B42700DA3C27 /* AOC2020App.swift in Sources */,
 				BF60D4462571C5E500DA3C27 /* PuzzleProcessingView.swift in Sources */,
 				BF5641792571C66500FC14B7 /* PuzzlePreviewData.swift in Sources */,

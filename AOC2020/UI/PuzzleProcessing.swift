@@ -70,7 +70,7 @@ class PuzzleProcessing: ObservableObject {
 
 			// Report out
 			DispatchQueue.main.async {
-				var puzzle = self.puzzles.puzzles[id.id]
+				let puzzle = self.puzzles.puzzles[id.id]
 				Self.log(id, "Solution found: \(solution)")
 				if id.isA {
 					puzzle.solutionA = solution
@@ -80,6 +80,20 @@ class PuzzleProcessing: ObservableObject {
 				
 				self.status[id] = .idle
 			}
+		}
+	}
+	
+	func clearAll() {
+		self.puzzles.puzzles.forEach { puzzle in
+			puzzle.solutionA = ""
+			puzzle.solutionB = ""
+		}
+	}
+	
+	func processAll() {
+		self.puzzles.puzzles.forEach { puzzle in
+			startProcessing(.init(id: puzzle.id, isA: true))
+			startProcessing(.init(id: puzzle.id, isA: false))
 		}
 	}
 

@@ -16,6 +16,8 @@ struct MainView: View {
 		NavigationView {
 			ScrollView {
 				VStack {
+					ControlCenter()
+					
 					LazyVGrid(columns: columns) {
 						ForEach(puzzles.puzzles) { puzzle in
 							if puzzle.hasDetailView {
@@ -46,6 +48,8 @@ struct MainView: View {
 					Spacer()
 				}
 				.navigationTitle("Advent of Code 2020")
+				.navigationBarTitleDisplayMode(.inline)
+				.padding()
 			}
 			.background(Color(.systemGreen).opacity(0.1))
 		}

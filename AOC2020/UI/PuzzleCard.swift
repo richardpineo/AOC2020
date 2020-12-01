@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct PuzzleCard: View {
-	var puzzle: Puzzle
+	@ObservedObject var puzzle: Puzzle
 
 	var body: some View {
 		ZStack {
