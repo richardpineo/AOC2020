@@ -1,6 +1,6 @@
 import XCTest
 
-class TestSolve1: XCTestCase {
+class TestPuzzle1: XCTestCase {
 	func testExampleA() throws {
 		let solver = Solve1()
 		XCTAssertEqual(solver.exampleA(), "514579")
@@ -13,13 +13,13 @@ class TestSolve1: XCTestCase {
 
 	func testA() throws {
 		let solver = Solve1()
-		let solution = solver.a()
+		let solution = solver.solveA()
 		print(solution)
 	}
 
 	func testB() throws {
 		let solver = Solve1()
-		let solution = solver.b()
+		let solution = solver.solveB()
 		print(solution)
 	}
 }

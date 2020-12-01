@@ -90,7 +90,7 @@ class PuzzleProcessing: ObservableObject {
 		}
 	}
 	
-	func processAll() {/Users/richardpineo/src/Personal/AOC2020/.gitignore
+	func processAll() {
 		self.puzzles.puzzles.forEach { puzzle in
 			startProcessing(.init(id: puzzle.id, isA: true))
 			startProcessing(.init(id: puzzle.id, isA: false))
