@@ -30,6 +30,8 @@
 		BF9513A925761E8C002C3100 /* ControlCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513A825761E8C002C3100 /* ControlCenter.swift */; };
 		BF9513AE257624C7002C3100 /* PuzzleSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125C022576107100B6C3B3 /* PuzzleSolver.swift */; };
 		BF9513B62576255D002C3100 /* TestPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513B52576255D002C3100 /* TestPuzzle.swift */; };
+		BF9513BD257627D9002C3100 /* DetailsView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513BC257627D9002C3100 /* DetailsView1.swift */; };
+		BF9513C5257628CE002C3100 /* Solve1Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513C4257628CE002C3100 /* Solve1Status.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		BF60D4452571C5E500DA3C27 /* PuzzleProcessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleProcessingView.swift; sourceTree = "<group>"; };
 		BF9513A825761E8C002C3100 /* ControlCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlCenter.swift; sourceTree = "<group>"; };
 		BF9513B52576255D002C3100 /* TestPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle.swift; sourceTree = "<group>"; };
+		BF9513BC257627D9002C3100 /* DetailsView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView1.swift; sourceTree = "<group>"; };
+		BF9513C4257628CE002C3100 /* Solve1Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve1Status.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				BF125BBA2576099700B6C3B3 /* InputA.txt */,
 				BF125BC2257609B700B6C3B3 /* Example.txt */,
 				BF125BC7257609D600B6C3B3 /* Solve1.swift */,
+				BF9513C4257628CE002C3100 /* Solve1Status.swift */,
 			);
 			path = 1;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 		BF125BF825760F8000B6C3B3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				BF9513BB257627B5002C3100 /* Details */,
 				BF60D3F42571B42700DA3C27 /* MainView.swift */,
 				BF9513A825761E8C002C3100 /* ControlCenter.swift */,
 				BF60D4402571C10A00DA3C27 /* PuzzleDetails.swift */,
@@ -187,6 +193,14 @@
 				BF60D4062571B42800DA3C27 /* Info.plist */,
 			);
 			path = AOC2020Tests;
+			sourceTree = "<group>";
+		};
+		BF9513BB257627B5002C3100 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				BF9513BC257627D9002C3100 /* DetailsView1.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,9 +311,11 @@
 				BF60D42F2571B56500DA3C27 /* Puzzles.swift in Sources */,
 				BF60D4392571BCD500DA3C27 /* SolutionView.swift in Sources */,
 				BF60D4412571C10A00DA3C27 /* PuzzleDetails.swift in Sources */,
+				BF9513BD257627D9002C3100 /* DetailsView1.swift in Sources */,
 				BF60D42A2571B53A00DA3C27 /* PuzzleCard.swift in Sources */,
 				BF56417E2571C70900FC14B7 /* PuzzleProcessing.swift in Sources */,
 				BF9513A925761E8C002C3100 /* ControlCenter.swift in Sources */,
+				BF9513C5257628CE002C3100 /* Solve1Status.swift in Sources */,
 				BF60D3F32571B42700DA3C27 /* AOC2020App.swift in Sources */,
 				BF60D4462571C5E500DA3C27 /* PuzzleProcessingView.swift in Sources */,
 				BF5641792571C66500FC14B7 /* PuzzlePreviewData.swift in Sources */,

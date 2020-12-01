@@ -3,22 +3,27 @@ import Foundation
 
 class Solve1: PuzzleSolver {
 	func solveAExamples() -> Bool {
-		return "514579" == solveA(filename: "Example")
+		return "514579" == solveA("Example")
 	}
 	
 	func solveBExamples() -> Bool {
-		return "241861950" == solveB(filename: "Example")
+		return "241861950" == solveB("Example")
 	}
 	
 	func solveA() -> String {
-		solveA(filename: "InputA")
+		solveA( "InputA")
 	}
 
+	
 	func solveB() -> String {
-		solveB(filename: "InputA")
+		solveB(status: nil)
+	}
+	
+	func solveB(status: Solve1Status?) -> String {
+		solveB( "InputA", status)
 	}
 
-	private func solveA(filename: String) -> String {
+	private func solveA(_ filename: String) -> String {
 		guard let example = FileHelper.load(filename) else {
 			return ""
 		}
@@ -36,18 +41,25 @@ class Solve1: PuzzleSolver {
 		return ""
 	}
 
-	private func solveB(filename: String) -> String {
+	private func solveB(_ filename: String, _ status: Solve1Status? = nil) -> String {
 		guard let example = FileHelper.load(filename) else {
 			return ""
 		}
-
+		
 		let numbers = example.compactMap { Int($0) }
+
+		if let stat = status {
+			stat.numbers = numbers
+		}
 
 		for index in 0 ..< numbers.count {
 			for index2 in index ..< numbers.count {
 				for index3 in index ..< numbers.count {
 					let val = numbers[index] + numbers[index2] + numbers[index3]
 					if val == 2020 {
+						if let stat = status {
+							stat.answerIndices = [index, index2, index3]
+						}
 						return (numbers[index] * numbers[index2] * numbers[index3]).description
 					}
 				}
