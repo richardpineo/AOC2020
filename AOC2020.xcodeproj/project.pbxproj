@@ -15,6 +15,7 @@
 		BF125BD725760C0C00B6C3B3 /* Solve1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BC7257609D600B6C3B3 /* Solve1.swift */; };
 		BF125BDB25760C2900B6C3B3 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BCD25760A2D00B6C3B3 /* FileHelper.swift */; };
 		BF125C032576107100B6C3B3 /* PuzzleSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125C022576107100B6C3B3 /* PuzzleSolver.swift */; };
+		BF4F5267257755E80036DE28 /* Solve1Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513C4257628CE002C3100 /* Solve1Status.swift */; };
 		BF5641792571C66500FC14B7 /* PuzzlePreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5641782571C66500FC14B7 /* PuzzlePreviewData.swift */; };
 		BF56417E2571C70900FC14B7 /* PuzzleProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56417D2571C70900FC14B7 /* PuzzleProcessing.swift */; };
 		BF60D3F32571B42700DA3C27 /* AOC2020App.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D3F22571B42700DA3C27 /* AOC2020App.swift */; };
@@ -332,6 +333,7 @@
 				BF9513B62576255D002C3100 /* TestPuzzle.swift in Sources */,
 				BF9513AE257624C7002C3100 /* PuzzleSolver.swift in Sources */,
 				BF125BDB25760C2900B6C3B3 /* FileHelper.swift in Sources */,
+				BF4F5267257755E80036DE28 /* Solve1Status.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
