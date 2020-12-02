@@ -7,7 +7,7 @@ class Solve2: PuzzleSolver {
 	}
 	
 	func solveBExamples() -> Bool {
-		return "" == solveB("Example2")
+		return "1" == solveB("Example2")
 	}
 	
 	func solveA() -> String {
@@ -22,13 +22,13 @@ class Solve2: PuzzleSolver {
 	private func solveA(_ filename: String) -> String {
 		let tokens = FileHelper.loadAndTokenize(filename)
 		let passing = tokens.filter { toke in
-			toke.count == 3 && passes(toke[0], toke[1], toke[2])
+			toke.count == 3 && passesA(toke[0], toke[1], toke[2])
 		}
 		
 		return passing.count.description
 	}
 	
-	private func passes(_ count: String, _ character: String, _ password: String) -> Bool {
+	private func passesA(_ count: String, _ character: String, _ password: String) -> Bool {
 		let counts = count.components(separatedBy: "-")
 		if counts.count != 2 {
 			return false
@@ -44,6 +44,27 @@ class Solve2: PuzzleSolver {
 	}
 
 	private func solveB(_ filename: String) -> String {
-		return ""
+		let tokens = FileHelper.loadAndTokenize(filename)
+		let passing = tokens.filter { toke in
+			toke.count == 3 && passesB(toke[0], toke[1], toke[2])
+		}
+		
+		return passing.count.description
+	}
+	
+	private func passesB(_ count: String, _ character: String, _ password: String) -> Bool {
+		let counts = count.components(separatedBy: "-")
+		if counts.count != 2 {
+			return false
+		}
+		let firstPosition = Int(counts[0])! - 1
+		let secondPosition = Int(counts[1])! - 1
+		
+		let match = character[character.index(character.startIndex, offsetBy: 0)]
+
+		let passFirst = password[password.index(password.startIndex, offsetBy: firstPosition)]
+		let passSecond = password[password.index(password.startIndex, offsetBy: secondPosition)]
+
+		return (match == passFirst) != (match == passSecond)
 	}
 }
