@@ -5,12 +5,7 @@ struct MainView: View {
 	@EnvironmentObject var puzzles: Puzzles
 
 	// We want the OS to figure out the widths, just not smaller than our minimum.
-	let columns = [
-		GridItem(.flexible()),
-		GridItem(.flexible()),
-		GridItem(.flexible()),
-		GridItem(.flexible()),
-	]
+	private var gridItemLayout = [GridItem(.adaptive(minimum: 200))]
 
 	var body: some View {
 		NavigationView {
@@ -18,7 +13,7 @@ struct MainView: View {
 				VStack {
 					ControlCenter()
 					
-					LazyVGrid(columns: columns) {
+					LazyVGrid(columns: gridItemLayout) {
 						ForEach(puzzles.puzzles) { puzzle in
 							if puzzle.hasDetailView {
 								NavigationLink(
