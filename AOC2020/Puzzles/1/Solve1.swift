@@ -3,15 +3,15 @@ import Foundation
 
 class Solve1: PuzzleSolver {
 	func solveAExamples() -> Bool {
-		return "514579" == solveA("Example")
+		return "514579" == solveA("Example1")
 	}
 	
 	func solveBExamples() -> Bool {
-		return "241861950" == solveB("Example")
+		return "241861950" == solveB("Example1")
 	}
 	
 	func solveA() -> String {
-		solveA( "InputA")
+		solveA( "Input1")
 	}
 
 	
@@ -20,7 +20,7 @@ class Solve1: PuzzleSolver {
 	}
 	
 	func solveB(status: Solve1Status?) -> String {
-		solveB( "InputA", status)
+		solveB( "Input1", status)
 	}
 
 	private func solveA(_ filename: String) -> String {

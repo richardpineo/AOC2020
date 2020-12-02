@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF125BBB2576099700B6C3B3 /* InputA.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF125BBA2576099700B6C3B3 /* InputA.txt */; };
-		BF125BC3257609B700B6C3B3 /* Example.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF125BC2257609B700B6C3B3 /* Example.txt */; };
+		BF125BBB2576099700B6C3B3 /* Input1.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF125BBA2576099700B6C3B3 /* Input1.txt */; };
+		BF125BC3257609B700B6C3B3 /* Example1.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF125BC2257609B700B6C3B3 /* Example1.txt */; };
 		BF125BC8257609D600B6C3B3 /* Solve1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BC7257609D600B6C3B3 /* Solve1.swift */; };
 		BF125BCE25760A2D00B6C3B3 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BCD25760A2D00B6C3B3 /* FileHelper.swift */; };
 		BF125BD325760BDB00B6C3B3 /* TestPuzzle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BD225760BDB00B6C3B3 /* TestPuzzle1.swift */; };
@@ -16,6 +16,11 @@
 		BF125BDB25760C2900B6C3B3 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BCD25760A2D00B6C3B3 /* FileHelper.swift */; };
 		BF125C032576107100B6C3B3 /* PuzzleSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125C022576107100B6C3B3 /* PuzzleSolver.swift */; };
 		BF4F5267257755E80036DE28 /* Solve1Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513C4257628CE002C3100 /* Solve1Status.swift */; };
+		BF4F526C257756B70036DE28 /* Solve2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F526B257756B70036DE28 /* Solve2.swift */; };
+		BF4F5272257756D60036DE28 /* Example2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF4F5271257756D60036DE28 /* Example2.txt */; };
+		BF4F52762577572C0036DE28 /* Input2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF4F52752577572C0036DE28 /* Input2.txt */; };
+		BF4F527C25775A170036DE28 /* TestPuzzle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F527B25775A170036DE28 /* TestPuzzle2.swift */; };
+		BF4F527F25775A2C0036DE28 /* Solve2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F526B257756B70036DE28 /* Solve2.swift */; };
 		BF5641792571C66500FC14B7 /* PuzzlePreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5641782571C66500FC14B7 /* PuzzlePreviewData.swift */; };
 		BF56417E2571C70900FC14B7 /* PuzzleProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56417D2571C70900FC14B7 /* PuzzleProcessing.swift */; };
 		BF60D3F32571B42700DA3C27 /* AOC2020App.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D3F22571B42700DA3C27 /* AOC2020App.swift */; };
@@ -46,12 +51,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BF125BBA2576099700B6C3B3 /* InputA.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputA.txt; sourceTree = "<group>"; };
-		BF125BC2257609B700B6C3B3 /* Example.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Example.txt; sourceTree = "<group>"; };
+		BF125BBA2576099700B6C3B3 /* Input1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input1.txt; sourceTree = "<group>"; };
+		BF125BC2257609B700B6C3B3 /* Example1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Example1.txt; sourceTree = "<group>"; };
 		BF125BC7257609D600B6C3B3 /* Solve1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve1.swift; sourceTree = "<group>"; };
 		BF125BCD25760A2D00B6C3B3 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		BF125BD225760BDB00B6C3B3 /* TestPuzzle1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle1.swift; sourceTree = "<group>"; };
 		BF125C022576107100B6C3B3 /* PuzzleSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleSolver.swift; sourceTree = "<group>"; };
+		BF4F526B257756B70036DE28 /* Solve2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve2.swift; sourceTree = "<group>"; };
+		BF4F5271257756D60036DE28 /* Example2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Example2.txt; sourceTree = "<group>"; };
+		BF4F52752577572C0036DE28 /* Input2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input2.txt; sourceTree = "<group>"; };
+		BF4F527B25775A170036DE28 /* TestPuzzle2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle2.swift; sourceTree = "<group>"; };
 		BF5641782571C66500FC14B7 /* PuzzlePreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePreviewData.swift; sourceTree = "<group>"; };
 		BF56417D2571C70900FC14B7 /* PuzzleProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleProcessing.swift; sourceTree = "<group>"; };
 		BF60D3EF2571B42700DA3C27 /* AOC2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOC2020.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +106,7 @@
 			children = (
 				BF125BCC25760A2200B6C3B3 /* Helpers */,
 				BF125BB92576097700B6C3B3 /* 1 */,
+				BF4F526A257756A80036DE28 /* 2 */,
 				BF125C022576107100B6C3B3 /* PuzzleSolver.swift */,
 			);
 			path = Puzzles;
@@ -105,8 +115,8 @@
 		BF125BB92576097700B6C3B3 /* 1 */ = {
 			isa = PBXGroup;
 			children = (
-				BF125BBA2576099700B6C3B3 /* InputA.txt */,
-				BF125BC2257609B700B6C3B3 /* Example.txt */,
+				BF125BBA2576099700B6C3B3 /* Input1.txt */,
+				BF125BC2257609B700B6C3B3 /* Example1.txt */,
 				BF125BC7257609D600B6C3B3 /* Solve1.swift */,
 				BF9513C4257628CE002C3100 /* Solve1Status.swift */,
 			);
@@ -143,6 +153,16 @@
 				BF60D3F22571B42700DA3C27 /* AOC2020App.swift */,
 			);
 			path = Program;
+			sourceTree = "<group>";
+		};
+		BF4F526A257756A80036DE28 /* 2 */ = {
+			isa = PBXGroup;
+			children = (
+				BF4F526B257756B70036DE28 /* Solve2.swift */,
+				BF4F5271257756D60036DE28 /* Example2.txt */,
+				BF4F52752577572C0036DE28 /* Input2.txt */,
+			);
+			path = 2;
 			sourceTree = "<group>";
 		};
 		BF60D3E62571B42700DA3C27 = {
@@ -191,6 +211,7 @@
 			children = (
 				BF9513B52576255D002C3100 /* TestPuzzle.swift */,
 				BF125BD225760BDB00B6C3B3 /* TestPuzzle1.swift */,
+				BF4F527B25775A170036DE28 /* TestPuzzle2.swift */,
 				BF60D4062571B42800DA3C27 /* Info.plist */,
 			);
 			path = AOC2020Tests;
@@ -284,9 +305,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF125BBB2576099700B6C3B3 /* InputA.txt in Resources */,
-				BF125BC3257609B700B6C3B3 /* Example.txt in Resources */,
+				BF125BBB2576099700B6C3B3 /* Input1.txt in Resources */,
+				BF125BC3257609B700B6C3B3 /* Example1.txt in Resources */,
 				BF60D3FA2571B42800DA3C27 /* Preview Assets.xcassets in Resources */,
+				BF4F52762577572C0036DE28 /* Input2.txt in Resources */,
+				BF4F5272257756D60036DE28 /* Example2.txt in Resources */,
 				BF60D3F72571B42800DA3C27 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +343,7 @@
 				BF60D3F32571B42700DA3C27 /* AOC2020App.swift in Sources */,
 				BF60D4462571C5E500DA3C27 /* PuzzleProcessingView.swift in Sources */,
 				BF5641792571C66500FC14B7 /* PuzzlePreviewData.swift in Sources */,
+				BF4F526C257756B70036DE28 /* Solve2.swift in Sources */,
 				BF125BCE25760A2D00B6C3B3 /* FileHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,7 +352,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4F527C25775A170036DE28 /* TestPuzzle2.swift in Sources */,
 				BF125BD325760BDB00B6C3B3 /* TestPuzzle1.swift in Sources */,
+				BF4F527F25775A2C0036DE28 /* Solve2.swift in Sources */,
 				BF125BD725760C0C00B6C3B3 /* Solve1.swift in Sources */,
 				BF9513B62576255D002C3100 /* TestPuzzle.swift in Sources */,
 				BF9513AE257624C7002C3100 /* PuzzleSolver.swift in Sources */,
