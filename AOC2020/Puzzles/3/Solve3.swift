@@ -2,21 +2,30 @@
 import Foundation
 
 class Solve3: PuzzleSolver {
+	private let slopesA = [Position2D(3,1)]
+	private let slopesB = [
+		Position2D(1,1),
+		Position2D(3,1),
+		Position2D(5,1),
+		Position2D(7,1),
+		Position2D(1,2)
+	]
+
 	func solveAExamples() -> Bool {
-		return "7" == solveA("Example3")
+		return "7" == solve("Example3", slopes: slopesA)
 	}
 	
 	func solveBExamples() -> Bool {
-		return "" == solveB("Example3")
+		return "336" == solve("Example3", slopes: slopesB)
 	}
 	
 	func solveA() -> String {
-		solveA( "Input3")
+		solve( "Input3", slopes: slopesA)
 	}
 
 	
 	func solveB() -> String {
-		solveB( "Input3")
+		solve( "Input3", slopes: slopesB)
 	}
 	
 	private func isTree(_ lines: [String], _ pos: Position2D) -> Bool {
@@ -28,63 +37,26 @@ class Solve3: PuzzleSolver {
 		return tree == "#"
 	}
 
-	private func solveA(_ filename: String) -> String {
+	private func solve(_ filename: String, slopes: [Position2D]) -> String {
 		let lines = FileHelper.load(filename)!
 		let width = lines[0].count
 		let height = lines.count
-		
-		var pos = Position2D(0, 0)
-		let step = Position2D(3, 1)
-
-		var treeCount = 0
-		while pos.y <= height {
-			if isTree(lines, pos) {
-				treeCount += 1
+		var treeCounts = [Int]()
+		for index in 0..<slopes.count {
+			var treeCount = 0
+			var pos = Position2D(0, 0)
+			while pos.y <= height {
+				if isTree(lines, pos) {
+					treeCount += 1
+				}
+				pos = pos.offset(slopes[index])
+				pos = Position2D(pos.x % width, pos.y)
 			}
-			pos = pos.offset(step)
-			pos = Position2D(pos.x % width, pos.y)
+			treeCounts.append(treeCount)
 		}
-		
-		return treeCount.description
-	}
-	
-	private func passesA(_ count: String, _ character: String, _ password: String) -> Bool {
-		let counts = count.components(separatedBy: "-")
-		if counts.count != 2 {
-			return false
-		}
-		let minCount = Int(counts[0])!
-		let maxCount = Int(counts[1])!
-		
-		let match = character[character.index(character.startIndex, offsetBy: 0)]
-
-		let occurs = password.filter { $0 == match }
-		let occursCount = occurs.count
-		return occursCount >= minCount && occursCount <= maxCount
-	}
-
-	private func solveB(_ filename: String) -> String {
-		let tokens = FileHelper.loadAndTokenize(filename)
-		let passing = tokens.filter { toke in
-			toke.count == 3 && passesB(toke[0], toke[1], toke[2])
-		}
-		
-		return passing.count.description
-	}
-	
-	private func passesB(_ count: String, _ character: String, _ password: String) -> Bool {
-		let counts = count.components(separatedBy: "-")
-		if counts.count != 2 {
-			return false
-		}
-		let firstPosition = Int(counts[0])! - 1
-		let secondPosition = Int(counts[1])! - 1
-		
-		let match = character[character.index(character.startIndex, offsetBy: 0)]
-
-		let passFirst = password[password.index(password.startIndex, offsetBy: firstPosition)]
-		let passSecond = password[password.index(password.startIndex, offsetBy: secondPosition)]
-
-		return (match == passFirst) != (match == passSecond)
+		let answer = treeCounts.reduce(1, { x, y in
+			x * y
+		})
+		return answer.description
 	}
 }
