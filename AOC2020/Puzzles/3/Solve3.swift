@@ -32,9 +32,7 @@ class Solve3: PuzzleSolver {
 		if pos.y >= lines.count {
 			return false
 		}
-		let line = lines[pos.y]
-		let tree = line[line.index(line.startIndex, offsetBy: pos.x)]
-		return tree == "#"
+		return lines[pos.y].character(at: pos.x) == "#"
 	}
 
 	private func solve(_ filename: String, slopes: [Position2D]) -> String {

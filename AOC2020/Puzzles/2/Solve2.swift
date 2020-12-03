@@ -36,7 +36,7 @@ class Solve2: PuzzleSolver {
 		let minCount = Int(counts[0])!
 		let maxCount = Int(counts[1])!
 		
-		let match = character[character.index(character.startIndex, offsetBy: 0)]
+		let match = character.character(at: 0)
 
 		let occurs = password.filter { $0 == match }
 		let occursCount = occurs.count
@@ -60,11 +60,11 @@ class Solve2: PuzzleSolver {
 		let firstPosition = Int(counts[0])! - 1
 		let secondPosition = Int(counts[1])! - 1
 		
-		let match = character[character.index(character.startIndex, offsetBy: 0)]
-
-		let passFirst = password[password.index(password.startIndex, offsetBy: firstPosition)]
-		let passSecond = password[password.index(password.startIndex, offsetBy: secondPosition)]
-
+		let match = character.character(at: 0)
+		
+		let passFirst = password.character(at: firstPosition)
+		let passSecond = password.character(at: secondPosition)
+	
 		return (match == passFirst) != (match == passSecond)
 	}
 }

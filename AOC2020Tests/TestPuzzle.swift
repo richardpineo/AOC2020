@@ -7,16 +7,15 @@ extension XCTestCase {
 
 	func solveBExamples(_ solver: PuzzleSolver) throws {
 		XCTAssertTrue(solver.solveBExamples())
-
 	}
 
-	func solveA(_ solver: PuzzleSolver) throws {
+	func solveA(_ solver: PuzzleSolver, _ expected: String? = nil) throws {
 		let solution = solver.solveA()
-		print(solution)
+		XCTAssertEqual(solution, expected)
 	}
 
-	func solveB(_ solver: PuzzleSolver) throws {
+	func solveB(_ solver: PuzzleSolver, _ expected: String? = nil) throws {
 		let solution = solver.solveB()
-		print(solution)
+		XCTAssertEqual(solution, expected)
 	}
 }

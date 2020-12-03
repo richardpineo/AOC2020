@@ -6,7 +6,7 @@ struct PuzzleProcessingId: Hashable {
 	var isA: Bool
 
 	var description: String {
-		"Day \(id + 1), Part \(isA ? "A" : "B")"
+		"Day \(id + 1)-\(isA ? "A" : "B")"
 	}
 }
 
@@ -71,7 +71,9 @@ class PuzzleProcessing: ObservableObject {
 			// Report out
 			DispatchQueue.main.async {
 				let puzzle = self.puzzles.puzzles[id.id]
-				Self.log(id, "Solution found: \(solution)")
+				if !solution.isEmpty {
+					Self.log(id, solution)
+				}
 				if id.isA {
 					puzzle.solutionA = solution
 				} else {
@@ -101,7 +103,6 @@ class PuzzleProcessing: ObservableObject {
 		let puzzle = puzzles.puzzles[id.id]
 
 		guard let solver = puzzle.makeSolver?() else {
-			Self.log(id, "NO SOLVER")
 			return ""
 		}
 

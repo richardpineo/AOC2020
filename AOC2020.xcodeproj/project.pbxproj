@@ -45,6 +45,8 @@
 		BFF06E4B2578ABD000725DE7 /* Solve3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E432578AB2000725DE7 /* Solve3.swift */; };
 		BFF06E4F2578AC6C00725DE7 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E4E2578AC6C00725DE7 /* Position.swift */; };
 		BFF06E522578ADB400725DE7 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E4E2578AC6C00725DE7 /* Position.swift */; };
+		BFF06E562578B18300725DE7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E552578B18300725DE7 /* StringExtensions.swift */; };
+		BFF06E592578B24500725DE7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E552578B18300725DE7 /* StringExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,7 @@
 		BFF06E432578AB2000725DE7 /* Solve3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve3.swift; sourceTree = "<group>"; };
 		BFF06E472578ABB400725DE7 /* TestPuzzle3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle3.swift; sourceTree = "<group>"; };
 		BFF06E4E2578AC6C00725DE7 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		BFF06E552578B18300725DE7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,7 @@
 			children = (
 				BF125BCD25760A2D00B6C3B3 /* FileHelper.swift */,
 				BFF06E4E2578AC6C00725DE7 /* Position.swift */,
+				BFF06E552578B18300725DE7 /* StringExtensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -367,6 +371,7 @@
 				BF56417E2571C70900FC14B7 /* PuzzleProcessing.swift in Sources */,
 				BF9513A925761E8C002C3100 /* ControlCenter.swift in Sources */,
 				BFF06E442578AB2000725DE7 /* Solve3.swift in Sources */,
+				BFF06E562578B18300725DE7 /* StringExtensions.swift in Sources */,
 				BF9513C5257628CE002C3100 /* Solve1Status.swift in Sources */,
 				BF60D3F32571B42700DA3C27 /* AOC2020App.swift in Sources */,
 				BF60D4462571C5E500DA3C27 /* PuzzleProcessingView.swift in Sources */,
@@ -381,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFF06E592578B24500725DE7 /* StringExtensions.swift in Sources */,
 				BFF06E522578ADB400725DE7 /* Position.swift in Sources */,
 				BF4F527C25775A170036DE28 /* TestPuzzle2.swift in Sources */,
 				BF125BD325760BDB00B6C3B3 /* TestPuzzle1.swift in Sources */,
