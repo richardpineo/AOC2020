@@ -5,13 +5,13 @@ class FileHelper {
 	static func loadAndTokenize(_ filename: String) -> [[String]] {
 		tokenize(load(filename) ?? [])
 	}
-	
+
 	static func tokenize(_ values: [String]) -> [[String]] {
 		values.map {
 			$0.components(separatedBy: " ")
 		}
 	}
-	
+
 	static func load(_ filename: String) -> [String]? {
 		guard let path = Bundle.main.path(forResource: filename, ofType: "txt") else {
 			return nil

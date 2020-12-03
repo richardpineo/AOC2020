@@ -3,24 +3,23 @@ import Foundation
 
 class Solve1: PuzzleSolver {
 	func solveAExamples() -> Bool {
-		return "514579" == solveA("Example1")
-	}
-	
-	func solveBExamples() -> Bool {
-		return "241861950" == solveB("Example1")
-	}
-	
-	func solveA() -> String {
-		solveA( "Input1")
+		solveA("Example1") == "514579"
 	}
 
-	
+	func solveBExamples() -> Bool {
+		solveB("Example1") == "241861950"
+	}
+
+	func solveA() -> String {
+		solveA("Input1")
+	}
+
 	func solveB() -> String {
 		solveB(status: nil)
 	}
-	
+
 	func solveB(status: Solve1Status?) -> String {
-		solveB( "Input1", status)
+		solveB("Input1", status)
 	}
 
 	private func solveA(_ filename: String) -> String {
@@ -45,7 +44,7 @@ class Solve1: PuzzleSolver {
 		guard let example = FileHelper.load(filename) else {
 			return ""
 		}
-		
+
 		let numbers = example.compactMap { Int($0) }
 
 		if let stat = status {

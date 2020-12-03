@@ -14,6 +14,6 @@ extension Puzzle {
 	}
 
 	var hasDetailView: Bool {
-		return detailView() != nil
+		detailView() != nil
 	}
 }

@@ -27,7 +27,7 @@ class Puzzle: Identifiable, ObservableObject {
 		}
 		return solutionB.isEmpty ? .solvedA : .solved
 	}
-	
+
 	@Published var solutionA: String {
 		didSet {
 			UserDefaults.standard.set(solutionA, forKey: Puzzle.userDefaultKey(id: id, isA: true))

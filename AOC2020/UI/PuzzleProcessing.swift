@@ -79,21 +79,21 @@ class PuzzleProcessing: ObservableObject {
 				} else {
 					puzzle.solutionB = solution
 				}
-				
+
 				self.status[id] = .idle
 			}
 		}
 	}
-	
+
 	func clearAll() {
-		self.puzzles.puzzles.forEach { puzzle in
+		puzzles.puzzles.forEach { puzzle in
 			puzzle.solutionA = ""
 			puzzle.solutionB = ""
 		}
 	}
-	
+
 	func processAll() {
-		self.puzzles.puzzles.forEach { puzzle in
+		puzzles.puzzles.forEach { puzzle in
 			startProcessing(.init(id: puzzle.id, isA: true))
 			startProcessing(.init(id: puzzle.id, isA: false))
 		}

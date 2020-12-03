@@ -2,32 +2,31 @@
 import Foundation
 
 class Solve3: PuzzleSolver {
-	private let slopesA = [Position2D(3,1)]
+	private let slopesA = [Position2D(3, 1)]
 	private let slopesB = [
-		Position2D(1,1),
-		Position2D(3,1),
-		Position2D(5,1),
-		Position2D(7,1),
-		Position2D(1,2)
+		Position2D(1, 1),
+		Position2D(3, 1),
+		Position2D(5, 1),
+		Position2D(7, 1),
+		Position2D(1, 2),
 	]
 
 	func solveAExamples() -> Bool {
-		return "7" == solve("Example3", slopes: slopesA)
-	}
-	
-	func solveBExamples() -> Bool {
-		return "336" == solve("Example3", slopes: slopesB)
-	}
-	
-	func solveA() -> String {
-		solve( "Input3", slopes: slopesA)
+		solve("Example3", slopes: slopesA) == "7"
 	}
 
-	
-	func solveB() -> String {
-		solve( "Input3", slopes: slopesB)
+	func solveBExamples() -> Bool {
+		solve("Example3", slopes: slopesB) == "336"
 	}
-	
+
+	func solveA() -> String {
+		solve("Input3", slopes: slopesA)
+	}
+
+	func solveB() -> String {
+		solve("Input3", slopes: slopesB)
+	}
+
 	private func isTree(_ lines: [String], _ pos: Position2D) -> Bool {
 		if pos.y >= lines.count {
 			return false
@@ -40,7 +39,7 @@ class Solve3: PuzzleSolver {
 		let width = lines[0].count
 		let height = lines.count
 		var treeCounts = [Int]()
-		for index in 0..<slopes.count {
+		for index in 0 ..< slopes.count {
 			var treeCount = 0
 			var pos = Position2D(0, 0)
 			while pos.y <= height {
@@ -52,9 +51,9 @@ class Solve3: PuzzleSolver {
 			}
 			treeCounts.append(treeCount)
 		}
-		let answer = treeCounts.reduce(1, { x, y in
+		let answer = treeCounts.reduce(1) { x, y in
 			x * y
-		})
+		}
 		return answer.description
 	}
 }

@@ -12,7 +12,7 @@ struct MainView: View {
 			ScrollView {
 				VStack {
 					ControlCenter()
-					
+
 					LazyVGrid(columns: gridItemLayout) {
 						ForEach(puzzles.puzzles) { puzzle in
 							if puzzle.hasDetailView {
