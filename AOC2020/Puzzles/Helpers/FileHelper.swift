@@ -19,7 +19,7 @@ class FileHelper {
 
 		do {
 			let content = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-			return content.components(separatedBy: "\n")
+			return content.components(separatedBy: "\n").filter { !$0.isEmpty }
 		} catch _ as NSError {
 			return nil
 		}
