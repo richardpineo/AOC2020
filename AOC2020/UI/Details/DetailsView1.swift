@@ -8,15 +8,22 @@ struct DetailsView1: View {
 	
     var body: some View {
 		VStack {
-			ScrollView {
-				LazyVGrid(columns: gridItemLayout) {
-					ForEach(0..<status.numbers.count, id: \.self) { i in
-						Text(status.numbers[i].description)
-							.font(.system(size: 15, design: .monospaced))
-							.frame(width: 50, height: 10)
-							.padding(10)
-							.background(status.isAnswer(byIndex: i) ? Color.green : Color.clear)
-							.border(Color.blue)
+			if status.numbers.isEmpty {
+				Text("Thinking...")
+					.font(.title3)
+					.padding()
+			}
+			else {
+				ScrollView {
+					LazyVGrid(columns: gridItemLayout) {
+						ForEach(0..<status.numbers.count, id: \.self) { i in
+							Text(status.numbers[i].description)
+								.font(.system(size: 15, design: .monospaced))
+								.frame(width: 50, height: 10)
+								.padding(10)
+								.background(status.isAnswer(byIndex: i) ? Color.green : Color.clear)
+								.border(Color.blue)
+						}
 					}
 				}
 			}
@@ -24,9 +31,12 @@ struct DetailsView1: View {
 		.padding()
 		.navigationTitle("Day 1: Report Repair")
 		.onAppear {
-			let solve = Solve1()
-			// Do it sync
-			_ = solve.solveB(status: status)
+			status.numbers = []
+			status.answerIndices = []
+			DispatchQueue.main.async {
+				let solve = Solve1()
+				_ = solve.solveB(status: status)
+			}
 		}
     }
 	

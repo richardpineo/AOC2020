@@ -27,6 +27,8 @@ struct PuzzleCard: View {
 					} else {
 						Text(puzzle.name)
 							.font(.system(size: 24))
+							.minimumScaleFactor(0.25)
+							.lineLimit(1)
 					}
 				}
 				.padding(.horizontal)

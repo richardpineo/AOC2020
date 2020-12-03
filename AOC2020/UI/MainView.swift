@@ -38,7 +38,6 @@ struct MainView: View {
 							}
 						}
 					}
-					.padding()
 
 					Spacer()
 				}
