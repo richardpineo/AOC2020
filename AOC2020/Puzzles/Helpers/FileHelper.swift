@@ -3,7 +3,8 @@ import Foundation
 
 class FileHelper {
 	static func loadAndTokenize(_ filename: String) -> [[String]] {
-		tokenize(load(filename) ?? [])
+		let lines = load(filename) ?? []
+		return tokenize( lines.filter { !$0.isEmpty })
 	}
 
 	static func tokenize(_ values: [String]) -> [[String]] {
@@ -19,7 +20,7 @@ class FileHelper {
 
 		do {
 			let content = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-			return content.components(separatedBy: "\n").filter { !$0.isEmpty }
+			return content.components(separatedBy: "\n")
 		} catch _ as NSError {
 			return nil
 		}

@@ -35,7 +35,7 @@ class Solve3: PuzzleSolver {
 	}
 
 	private func solve(_ filename: String, slopes: [Position2D]) -> String {
-		let lines = FileHelper.load(filename)!
+		let lines = FileHelper.load(filename)!.filter { !$0.isEmpty }
 		let width = lines[0].count
 		let height = lines.count
 		var treeCounts = [Int]()
