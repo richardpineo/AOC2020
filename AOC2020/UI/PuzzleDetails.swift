@@ -7,6 +7,8 @@ extension Puzzle {
 		switch id {
 		case 0:
 			return AnyView(DetailsView1())
+		case 3:
+			return AnyView(DetailsView4())
 
 		default:
 			return nil

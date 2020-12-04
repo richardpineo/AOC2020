@@ -1,7 +1,14 @@
 
 import Foundation
 
+protocol Solve4Delegate {
+	func processed(passport: Solve4.Passport, passed: Bool)
+	func complete()
+}
+
 class Solve4: PuzzleSolver {
+	var delegate: Solve4Delegate?
+
 	func solveAExamples() -> Bool {
 		solve("Example4", strict: false) == "2"
 	}
@@ -146,7 +153,12 @@ class Solve4: PuzzleSolver {
 			}
 		}
 
-		let valid = passports.filter { strict ? $0.isStrictlyValid : $0.isValid }
+		let valid = passports.filter {
+			let isValid = strict ? $0.isStrictlyValid : $0.isValid
+			delegate?.processed(passport: $0, passed: isValid)
+			return isValid
+		}
+		delegate?.complete()
 		return valid.count.description
 	}
 }
