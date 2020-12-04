@@ -45,6 +45,10 @@
 		BFE59D212579FBB000CBE639 /* Example4.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE59D1C2579FBB000CBE639 /* Example4.txt */; };
 		BFE59D222579FBB000CBE639 /* Example4.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE59D1C2579FBB000CBE639 /* Example4.txt */; };
 		BFE59D292579FBE400CBE639 /* TestPuzzle4.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE59D272579FBE400CBE639 /* TestPuzzle4.swift */; };
+		BFE59D3B257A041B00CBE639 /* Example4b-invalid.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE59D39257A041B00CBE639 /* Example4b-invalid.txt */; };
+		BFE59D3C257A041B00CBE639 /* Example4b-invalid.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE59D39257A041B00CBE639 /* Example4b-invalid.txt */; };
+		BFE59D3D257A041B00CBE639 /* Example4b-valid.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE59D3A257A041B00CBE639 /* Example4b-valid.txt */; };
+		BFE59D3E257A041B00CBE639 /* Example4b-valid.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE59D3A257A041B00CBE639 /* Example4b-valid.txt */; };
 		BFF06E382578AB0600725DE7 /* Example3.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFF06E372578AB0600725DE7 /* Example3.txt */; };
 		BFF06E3E2578AB1300725DE7 /* Input3.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFF06E3D2578AB1300725DE7 /* Input3.txt */; };
 		BFF06E442578AB2000725DE7 /* Solve3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E432578AB2000725DE7 /* Solve3.swift */; };
@@ -101,6 +105,8 @@
 		BFE59D1B2579FBB000CBE639 /* Input4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input4.txt; sourceTree = "<group>"; };
 		BFE59D1C2579FBB000CBE639 /* Example4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example4.txt; sourceTree = "<group>"; };
 		BFE59D272579FBE400CBE639 /* TestPuzzle4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPuzzle4.swift; sourceTree = "<group>"; };
+		BFE59D39257A041B00CBE639 /* Example4b-invalid.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Example4b-invalid.txt"; sourceTree = "<group>"; };
+		BFE59D3A257A041B00CBE639 /* Example4b-valid.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Example4b-valid.txt"; sourceTree = "<group>"; };
 		BFF06E372578AB0600725DE7 /* Example3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Example3.txt; sourceTree = "<group>"; };
 		BFF06E3D2578AB1300725DE7 /* Input3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input3.txt; sourceTree = "<group>"; };
 		BFF06E432578AB2000725DE7 /* Solve3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve3.swift; sourceTree = "<group>"; };
@@ -261,6 +267,8 @@
 			isa = PBXGroup;
 			children = (
 				BFE59D1C2579FBB000CBE639 /* Example4.txt */,
+				BFE59D39257A041B00CBE639 /* Example4b-invalid.txt */,
+				BFE59D3A257A041B00CBE639 /* Example4b-valid.txt */,
 				BFE59D1B2579FBB000CBE639 /* Input4.txt */,
 				BFE59D1A2579FBB000CBE639 /* Solve4.swift */,
 			);
@@ -363,8 +371,10 @@
 				BF60D3FA2571B42800DA3C27 /* Preview Assets.xcassets in Resources */,
 				BFF06E3E2578AB1300725DE7 /* Input3.txt in Resources */,
 				BF4F52762577572C0036DE28 /* Input2.txt in Resources */,
+				BFE59D3D257A041B00CBE639 /* Example4b-valid.txt in Resources */,
 				BFE59D212579FBB000CBE639 /* Example4.txt in Resources */,
 				BFF06E382578AB0600725DE7 /* Example3.txt in Resources */,
+				BFE59D3B257A041B00CBE639 /* Example4b-invalid.txt in Resources */,
 				BF4F5272257756D60036DE28 /* Example2.txt in Resources */,
 				BF60D3F72571B42800DA3C27 /* Assets.xcassets in Resources */,
 			);
@@ -375,6 +385,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFE59D222579FBB000CBE639 /* Example4.txt in Resources */,
+				BFE59D3C257A041B00CBE639 /* Example4b-invalid.txt in Resources */,
+				BFE59D3E257A041B00CBE639 /* Example4b-valid.txt in Resources */,
 				BFE59D202579FBB000CBE639 /* Input4.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
