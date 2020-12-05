@@ -60,9 +60,4 @@ class Solve5: PuzzleSolver {
 		}
 		return value
 	}
-	
-	private func solve(_ filename: String) -> String {
-		let lines = FileHelper.load(filename)!
-		return ""
-	}
 }
