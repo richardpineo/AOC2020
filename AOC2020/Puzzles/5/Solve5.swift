@@ -19,21 +19,30 @@ class Solve5: PuzzleSolver {
 	}
 	
 	func solveBExamples() -> Bool {
-		return false
+		return true
 	}
 
 	func solveA() -> String {
-		let maxSeat = FileHelper.load(inputFile)!.map { calculateSeatId($0) }.max()
+		let maxSeat = FileHelper.load(inputFile)!.compactMap { calculateSeatId($0) }.max()
 		return maxSeat!.description
 	}
 
 	func solveB() -> String {
-		return ""
+		let seats = FileHelper.load(inputFile)!.compactMap { calculateSeatId($0) }.sorted()
+		
+		for index in 0 ..< seats.count {
+			let check = seats[index + 1]
+			if seats[index] + 1 != check {
+				return (seats[index] + 1).description
+			}
+		}
+		
+		return "notfound"
 	}
 	
-	func calculateSeatId(_ seat: String) -> Int {
+	func calculateSeatId(_ seat: String) -> Int? {
 		if seat.count != 10 {
-			return 0
+			return nil
 		}
 		let row = seat.subString(start: 0, count: 7)
 		let col = seat.subString(start: 7, count: 3)
@@ -42,7 +51,6 @@ class Solve5: PuzzleSolver {
 		let colBin = toBinary(col, "R")
 
 		let seatId = rowBin * 8 + colBin
-		print("\(seat) -> \(seatId)")
 		return seatId
 	}
 
