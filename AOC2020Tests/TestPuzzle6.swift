@@ -2,9 +2,9 @@ import XCTest
 
 class TestPuzzle6: XCTestCase {
 	private func solver() -> PuzzleSolver {
-		return Solve6()
+		Solve6()
 	}
-	
+
 	func testExampleA() throws {
 		try solveAExamples(solver())
 	}
@@ -14,10 +14,10 @@ class TestPuzzle6: XCTestCase {
 	}
 
 	func testA() throws {
-		try solveA(solver(), "")
+		try solveA(solver(), "6387")
 	}
 
 	func testB() throws {
-		try solveB(solver(), "")
+		try solveB(solver(), "3039")
 	}
 }

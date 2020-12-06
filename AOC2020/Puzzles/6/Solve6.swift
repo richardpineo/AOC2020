@@ -2,48 +2,69 @@
 import Foundation
 
 class Solve6: PuzzleSolver {
-	
 	let exampleFile = "Example6"
 	let inputFile = "Input6"
 
 	func solveAExamples() -> Bool {
-		return solvePartA(exampleFile) == 11
+		solvePartA(exampleFile) == 11
 	}
-	
+
 	func solveBExamples() -> Bool {
-		return true
+		solvePartB(exampleFile) == 6
 	}
-	
+
 	func solveA() -> String {
-		return solvePartA(inputFile).description
+		solvePartA(inputFile).description
 	}
 
 	func solveB() -> String {
-		return ""
+		solvePartB(inputFile).description
 	}
-	
+
 	private func solvePartA(_ filename: String) -> Int {
 		let groups = loadGroups(filename)
-		let allAnswers = flattenGroups(groups)
+		let allAnswers = findUnionAnswers(groups)
+		return countAnswers(allAnswers)
+	}
+
+	private func solvePartB(_ filename: String) -> Int {
+		let groups = loadGroups(filename)
+		let allAnswers = findIntersectionAnswers(groups)
+		return countAnswers(allAnswers)
+	}
+
+	private func countAnswers(_ answers: [Set<String.Element>]) -> Int {
 		var result = 0
-		allAnswers.forEach {
+		answers.forEach {
 			result = result + $0.count
 		}
 		return result
 	}
-	
-	private func flattenGroups(_ groups: [[String]]) -> [Set<String.Element>] {
+
+	private func findIntersectionAnswers(_ groups: [[String]]) -> [Set<String.Element>] {
+		var allAnswers: [Set<String.Element>] = []
+		for group in groups {
+			var intersection = Set(group[0])
+			for person in group {
+				intersection = intersection.intersection(person)
+			}
+			allAnswers.append(intersection)
+		}
+		return allAnswers
+	}
+
+	private func findUnionAnswers(_ groups: [[String]]) -> [Set<String.Element>] {
 		var allAnswers: [Set<String.Element>] = []
 		for group in groups {
 			var answers = Set<String.Element>()
 			for person in group {
-				person.forEach { answers.insert($0 ) }
+				person.forEach { answers.insert($0) }
 			}
 			allAnswers.append(answers)
 		}
 		return allAnswers
 	}
-	
+
 	private func loadGroups(_ filename: String) -> [[String]] {
 		var current: [String] = []
 		var groups = [[String]]()
@@ -53,8 +74,7 @@ class Solve6: PuzzleSolver {
 					groups.append(current)
 					current = []
 				}
-			}
-			else {
+			} else {
 				current.append(line)
 			}
 		}

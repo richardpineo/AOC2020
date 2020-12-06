@@ -2,9 +2,9 @@ import XCTest
 
 class TestPuzzle5: XCTestCase {
 	private func solver() -> PuzzleSolver {
-		return Solve5()
+		Solve5()
 	}
-	
+
 	func testExampleA() throws {
 		try solveAExamples(solver())
 	}

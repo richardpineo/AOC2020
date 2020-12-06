@@ -2,7 +2,6 @@
 import Foundation
 
 class Solve5: PuzzleSolver {
-	
 	let exampleFile = "Example5"
 	let inputFile = "Input5"
 
@@ -17,9 +16,9 @@ class Solve5: PuzzleSolver {
 		}
 		return true
 	}
-	
+
 	func solveBExamples() -> Bool {
-		return true
+		true
 	}
 
 	func solveA() -> String {
@@ -29,24 +28,24 @@ class Solve5: PuzzleSolver {
 
 	func solveB() -> String {
 		let seats = FileHelper.load(inputFile)!.compactMap { calculateSeatId($0) }.sorted()
-		
+
 		for index in 0 ..< seats.count {
 			let check = seats[index + 1]
 			if seats[index] + 1 != check {
 				return (seats[index] + 1).description
 			}
 		}
-		
+
 		return "notfound"
 	}
-	
+
 	func calculateSeatId(_ seat: String) -> Int? {
 		if seat.count != 10 {
 			return nil
 		}
 		let row = seat.subString(start: 0, count: 7)
 		let col = seat.subString(start: 7, count: 3)
-		
+
 		let rowBin = toBinary(row, "B")
 		let colBin = toBinary(col, "R")
 
