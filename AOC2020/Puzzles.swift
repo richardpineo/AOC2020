@@ -21,6 +21,9 @@ class Puzzles: ObservableObject {
 			Puzzle(id: 4, name: "Binary Boarding") {
 				Solve5()
 			},
+			Puzzle(id: 5, name: "Custom Customs") {
+				Solve6()
+			},
 		]
 
 		let totalPuzzles = 25
