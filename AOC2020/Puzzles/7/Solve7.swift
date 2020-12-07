@@ -9,28 +9,32 @@ class Solve7: PuzzleSolver {
 
 	func solveAExamples() -> Bool {
 		let bags = loadBags(exampleFile)
-		let containCount = countContainers(bagId: myBagId, bags: bags)
+		let containCount = countContainers(bags: bags)
 		return containCount == 4
 	}
 
 	func solveBExamples() -> Bool {
-		let bags = loadBags(exampleFile)
-		let containCount = countContainers(bagId: myBagId, bags: bags)
+		let count2 = bSolver(exampleFile2)
+		let count1 = bSolver(exampleFile)
 
-		let bags2 = loadBags(exampleFile2)
-		let containCount2 = countContainers(bagId: myBagId, bags: bags2)
-
-		return containCount == 32 && containCount2 == 126
+		return count1 == "32" && count2 == "126"
 	}
 
 	func solveA() -> String {
 		let bags = loadBags(inputFile)
-		let containCount = countContainers(bagId: myBagId, bags: bags)
+		let containCount = countContainers(bags: bags)
 		return containCount.description
 	}
 
 	func solveB() -> String {
-		""
+		bSolver(inputFile)
+	}
+
+	func bSolver(_ filename: String) -> String {
+		let bags = loadBags(filename)
+		let myBag = bags.getBag(bagId: myBagId)!
+		let containCount = countContained(for: myBag, in: bags)
+		return containCount.description
 	}
 
 	class ContainedBag: CustomDebugStringConvertible {
@@ -83,6 +87,15 @@ class Solve7: PuzzleSolver {
 		private var bagCache: [String: Bag] = [:]
 	}
 
+	private func countContained(for bag: Bag, in bags: Bags) -> Int {
+		// Count all contained bags recursively
+		bag.contains.reduce(0) { count, container in
+			let containedCount = countContained(for: container.bag!, in: bags)
+			let totalContained = (containedCount + 1) * container.count
+			return count + totalContained
+		}
+	}
+
 	private func isContained(bagId: String, searchBags: [Bag], in bags: Bags) -> Bool {
 		let found = searchBags.first { searchBag in
 			if bagId == searchBag.bagId {
@@ -93,7 +106,7 @@ class Solve7: PuzzleSolver {
 		return found != nil
 	}
 
-	private func countContainers(bagId _: String, bags: Bags) -> Int {
+	private func countContainers(bags: Bags) -> Int {
 		let count = bags.bags.reduce(0) { curCount, bag in
 			curCount + (isContained(bagId: myBagId, searchBags: bag.contains.map { $0.bag! }, in: bags) ? 1 : 0)
 		}
@@ -103,7 +116,6 @@ class Solve7: PuzzleSolver {
 	private func loadBags(_ filename: String) -> Bags {
 		var bags: [Bag] = []
 		for line in FileHelper.load(filename)! {
-			print(line)
 			// split into two halves
 			let lineValues = line.components(separatedBy: " bags contain ")
 			if lineValues.count == 2 {
