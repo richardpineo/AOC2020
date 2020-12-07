@@ -3,8 +3,10 @@ import Foundation
 
 class Solve7: PuzzleSolver {
 	let exampleFile = "Example7"
+	let exampleFile2 = "Example7-2"
 	let inputFile = "Input7"
 	let myBagId = "shiny gold"
+
 	func solveAExamples() -> Bool {
 		let bags = loadBags(exampleFile)
 		let containCount = countContainers(bagId: myBagId, bags: bags)
@@ -12,7 +14,13 @@ class Solve7: PuzzleSolver {
 	}
 
 	func solveBExamples() -> Bool {
-		return false
+		let bags = loadBags(exampleFile)
+		let containCount = countContainers(bagId: myBagId, bags: bags)
+
+		let bags2 = loadBags(exampleFile2)
+		let containCount2 = countContainers(bagId: myBagId, bags: bags2)
+
+		return containCount == 32 && containCount2 == 126
 	}
 
 	func solveA() -> String {
@@ -22,25 +30,26 @@ class Solve7: PuzzleSolver {
 	}
 
 	func solveB() -> String {
-		return ""
+		""
 	}
-	
+
 	class ContainedBag: CustomDebugStringConvertible {
 		convenience init(count: Int, bagId: String) {
 			self.init()
 			self.count = count
 			self.bagId = bagId
 		}
+
 		var count: Int = 0
 		var bagId: String = ""
-		
+
 		// direct access
 		var bag: Bag?
 		var debugDescription: String {
 			"\(count) \(bagId)(s)"
 		}
 	}
-	
+
 	struct Bag: CustomDebugStringConvertible {
 		var bagId: String // e.g. light red
 		var contains: [ContainedBag]
@@ -49,7 +58,7 @@ class Solve7: PuzzleSolver {
 			"\(bagId) contains \(contains.debugDescription)"
 		}
 	}
-	
+
 	struct Bags {
 		init(bags: [Bag]) {
 			self.bags = bags
@@ -60,18 +69,20 @@ class Solve7: PuzzleSolver {
 			// finalize the contained bags
 			bags.forEach {
 				$0.contains.forEach { containedBag in
-					containedBag.bag = getBag(bagId: containedBag.bagId )
+					containedBag.bag = getBag(bagId: containedBag.bagId)
 				}
 			}
 		}
-		var bags: [Bag] 
-		
+
+		var bags: [Bag]
+
 		func getBag(bagId: String) -> Bag? {
-			return bagCache[bagId]
+			bagCache[bagId]
 		}
-		private var bagCache: [String:Bag] = [:]
+
+		private var bagCache: [String: Bag] = [:]
 	}
-	
+
 	private func isContained(bagId: String, searchBags: [Bag], in bags: Bags) -> Bool {
 		let found = searchBags.first { searchBag in
 			if bagId == searchBag.bagId {
@@ -81,8 +92,8 @@ class Solve7: PuzzleSolver {
 		}
 		return found != nil
 	}
-	
-	private func countContainers( bagId: String, bags: Bags) -> Int {
+
+	private func countContainers(bagId _: String, bags: Bags) -> Int {
 		let count = bags.bags.reduce(0) { curCount, bag in
 			curCount + (isContained(bagId: myBagId, searchBags: bag.contains.map { $0.bag! }, in: bags) ? 1 : 0)
 		}
@@ -97,7 +108,7 @@ class Solve7: PuzzleSolver {
 			let lineValues = line.components(separatedBy: " bags contain ")
 			if lineValues.count == 2 {
 				var contained: [ContainedBag] = []
-				
+
 				if lineValues[1] != "no other bags." {
 					let containedBags = lineValues[1].components(separatedBy: ",")
 					containedBags.forEach { rawContained in
@@ -110,7 +121,7 @@ class Solve7: PuzzleSolver {
 						}
 					}
 				}
-				
+
 				let bag = Bag(
 					bagId: lineValues[0],
 					contains: contained
@@ -118,7 +129,7 @@ class Solve7: PuzzleSolver {
 				bags.append(bag)
 			}
 		}
-		
+
 		return Bags(bags: bags)
 	}
 }
