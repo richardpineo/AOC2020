@@ -73,13 +73,12 @@ class PuzzleProcessing: ObservableObject {
 				if let puzzle = self.puzzles.get(byId: id.id) {
 					if id.isA { puzzle.solutionA = solution }
 					else { puzzle.solutionB = solution }
-
 				}
-				
+
 				let bullet = solution.isEmpty ? (solution.isEmpty ? "🟡" : "🔴") : "🟢"
 				let solutionDisplay = solution.padding(toLength: 16, withPad: " ", startingAt: 0)
-				let elapsedDisplay =  lround(self.elapsed(id)!.magnitude * 1000).description
-				Self.log(id, "\(bullet) \(solutionDisplay) \(elapsedDisplay) ms" )
+				let elapsedDisplay = lround(self.elapsed(id)!.magnitude * 1000).description
+				Self.log(id, "\(bullet) \(solutionDisplay) \(elapsedDisplay) ms")
 				self.status[id] = .idle
 			}
 		}
