@@ -47,6 +47,9 @@ struct PuzzleCard: View {
 	}
 
 	var backgroundColor: UIColor {
+		if puzzle.name.isEmpty {
+			return .systemGray
+		}
 		switch puzzle.state {
 		case .unsolved:
 			return .systemRed

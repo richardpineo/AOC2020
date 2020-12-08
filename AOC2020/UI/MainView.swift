@@ -12,9 +12,10 @@ struct MainView: View {
 			ScrollView {
 				VStack {
 					ControlCenter()
+						.padding(.bottom, 10)
 
 					LazyVGrid(columns: gridItemLayout) {
-						ForEach(puzzles.puzzles) { puzzle in
+						ForEach(puzzles.ordered) { puzzle in
 							if puzzle.hasDetailView {
 								NavigationLink(
 									destination: puzzle.detailView()
