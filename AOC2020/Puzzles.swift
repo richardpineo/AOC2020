@@ -33,7 +33,7 @@ class Puzzles: ObservableObject {
 		]
 
 //		let totalPuzzles = 25
-	//	for index in puzzles.puzzles.count ..< totalPuzzles {
+		//	for index in puzzles.puzzles.count ..< totalPuzzles {
 //			puzzles.puzzles.append(Puzzle(id: index + 1))
 //		}
 
@@ -49,9 +49,9 @@ class Puzzles: ObservableObject {
 
 		return puzzles
 	}
-	
+
 	func get(byId id: Int) -> Puzzle? {
-		puzzles.first { $0.id == id}
+		puzzles.first { $0.id == id }
 	}
 
 	@Published var puzzles: [Puzzle] = []
