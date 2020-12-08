@@ -1,8 +1,8 @@
 
 import Foundation
 
-class Solve8: PuzzleSolver {
-	let exampleFile = "Example8"
+class Solve23: PuzzleSolver {
+	let exampleFile = "Example23"
 
 	func solveAExamples() -> Bool {
 		solve(exampleFile) == ""
