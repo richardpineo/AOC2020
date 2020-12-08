@@ -70,14 +70,14 @@ class PuzzleProcessing: ObservableObject {
 
 			// Report out
 			DispatchQueue.main.async {
-				let puzzle = self.puzzles.puzzles[id.id]
+				let puzzle = self.puzzles.get(byId: id.id)
 				if !solution.isEmpty {
 					Self.log(id, solution)
 				}
 				if id.isA {
-					puzzle.solutionA = solution
+					puzzle?.solutionA = solution
 				} else {
-					puzzle.solutionB = solution
+					puzzle?.solutionB = solution
 				}
 
 				self.status[id] = .idle
@@ -100,9 +100,9 @@ class PuzzleProcessing: ObservableObject {
 	}
 
 	private func solve(_ id: PuzzleProcessingId) -> String {
-		let puzzle = puzzles.puzzles[id.id]
+		let puzzle = puzzles.get(byId: id.id)
 
-		guard let solver = puzzle.makeSolver?() else {
+		guard let solver = puzzle?.makeSolver?() else {
 			return ""
 		}
 

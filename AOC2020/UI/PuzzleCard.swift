@@ -15,7 +15,7 @@ struct PuzzleCard: View {
 			VStack {
 				Spacer()
 
-				Text("Day \(puzzle.id + 1)")
+				Text("Day \(puzzle.id)")
 					.font(.system(size: 24, weight: .semibold))
 					.padding(.bottom, 10)
 

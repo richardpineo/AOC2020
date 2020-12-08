@@ -27,15 +27,15 @@ class Puzzles: ObservableObject {
 			Puzzle(id: 7, name: "Handy Haversacks") {
 				Solve7()
 			},
-			Puzzle(id: 8, name: "Pineo Poop") {
+			Puzzle(id: 8, name: "Handheld Halting") {
 				Solve8()
 			},
 		]
 
-		let totalPuzzles = 25
-		for index in puzzles.puzzles.count ..< totalPuzzles {
-			puzzles.puzzles.append(Puzzle(id: index + 1))
-		}
+//		let totalPuzzles = 25
+	//	for index in puzzles.puzzles.count ..< totalPuzzles {
+//			puzzles.puzzles.append(Puzzle(id: index + 1))
+//		}
 
 		return puzzles
 	}
@@ -48,6 +48,10 @@ class Puzzles: ObservableObject {
 		puzzles.puzzles.append(PuzzlePreview.unsolved())
 
 		return puzzles
+	}
+	
+	func get(byId id: Int) -> Puzzle? {
+		puzzles.first { $0.id == id}
 	}
 
 	@Published var puzzles: [Puzzle] = []
