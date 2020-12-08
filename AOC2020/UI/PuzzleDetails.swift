@@ -5,9 +5,9 @@ import SwiftUI
 extension Puzzle {
 	func detailView() -> AnyView? {
 		switch id {
-		case 0:
+		case 1:
 			return AnyView(DetailsView1())
-		case 3:
+		case 4:
 			return AnyView(DetailsView4())
 
 		default:

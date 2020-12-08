@@ -6,7 +6,7 @@ struct PuzzleProcessingId: Hashable {
 	var isA: Bool
 
 	var description: String {
-		"Day \(id + 1)-\(isA ? "A" : "B")"
+		"Day \(id + 1)-\(isA ? "a" : "b")"
 	}
 }
 
@@ -65,21 +65,21 @@ class PuzzleProcessing: ObservableObject {
 		status[id] = .processing(Date())
 
 		DispatchQueue.global().async {
-			// Solve it
+			// Self.log(id, "start")
 			let solution = self.solve(id)
 
 			// Report out
 			DispatchQueue.main.async {
-				let puzzle = self.puzzles.get(byId: id.id)
-				if !solution.isEmpty {
-					Self.log(id, solution)
-				}
-				if id.isA {
-					puzzle?.solutionA = solution
-				} else {
-					puzzle?.solutionB = solution
-				}
+				if let puzzle = self.puzzles.get(byId: id.id) {
+					if id.isA { puzzle.solutionA = solution }
+					else { puzzle.solutionB = solution }
 
+				}
+				
+				let bullet = solution.isEmpty ? (solution.isEmpty ? "🟡" : "🔴") : "🟢"
+				let solutionDisplay = solution.padding(toLength: 16, withPad: " ", startingAt: 0)
+				let elapsedDisplay =  lround(self.elapsed(id)!.magnitude * 1000).description
+				Self.log(id, "\(bullet) \(solutionDisplay) \(elapsedDisplay) ms" )
 				self.status[id] = .idle
 			}
 		}
@@ -106,12 +106,12 @@ class PuzzleProcessing: ObservableObject {
 			return ""
 		}
 
-		Self.log(id, "Begin solving")
 		return id.isA ? solver.solveA() : solver.solveB()
 	}
 
 	private static func log(_ id: PuzzleProcessingId, _ text: String) {
-		print("\(id.description): \(text)")
+		let idStr = String(format: "%02d", id.id)
+		print("\(idStr)\(id.isA ? "a" : "b"): \(text)")
 	}
 
 	private var puzzles: Puzzles
