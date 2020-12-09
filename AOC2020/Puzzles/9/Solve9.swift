@@ -10,7 +10,7 @@ class Solve9: PuzzleSolver {
 	}
 
 	func solveBExamples() -> Bool {
-		false
+		solveB(exampleFile, chunkSize: 5) == "62"
 	}
 
 	func solveA() -> String {
@@ -23,15 +23,24 @@ class Solve9: PuzzleSolver {
 
 	private func solve(_ filename: String, chunkSize: Int) -> String {
 		let values = FileHelper.load(filename)!.compactMap { Int($0) }
-
+		guard let invalid = findInvalid(values: values, chunkSize: chunkSize) else {
+			return "notfound"
+		}
+		return values[invalid.endIndex].description
+	}
+	
+	private func solveB(_ filename: String, chunkSize: Int) -> String {
+	return ""
+	}
+	
+	private func findInvalid(values: [Int], chunkSize: Int) -> Range<Int>? {
 		for consider in chunkSize..<values.count {
 			let range = consider-chunkSize ..< consider
 			if !doesSumExist(values: values, value: values[consider], range: range) {
-				return values[consider].description
+				return range
 			}
 		}
-		
-		return "notfound"
+		return nil
 	}
 	
 	private func doesSumExist(values: [Int], value: Int, range: Range<Int>) -> Bool {
