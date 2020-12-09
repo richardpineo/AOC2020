@@ -28,24 +28,23 @@ class Solve9: PuzzleSolver {
 		}
 		return "nope"
 	}
-	
+
 	private func solveB(_ filename: String, chunkSize: Int) -> String {
 		let values = FileHelper.load(filename)!.compactMap { Int($0) }
 		guard let invalid = findInvalid(values: values, chunkSize: chunkSize) else {
 			return "notfound"
 		}
-	
-		for start in 0..<values.count {
+
+		for start in 0 ..< values.count {
 			var check = 0
-			for count in start...values.count {
+			for count in start ... values.count {
 				check = check + values[count]
 				if check == invalid {
 					// Found the invalid answer, crack the code.
-					let candidates = values[start...count]
+					let candidates = values[start ... count]
 					let answer = candidates.min()! + candidates.max()!
 					return answer.description
-				}
-				else if check > invalid {
+				} else if check > invalid {
 					// kill the loop.
 					break
 				}
@@ -53,22 +52,21 @@ class Solve9: PuzzleSolver {
 		}
 		return "no answer found"
 	}
-	
+
 	private func findInvalid(values: [Int], chunkSize: Int) -> Int? {
-		for consider in chunkSize..<values.count {
-			let range = consider-chunkSize ..< consider
+		for consider in chunkSize ..< values.count {
+			let range = consider - chunkSize ..< consider
 			if !doesSumExist(values: values, value: values[consider], range: range) {
 				return values[consider]
 			}
 		}
-		
+
 		return nil
 	}
 
-	
 	private func doesSumExist(values: [Int], value: Int, range: Range<Int>) -> Bool {
 		for first in range {
-			for second in first+1...range.endIndex {
+			for second in first + 1 ... range.endIndex {
 				if values[first] + values[second] == value {
 					return true
 				}
