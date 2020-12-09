@@ -22,6 +22,8 @@
 		BF125BD725760C0C00B6C3B3 /* Solve1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BC7257609D600B6C3B3 /* Solve1.swift */; };
 		BF125BDB25760C2900B6C3B3 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BCD25760A2D00B6C3B3 /* FileHelper.swift */; };
 		BF125C032576107100B6C3B3 /* PuzzleSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125C022576107100B6C3B3 /* PuzzleSolver.swift */; };
+		BF1A1A6D2580910A003F885D /* TestPuzzle9.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1A1A6C2580910A003F885D /* TestPuzzle9.swift */; };
+		BF1A1A7225809123003F885D /* Solve9.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB721DA257F3D740021C4C4 /* Solve9.swift */; };
 		BF4F5267257755E80036DE28 /* Solve1Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513C4257628CE002C3100 /* Solve1Status.swift */; };
 		BF4F526C257756B70036DE28 /* Solve2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F526B257756B70036DE28 /* Solve2.swift */; };
 		BF4F5272257756D60036DE28 /* Example2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF4F5271257756D60036DE28 /* Example2.txt */; };
@@ -160,6 +162,7 @@
 		BF125BCD25760A2D00B6C3B3 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		BF125BD225760BDB00B6C3B3 /* TestPuzzle1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle1.swift; sourceTree = "<group>"; };
 		BF125C022576107100B6C3B3 /* PuzzleSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleSolver.swift; sourceTree = "<group>"; };
+		BF1A1A6C2580910A003F885D /* TestPuzzle9.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle9.swift; sourceTree = "<group>"; };
 		BF4F526B257756B70036DE28 /* Solve2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve2.swift; sourceTree = "<group>"; };
 		BF4F5271257756D60036DE28 /* Example2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Example2.txt; sourceTree = "<group>"; };
 		BF4F52752577572C0036DE28 /* Input2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input2.txt; sourceTree = "<group>"; };
@@ -436,6 +439,7 @@
 				BFB8FEE4257CB48D001CE683 /* TestPuzzle6.swift */,
 				BFB8FEF6257DFFA9001CE683 /* TestPuzzle7.swift */,
 				BFB721A3257F3B300021C4C4 /* TestPuzzle8.swift */,
+				BF1A1A6C2580910A003F885D /* TestPuzzle9.swift */,
 				BF60D4062571B42800DA3C27 /* Info.plist */,
 			);
 			path = AOC2020Tests;
@@ -574,8 +578,8 @@
 			isa = PBXGroup;
 			children = (
 				BFB721D9257F3D740021C4C4 /* Input9.txt */,
-				BFB721DA257F3D740021C4C4 /* Solve9.swift */,
 				BFB721DB257F3D740021C4C4 /* Example9.txt */,
+				BFB721DA257F3D740021C4C4 /* Solve9.swift */,
 			);
 			path = 9;
 			sourceTree = "<group>";
@@ -892,6 +896,7 @@
 			files = (
 				BFB8FEE1257CB45F001CE683 /* Solve6.swift in Sources */,
 				BFF06E592578B24500725DE7 /* StringExtensions.swift in Sources */,
+				BF1A1A6D2580910A003F885D /* TestPuzzle9.swift in Sources */,
 				BFE59D4C257A0ECB00CBE639 /* DetailsView4.swift in Sources */,
 				BFF06E522578ADB400725DE7 /* Position.swift in Sources */,
 				BF4F527C25775A170036DE28 /* TestPuzzle2.swift in Sources */,
@@ -906,6 +911,7 @@
 				BF9513B62576255D002C3100 /* TestPuzzle.swift in Sources */,
 				BFB8FEE5257CB48D001CE683 /* TestPuzzle6.swift in Sources */,
 				BF0C3B94257B5E050097E049 /* Solve5.swift in Sources */,
+				BF1A1A7225809123003F885D /* Solve9.swift in Sources */,
 				BFF06E4B2578ABD000725DE7 /* Solve3.swift in Sources */,
 				BF9513AE257624C7002C3100 /* PuzzleSolver.swift in Sources */,
 				BFF06E482578ABB400725DE7 /* TestPuzzle3.swift in Sources */,
