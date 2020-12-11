@@ -551,10 +551,10 @@
 		BFB721B4257F3D730021C4C4 /* 10 */ = {
 			isa = PBXGroup;
 			children = (
-				BFB721B5257F3D730021C4C4 /* Solve10.swift */,
 				BFB721B6257F3D730021C4C4 /* Input10.txt */,
 				BFB721B7257F3D730021C4C4 /* Example10.txt */,
 				BFF751DC2583140C0033BD7C /* Example10-2.txt */,
+				BFB721B5257F3D730021C4C4 /* Solve10.swift */,
 			);
 			path = 10;
 			sourceTree = "<group>";

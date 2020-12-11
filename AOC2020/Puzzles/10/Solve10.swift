@@ -15,7 +15,7 @@ class Solve10: PuzzleSolver {
 	}
 
 	func solveA() -> String {
-		""
+		solve(inputFile)
 	}
 
 	func solveB() -> String {
@@ -24,6 +24,23 @@ class Solve10: PuzzleSolver {
 
 	private func solve(_ filename: String) -> String {
 		let lines = FileHelper.load(filename)!
-		return lines.count.description
+		let values = lines.compactMap { Int($0) }.sorted()
+		var previous = 0
+		var oneCount = 0
+		var threeCount = 0
+		for index in 0..<values.count {
+			switch values[index] - previous {
+			case 1:
+				oneCount = oneCount + 1
+			case 3:
+				threeCount = threeCount + 1
+			default:
+				break
+			}
+			previous = values[index]
+		}
+		threeCount = threeCount + 1
+		let answer = oneCount * threeCount
+		return answer.description
 	}
 }
