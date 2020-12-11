@@ -10,7 +10,7 @@ class Solve11: PuzzleSolver {
 	}
 
 	func solveBExamples() -> Bool {
-		false
+		solveB(exampleFile) == "26"
 	}
 
 	func solveA() -> String {
@@ -40,26 +40,25 @@ class Solve11: PuzzleSolver {
 		func query(_ seat: Position2D) -> SeatState? {
 			seats[seat]
 		}
-
+		
+		private static let neighborOffsets = [
+			Position2D(1, 0),
+			Position2D(1, -1),
+			Position2D(1, 1),
+			Position2D(0, -1),
+			Position2D(0, 1),
+			Position2D(-1, 0),
+			Position2D(-1, -1),
+			Position2D(-1, 1),
+		]
+		
 		func neighbors(_ seat: Position2D) -> Int {
-			let neighbors = [
-				Position2D(seat.x + 1, seat.y),
-				Position2D(seat.x + 1, seat.y - 1),
-				Position2D(seat.x + 1, seat.y + 1),
-				Position2D(seat.x, seat.y - 1),
-				Position2D(seat.x - 1, seat.y),
-				Position2D(seat.x - 1, seat.y - 1),
-				Position2D(seat.x - 1, seat.y + 1),
-				Position2D(seat.x, seat.y + 1),
-			]
-			return neighbors.filter { query($0) == .occupied }.count
+			return Self.neighborOffsets.filter { query(seat.offset($0)) == .occupied }.count
 		}
 
-		var uniqueId: String {
-			let flat = seats.flatMap { key, value in
-				"\(key.x),\(key.y),\(value.rawValue),"
-			}
-			return String(flat)
+		var filledSeats: [Position2D] {
+			let occ = Array(seats.filter { $0.value == .occupied }.keys)
+			return occ.sorted()
 		}
 
 		var numOccupied: Int {
@@ -86,16 +85,20 @@ class Solve11: PuzzleSolver {
 	private func solve(_ filename: String) -> String {
 		var seats = loadSeats(filename)
 
-		var ids = Set<String>()
+		var uniqueFilled = Set<[Position2D]>()
 		while true {
-			let id = seats.uniqueId
-			if ids.contains(id) {
+			let filled = seats.filledSeats
+			if uniqueFilled.contains(filled) {
 				// count occupied
 				return seats.numOccupied.description
 			}
-			ids.insert(id)
+			uniqueFilled.insert(filled)
 			seats = seats.morph()
 		}
+	}
+	
+	private func solveB(_ filename: String) -> String {
+		return "dunno"
 	}
 
 	private func loadSeats(_ filename: String) -> Seats {
