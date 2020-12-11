@@ -3,9 +3,11 @@ import Foundation
 
 class Solve10: PuzzleSolver {
 	let exampleFile = "Example10"
+	let exampleFile2 = "Example10-2"
+	let inputFile = "Input10"
 
 	func solveAExamples() -> Bool {
-		solve(exampleFile) == ""
+		solve(exampleFile) == "35" && solve(exampleFile2) == "220"
 	}
 
 	func solveBExamples() -> Bool {

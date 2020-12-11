@@ -2,7 +2,7 @@
 import Foundation
 
 class Solve20: PuzzleSolver {
-	let exampleFile = "Example820"
+	let exampleFile = "Example20"
 
 	func solveAExamples() -> Bool {
 		solve(exampleFile) == ""
