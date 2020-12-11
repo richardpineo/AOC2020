@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Position2D {
+struct Position2D: Hashable {
 	init(_ x: Int, _ y: Int) {
 		self.x = x
 		self.y = y
