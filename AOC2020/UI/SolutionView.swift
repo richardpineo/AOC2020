@@ -22,6 +22,8 @@ struct SolutionView: View {
 						Text("UNSOLVED")
 					} else {
 						Text(sol)
+							.lineLimit(1)
+							.minimumScaleFactor(0.5)
 					}
 				}
 			}
