@@ -15,7 +15,7 @@ class Puzzles: ObservableObject {
 			Puzzle(id: 7, name: "Handy Haversacks") { Solve7() },
 			Puzzle(id: 8, name: "Handheld Halting") { Solve8() },
 			Puzzle(id: 9, name: "Encoding Error") { Solve9() },
-			Puzzle(id: 10, name: "") { Solve10() },
+			Puzzle(id: 10, name: "Adapter Array") { Solve10() },
 			Puzzle(id: 11, name: "") { Solve11() },
 			Puzzle(id: 12, name: "") { Solve12() },
 			Puzzle(id: 13, name: "") { Solve13() },

@@ -187,7 +187,6 @@
 		BF0C3B74257B5C8F0097E049 /* Example5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example5.txt; sourceTree = "<group>"; };
 		BF0C3B75257B5C8F0097E049 /* Solve5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solve5.swift; sourceTree = "<group>"; };
 		BF0C3B76257B5C8F0097E049 /* Input5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input5.txt; sourceTree = "<group>"; };
-		BF0C3B8F257B5D6C0097E049 /* SolveTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveTemplate.swift; sourceTree = "<group>"; };
 		BF0C3B90257B5DC50097E049 /* TestPuzzle5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPuzzle5.swift; sourceTree = "<group>"; };
 		BF125BBA2576099700B6C3B3 /* Input1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input1.txt; sourceTree = "<group>"; };
 		BF125BC2257609B700B6C3B3 /* Example1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Example1.txt; sourceTree = "<group>"; };
@@ -375,7 +374,6 @@
 				BFB721D4257F3D740021C4C4 /* 24 */,
 				BFB721C0257F3D740021C4C4 /* 25 */,
 				BF125C022576107100B6C3B3 /* PuzzleSolver.swift */,
-				BF0C3B8F257B5D6C0097E049 /* SolveTemplate.swift */,
 			);
 			path = Puzzles;
 			sourceTree = "<group>";
