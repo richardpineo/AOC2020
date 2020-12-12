@@ -15,7 +15,7 @@ enum Heading {
 		case .west: return .north
 		}
 	}
-	
+
 	var leftwards: Heading {
 		switch self {
 		case .north: return .west
@@ -26,22 +26,22 @@ enum Heading {
 	}
 
 	func turn(right: Bool) -> Heading {
-		return right ? rightwards : leftwards
+		right ? rightwards : leftwards
 	}
-	
+
 	func turn(right: Bool, _ numTurns: Int = 1) -> Heading {
 		var heading = self
-		for _ in 0..<numTurns {
+		for _ in 0 ..< numTurns {
 			heading = right ? heading.rightwards : heading.leftwards
 		}
 		return heading
 	}
-	
+
 	func turnRight(_ numTurns: Int = 1) -> Heading {
-		return turn(right: true, numTurns)
+		turn(right: true, numTurns)
 	}
 
 	func turnLeft(_ numTurns: Int = 1) -> Heading {
-		return turn(right: false, numTurns)
+		turn(right: false, numTurns)
 	}
 }

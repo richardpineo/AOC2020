@@ -1,9 +1,16 @@
 
 import Foundation
 
+protocol Solve11Delegate {
+	// nil is passed on completion.
+	func newState(seats: Solve11.Seats?)
+}
+
 class Solve11: PuzzleSolver {
 	let exampleFile = "Example11"
 	let inputFile = "Input11"
+
+	var delegate: Solve11Delegate?
 
 	func solveAExamples() -> Bool {
 		solve(exampleFile, transform: transformA) == "37"
@@ -34,7 +41,11 @@ class Solve11: PuzzleSolver {
 
 		var maxSeat: Position2D
 		var numCols: Int {
-			maxSeat.y - 1
+			maxSeat.y
+		}
+
+		var maxIndex: Int {
+			maxSeat.offset(0, -1).arrayIndex(numCols: numCols)
 		}
 
 		private var states: [SeatState?] = []
@@ -44,7 +55,11 @@ class Solve11: PuzzleSolver {
 		}
 
 		func query(_ seat: Position2D) -> SeatState? {
-			states[seat.arrayIndex(numCols: numCols)]
+			query(at: seat.arrayIndex(numCols: numCols))
+		}
+
+		func query(at index: Int) -> SeatState? {
+			states[index]
 		}
 
 		func validSeat(pos: Position2D) -> Bool {
@@ -143,20 +158,23 @@ class Solve11: PuzzleSolver {
 	private func solve(_ filename: String, transform: (Seats, Int) -> SeatState?) -> String {
 		var seats = loadSeats(filename)
 
-		var uniqueFilled = Set<[Int]>()
+		var lastSeats: [Int]?
 		while true {
+			delegate?.newState(seats: seats)
+
 			let unique = seats.uniqueId
-			if uniqueFilled.contains(unique) {
+			if lastSeats == unique {
+				delegate?.newState(seats: nil)
 				// count occupied
 				return seats.numOccupied.description
 			}
-			uniqueFilled.insert(unique)
+			lastSeats = unique
 			seats = seats.morph(transform: transform)
 		}
 	}
 
 	private func loadSeats(_ filename: String) -> Seats {
-		let lines = FileHelper.load(filename)!
+		let lines = FileHelper.load(filename)!.filter { !$0.isEmpty }
 		let numRow = lines[0].count
 		let numCol = lines.count
 		let maxSeat = Position2D(numRow, numCol)

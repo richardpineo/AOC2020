@@ -11,14 +11,14 @@ struct Position2D: Hashable, Comparable {
 		x = arrayIndex % numCols
 		y = arrayIndex / numCols
 	}
-	
+
 	static let origin = Position2D(0, 0)
 
 	var x: Int
 	var y: Int
-	
+
 	var displayString: String {
-		return "(\(x),\(y))"
+		"(\(x),\(y))"
 	}
 
 	func offset(_ x: Int, _ y: Int) -> Position2D {
@@ -32,7 +32,7 @@ struct Position2D: Hashable, Comparable {
 	func arrayIndex(numCols: Int) -> Int {
 		x + y * numCols
 	}
-	
+
 	func cityDistance(_ from: Position2D = .origin) -> Int {
 		abs(x - from.x) + abs(y - from.y)
 	}

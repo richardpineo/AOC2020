@@ -47,6 +47,7 @@
 		BF9513B62576255D002C3100 /* TestPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513B52576255D002C3100 /* TestPuzzle.swift */; };
 		BF9513BD257627D9002C3100 /* DetailsView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513BC257627D9002C3100 /* DetailsView1.swift */; };
 		BF9513C5257628CE002C3100 /* Solve1Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513C4257628CE002C3100 /* Solve1Status.swift */; };
+		BFB23DF12585653800B7B7BD /* DetailsView11.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB23DF02585653800B7B7BD /* DetailsView11.swift */; };
 		BFB7219C257F3AB80021C4C4 /* Input8.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB72199257F3AB80021C4C4 /* Input8.txt */; };
 		BFB7219D257F3AB80021C4C4 /* Solve8.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7219A257F3AB80021C4C4 /* Solve8.swift */; };
 		BFB7219E257F3AB80021C4C4 /* Example8.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB7219B257F3AB80021C4C4 /* Example8.txt */; };
@@ -221,6 +222,7 @@
 		BF9513B52576255D002C3100 /* TestPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle.swift; sourceTree = "<group>"; };
 		BF9513BC257627D9002C3100 /* DetailsView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView1.swift; sourceTree = "<group>"; };
 		BF9513C4257628CE002C3100 /* Solve1Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve1Status.swift; sourceTree = "<group>"; };
+		BFB23DF02585653800B7B7BD /* DetailsView11.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView11.swift; sourceTree = "<group>"; };
 		BFB72199257F3AB80021C4C4 /* Input8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input8.txt; sourceTree = "<group>"; };
 		BFB7219A257F3AB80021C4C4 /* Solve8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solve8.swift; sourceTree = "<group>"; };
 		BFB7219B257F3AB80021C4C4 /* Example8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example8.txt; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 			children = (
 				BF9513BC257627D9002C3100 /* DetailsView1.swift */,
 				BFE59D4A257A0ECB00CBE639 /* DetailsView4.swift */,
+				BFB23DF02585653800B7B7BD /* DetailsView11.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -952,6 +955,7 @@
 				BFE59D1D2579FBB000CBE639 /* Solve4.swift in Sources */,
 				BF0C3B7B257B5C8F0097E049 /* Solve5.swift in Sources */,
 				BFB721F6257F3D740021C4C4 /* Solve10.swift in Sources */,
+				BFB23DF12585653800B7B7BD /* DetailsView11.swift in Sources */,
 				BFB72205257F3D740021C4C4 /* Solve17.swift in Sources */,
 				BF4F526C257756B70036DE28 /* Solve2.swift in Sources */,
 				BFE59D51257A15E400CBE639 /* ProcessingIndicatorView.swift in Sources */,

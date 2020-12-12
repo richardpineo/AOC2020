@@ -10,7 +10,7 @@ class Solve12: PuzzleSolver {
 	}
 
 	func solveBExamples() -> Bool {
-		solveB(exampleFile) ==  "286"
+		solveB(exampleFile) == "286"
 	}
 
 	func solveA() -> String {
@@ -37,16 +37,15 @@ class Solve12: PuzzleSolver {
 	}
 
 	static func numTurns(_ degrees: Int) -> Int {
-		return degrees / 90
+		degrees / 90
 	}
-	
+
 	struct Ship {
 		var position: Position2D
 		var heading: Heading
 	}
 
 	private func solve(_ filename: String) -> String {
-		
 		let steps = loadSteps(filename)
 		var ship = Ship(position: .origin, heading: .east)
 
@@ -58,7 +57,7 @@ class Solve12: PuzzleSolver {
 			case .west: return step(.init(command: .moveWest, value: distance))
 			}
 		}
-		
+
 		func step(_ step: Step) -> Ship {
 			switch step.command {
 			case .moveNorth: return Ship(position: ship.position.offset(0, step.value), heading: ship.heading)
@@ -70,38 +69,37 @@ class Solve12: PuzzleSolver {
 			case .moveForward: return forwards(step.value)
 			}
 		}
-		
+
 		steps.forEach { ship = step($0) }
 		return ship.position.cityDistance().description
 	}
-	
+
 	private func solveB(_ filename: String) -> String {
 		let steps = loadSteps(filename)
-		
+
 		var ship = Ship(position: .origin, heading: .east)
 		var waypoint = Position2D(10, 1)
-		 
+
 		func rotateWaypoint(rightwards: Bool, degrees: Int) {
 			var wp = waypoint
-			for _ in 0..<Self.numTurns(degrees) {
+			for _ in 0 ..< Self.numTurns(degrees) {
 				if rightwards {
 					wp = Position2D(wp.y, -wp.x)
-				}
-				else {
+				} else {
 					wp = Position2D(-wp.y, wp.x)
 				}
 			}
 			waypoint = wp
 		}
-		
-		func moveWaypoint(times: Int)  {
+
+		func moveWaypoint(times: Int) {
 			var pos = ship.position
-			for _ in  0..<times {
+			for _ in 0 ..< times {
 				pos = pos.offset(waypoint)
 			}
 			ship = Ship(position: pos, heading: ship.heading)
 		}
-		
+
 		func wayPointStep(_ step: Step) {
 			switch step.command {
 			case .moveNorth: waypoint = waypoint.offset(0, step.value)
@@ -112,23 +110,24 @@ class Solve12: PuzzleSolver {
 			case .turnRight: rotateWaypoint(rightwards: true, degrees: step.value)
 			case .moveForward: moveWaypoint(times: step.value)
 			}
-			
+
 			// print("Ship at \(ship.position.displayString), waypoint at \(waypoint.displayString)")
 		}
-		
+
 		steps.forEach { wayPointStep($0) }
 		return ship.position.cityDistance().description
 	}
-	
+
 	private func loadSteps(_ filename: String) -> [Step] {
 		let lines = FileHelper.load(filename)!
 		let steps: [Step] = lines.compactMap { line in
 			guard !line.isEmpty,
-				  let command = Command(rawValue: line.character(at: 0)),
-				  let value = Int(line.dropFirst(1)) else {
+			      let command = Command(rawValue: line.character(at: 0)),
+			      let value = Int(line.dropFirst(1))
+			else {
 				return nil
 			}
-			
+
 			return Step(command: command, value: value)
 		}
 		return steps

@@ -9,7 +9,8 @@ extension Puzzle {
 			return AnyView(DetailsView1())
 		case 4:
 			return AnyView(DetailsView4())
-
+		case 11:
+			return AnyView(DetailsView11())
 		default:
 			return nil
 		}
