@@ -33,7 +33,7 @@ struct Position2D: Hashable, Comparable {
 		x + y * numCols
 	}
 	
-	func distance(_ from: Position2D = .origin) -> Int {
+	func cityDistance(_ from: Position2D = .origin) -> Int {
 		abs(x - from.x) + abs(y - from.y)
 	}
 

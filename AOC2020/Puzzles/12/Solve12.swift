@@ -43,9 +43,15 @@ class Solve12: PuzzleSolver {
 	struct Ship {
 		var position: Position2D
 		var heading: Heading
+	}
+
+	private func solve(_ filename: String) -> String {
 		
+		let steps = loadSteps(filename)
+		var ship = Ship(position: .origin, heading: .east)
+
 		func forwards(_ distance: Int) -> Ship {
-			switch heading {
+			switch ship.heading {
 			case .north: return step(.init(command: .moveNorth, value: distance))
 			case .south: return step(.init(command: .moveSouth, value: distance))
 			case .east: return step(.init(command: .moveEast, value: distance))
@@ -55,24 +61,18 @@ class Solve12: PuzzleSolver {
 		
 		func step(_ step: Step) -> Ship {
 			switch step.command {
-			case .moveNorth: return Ship(position: position.offset(0, step.value), heading: heading)
-			case .moveSouth: return Ship(position: position.offset(0, -step.value), heading: heading)
-			case .moveEast: return Ship(position: position.offset(step.value, 0), heading: heading)
-			case .moveWest: return Ship(position: position.offset(-step.value, 0), heading: heading)
-			case .turnLeft: return Ship(position: position, heading: heading.turnLeft(numTurns(step.value)))
-			case .turnRight: return Ship(position: position, heading: heading.turnRight(numTurns(step.value)))
+			case .moveNorth: return Ship(position: ship.position.offset(0, step.value), heading: ship.heading)
+			case .moveSouth: return Ship(position: ship.position.offset(0, -step.value), heading: ship.heading)
+			case .moveEast: return Ship(position: ship.position.offset(step.value, 0), heading: ship.heading)
+			case .moveWest: return Ship(position: ship.position.offset(-step.value, 0), heading: ship.heading)
+			case .turnLeft: return Ship(position: ship.position, heading: ship.heading.turnLeft(Self.numTurns(step.value)))
+			case .turnRight: return Ship(position: ship.position, heading: ship.heading.turnRight(Self.numTurns(step.value)))
 			case .moveForward: return forwards(step.value)
 			}
 		}
-	}
-
-	private func solve(_ filename: String) -> String {
-		let steps = loadSteps(filename)
 		
-		var ship = Ship(position: .origin, heading: .east)
-		steps.forEach { ship = ship.step($0) }
-		
-		return ship.position.distance().description
+		steps.forEach { ship = step($0) }
+		return ship.position.cityDistance().description
 	}
 	
 	private func solveB(_ filename: String) -> String {
@@ -117,8 +117,7 @@ class Solve12: PuzzleSolver {
 		}
 		
 		steps.forEach { wayPointStep($0) }
-		
-		return ship.position.distance().description
+		return ship.position.cityDistance().description
 	}
 	
 	private func loadSteps(_ filename: String) -> [Step] {
