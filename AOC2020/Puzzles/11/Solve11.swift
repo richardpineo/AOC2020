@@ -119,17 +119,13 @@ class Solve11: PuzzleSolver {
 		func visible(_ seats: Seats, _ seat: Position2D) -> Int {
 			Self.neighborOffsets.filter { direction in
 				var trySeat = seat.offset(direction)
-				var toCheck = [Position2D]()
 				while seats.validSeat(pos: trySeat) {
-					toCheck.append(trySeat)
+					if let state = seats.query(trySeat) {
+						return state == .occupied
+					}
 					trySeat = trySeat.offset(direction)
 				}
-				
-				let firstSeat = toCheck.first { seats.query($0) != nil }
-				guard let hasSeat = firstSeat else {
-					return false
-				}
-				return seats.query(hasSeat) == .occupied
+				return false
 			}.count
 		}
 		
