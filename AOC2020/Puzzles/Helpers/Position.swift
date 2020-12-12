@@ -16,9 +16,17 @@ struct Position2D: Hashable, Comparable {
 
 	var x: Int
 	var y: Int
+	
+	var displayString: String {
+		return "(\(x),\(y))"
+	}
+
+	func offset(_ x: Int, _ y: Int) -> Position2D {
+		Position2D(self.x + x, self.y + y)
+	}
 
 	func offset(_ step: Position2D) -> Position2D {
-		Position2D(x + step.x, y + step.y)
+		offset(step.x, step.y)
 	}
 
 	func arrayIndex(numCols: Int) -> Int {

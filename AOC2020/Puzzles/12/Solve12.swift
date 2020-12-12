@@ -18,18 +18,9 @@ class Solve12: PuzzleSolver {
 	}
 
 	func solveB() -> String {
-		""
+		solveB(inputFile)
 	}
 
-	/*
-	 Action N means to move north by the given value.
-	 Action S means to move south by the given value.
-	 Action E means to move east by the given value.
-	 Action W means to move west by the given value.
-	 Action L means to turn left the given number of degrees.
-	 Action R means to turn right the given number of degrees.
-	 Action F means to move forward by the given value in the direction the ship is currently facing.
-	 */
 	enum Command: Character {
 		case moveNorth = "N"
 		case moveSouth = "S"
@@ -45,13 +36,13 @@ class Solve12: PuzzleSolver {
 		var value: Int
 	}
 
+	static func numTurns(_ degrees: Int) -> Int {
+		return degrees / 90
+	}
+	
 	struct Ship {
 		var position: Position2D
 		var heading: Heading
-		
-		func numTurns(_ degrees: Int) -> Int {
-			return degrees / 90
-		}
 		
 		func forwards(_ distance: Int) -> Ship {
 			switch heading {
@@ -64,12 +55,12 @@ class Solve12: PuzzleSolver {
 		
 		func step(_ step: Step) -> Ship {
 			switch step.command {
-			case .moveNorth: return Ship(position: position.offset(.init(0, step.value)), heading: heading)
-			case .moveSouth: return Ship(position: position.offset(.init(0, -step.value)), heading: heading)
-			case .moveEast: return Ship(position: position.offset(.init(step.value, 0)), heading: heading)
-			case .moveWest: return Ship(position: position.offset(.init(-step.value, 0)), heading: heading)
+			case .moveNorth: return Ship(position: position.offset(0, step.value), heading: heading)
+			case .moveSouth: return Ship(position: position.offset(0, -step.value), heading: heading)
+			case .moveEast: return Ship(position: position.offset(step.value, 0), heading: heading)
+			case .moveWest: return Ship(position: position.offset(-step.value, 0), heading: heading)
 			case .turnLeft: return Ship(position: position, heading: heading.turnLeft(numTurns(step.value)))
-			case .turnRight: return Ship(position: position, heading:  heading.turnRight(numTurns(step.value)))
+			case .turnRight: return Ship(position: position, heading: heading.turnRight(numTurns(step.value)))
 			case .moveForward: return forwards(step.value)
 			}
 		}
@@ -88,7 +79,44 @@ class Solve12: PuzzleSolver {
 		let steps = loadSteps(filename)
 		
 		var ship = Ship(position: .origin, heading: .east)
-		steps.forEach { ship = ship.step($0) }
+		var waypoint = Position2D(10, 1)
+		 
+		func rotateWaypoint(rightwards: Bool, degrees: Int) {
+			var wp = waypoint
+			for _ in 0..<Self.numTurns(degrees) {
+				if rightwards {
+					wp = Position2D(wp.y, -wp.x)
+				}
+				else {
+					wp = Position2D(-wp.y, wp.x)
+				}
+			}
+			waypoint = wp
+		}
+		
+		func moveWaypoint(times: Int)  {
+			var pos = ship.position
+			for _ in  0..<times {
+				pos = pos.offset(waypoint)
+			}
+			ship = Ship(position: pos, heading: ship.heading)
+		}
+		
+		func wayPointStep(_ step: Step) {
+			switch step.command {
+			case .moveNorth: waypoint = waypoint.offset(0, step.value)
+			case .moveSouth: waypoint = waypoint.offset(0, -step.value)
+			case .moveEast: waypoint = waypoint.offset(step.value, 0)
+			case .moveWest: waypoint = waypoint.offset(-step.value, 0)
+			case .turnLeft: rotateWaypoint(rightwards: false, degrees: step.value)
+			case .turnRight: rotateWaypoint(rightwards: true, degrees: step.value)
+			case .moveForward: moveWaypoint(times: step.value)
+			}
+			
+			// print("Ship at \(ship.position.displayString), waypoint at \(waypoint.displayString)")
+		}
+		
+		steps.forEach { wayPointStep($0) }
 		
 		return ship.position.distance().description
 	}
