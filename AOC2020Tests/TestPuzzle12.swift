@@ -14,7 +14,7 @@ class TestPuzzle12: XCTestCase {
 	}
 
 	func testA() throws {
-		try solveA(solver(), "")
+		try solveA(solver(), "1578")
 	}
 
 	func testB() throws {

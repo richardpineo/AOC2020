@@ -11,6 +11,8 @@ struct Position2D: Hashable, Comparable {
 		x = arrayIndex % numCols
 		y = arrayIndex / numCols
 	}
+	
+	static let origin = Position2D(0, 0)
 
 	var x: Int
 	var y: Int
@@ -21,6 +23,10 @@ struct Position2D: Hashable, Comparable {
 
 	func arrayIndex(numCols: Int) -> Int {
 		x + y * numCols
+	}
+	
+	func distance(_ from: Position2D = .origin) -> Int {
+		abs(x - from.x) + abs(y - from.y)
 	}
 
 	static func < (lhs: Position2D, rhs: Position2D) -> Bool {

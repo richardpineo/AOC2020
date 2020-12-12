@@ -24,7 +24,6 @@ class Solve11: PuzzleSolver {
 	enum SeatState: Int {
 		case open
 		case occupied
-
 	}
 
 	class Seats {
@@ -104,7 +103,7 @@ class Solve11: PuzzleSolver {
 		guard let state = seats.query(pos) else {
 			return nil
 		}
-		
+
 		let neighborCount = countNeighbors(seats, pos)
 		if state == .open {
 			return neighborCount == 0 ? .occupied : .open
@@ -124,11 +123,11 @@ class Solve11: PuzzleSolver {
 			}
 			return false
 		}
-		
+
 		func visibleCount(_ seats: Seats, _ seat: Position2D) -> Int {
-			return Self.neighborOffsets.reduce(0) { $0 + (visibleInDirection(seats, seat, $1) ? 1 : 0) }
+			Self.neighborOffsets.reduce(0) { $0 + (visibleInDirection(seats, seat, $1) ? 1 : 0) }
 		}
-		
+
 		let pos = Position2D(from: index, numCols: seats.numCols)
 		guard let state = seats.query(pos) else {
 			return nil
@@ -136,8 +135,7 @@ class Solve11: PuzzleSolver {
 		let visibleNeighbors = visibleCount(seats, pos)
 		if state == .open {
 			return visibleNeighbors == 0 ? .occupied : .open
-		}
-		else {
+		} else {
 			return visibleNeighbors >= 5 ? .open : .occupied
 		}
 	}
@@ -163,11 +161,11 @@ class Solve11: PuzzleSolver {
 		let numCol = lines.count
 		let maxSeat = Position2D(numRow, numCol)
 		let seats = Seats(maxSeat: maxSeat)
-		
+
 		func fromChar(_ char: Character) -> SeatState? {
 			char == "L" ? .open : nil
 		}
-		
+
 		for y in 0 ..< lines.count {
 			let line = lines[y]
 			for x in 0 ..< line.count {
