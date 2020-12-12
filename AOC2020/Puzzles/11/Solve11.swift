@@ -95,23 +95,23 @@ class Solve11: PuzzleSolver {
 	]
 
 	func transformA(seats: Seats, index: Int) -> SeatState? {
-		func neighbors(_ seats: Seats, _ seat: Position2D) -> Int {
-			Self.neighborOffsets.filter {
-				let newSeat = seat.offset($0)
+		func countNeighbors(_ seats: Seats, _ seat: Position2D) -> Int {
+			func neighborOccupied(_ direction: Position2D) -> Bool {
+				let newSeat = seat.offset(direction)
 				return seats.validSeat(pos: newSeat) && seats.query(newSeat) == .occupied
-			}.count
+			}
+			return Self.neighborOffsets.reduce(0) { $0 + (neighborOccupied($1) ? 1 : 0) }
 		}
 
 		let pos = Position2D(from: index, numCols: seats.numCols)
-		switch seats.query(pos) {
-		case .open:
-			return neighbors(seats, pos) == 0 ? .occupied : .open
-
-		case .occupied:
-			return neighbors(seats, pos) >= 4 ? .open : .occupied
-
-		case .none:
+		guard let state = seats.query(pos) else {
 			return nil
+		}
+		let neighborCount = countNeighbors(seats, pos)
+		if state == .open {
+			return neighborCount == 0 ? .occupied : .open
+		} else {
+			return countNeighbors(seats, pos) >= 4 ? .open : .occupied
 		}
 	}
 
@@ -120,33 +120,27 @@ class Solve11: PuzzleSolver {
 			var trySeat = seat.offset(direction)
 			while seats.validSeat(pos: trySeat) {
 				if let state = seats.query(trySeat) {
-					return state == .occupied 
+					return state == .occupied
 				}
 				trySeat = trySeat.offset(direction)
 			}
 			return false
 		}
 		
-		func visible(_ seats: Seats, _ seat: Position2D) -> Int {
-			var count = 0
-			for direction in Self.neighborOffsets {
-				if visibleInDirection(seats, seat, direction) {
-					count = count + 1
-				}
-			}
-			return count
+		func visibleCount(_ seats: Seats, _ seat: Position2D) -> Int {
+			return Self.neighborOffsets.reduce(0) { $0 + (visibleInDirection(seats, seat, $1) ? 1 : 0) }
 		}
 		
 		let pos = Position2D(from: index, numCols: seats.numCols)
-		switch seats.query(pos) {
-		case .open:
-			return visible(seats, pos) == 0 ? .occupied : .open
-
-		case .occupied:
-			return visible(seats, pos) >= 5 ? .open : .occupied
-
-		case .none:
+		guard let state = seats.query(pos) else {
 			return nil
+		}
+		let visibleNeighbors = visibleCount(seats, pos)
+		if state == .open {
+			return visibleNeighbors == 0 ? .occupied : .open
+		}
+		else {
+			return visibleNeighbors >= 5 ? .open : .occupied
 		}
 	}
 
