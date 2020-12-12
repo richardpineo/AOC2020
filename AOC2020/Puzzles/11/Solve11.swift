@@ -116,17 +116,25 @@ class Solve11: PuzzleSolver {
 	}
 
 	func transformB(seats: Seats, index: Int) -> SeatState? {
-		func visible(_ seats: Seats, _ seat: Position2D) -> Int {
-			Self.neighborOffsets.filter { direction in
-				var trySeat = seat.offset(direction)
-				while seats.validSeat(pos: trySeat) {
-					if let state = seats.query(trySeat) {
-						return state == .occupied
-					}
-					trySeat = trySeat.offset(direction)
+		func visibleInDirection(_ seats: Seats, _ seat: Position2D, _ direction: Position2D) -> Bool {
+			var trySeat = seat.offset(direction)
+			while seats.validSeat(pos: trySeat) {
+				if let state = seats.query(trySeat) {
+					return state == .occupied 
 				}
-				return false
-			}.count
+				trySeat = trySeat.offset(direction)
+			}
+			return false
+		}
+		
+		func visible(_ seats: Seats, _ seat: Position2D) -> Int {
+			var count = 0
+			for direction in Self.neighborOffsets {
+				if visibleInDirection(seats, seat, direction) {
+					count = count + 1
+				}
+			}
+			return count
 		}
 		
 		let pos = Position2D(from: index, numCols: seats.numCols)
