@@ -6,7 +6,7 @@ class Solve11: PuzzleSolver {
 	let inputFile = "Input11"
 
 	func solveAExamples() -> Bool {
-		solve(exampleFile) == "37"
+		solve(exampleFile, transform: transformA) == "37"
 	}
 
 	func solveBExamples() -> Bool {
@@ -14,7 +14,7 @@ class Solve11: PuzzleSolver {
 	}
 
 	func solveA() -> String {
-		solve(inputFile)
+		solve(inputFile, transform: transformA)
 	}
 
 	func solveB() -> String {
@@ -36,8 +36,8 @@ class Solve11: PuzzleSolver {
 			states = [SeatState?](repeating: nil, count: maxSeat.arrayIndex(numCols: numCols))
 		}
 
-		private var maxSeat: Position2D
-		private var numCols: Int {
+		var maxSeat: Position2D
+		var numCols: Int {
 			maxSeat.y - 1
 		}
 
@@ -49,24 +49,6 @@ class Solve11: PuzzleSolver {
 
 		func query(_ seat: Position2D) -> SeatState? {
 			states[seat.arrayIndex(numCols: numCols)]
-		}
-
-		private static let neighborOffsets = [
-			Position2D(1, 0),
-			Position2D(1, -1),
-			Position2D(1, 1),
-			Position2D(0, -1),
-			Position2D(0, 1),
-			Position2D(-1, 0),
-			Position2D(-1, -1),
-			Position2D(-1, 1),
-		]
-
-		func neighbors(_ seat: Position2D) -> Int {
-			Self.neighborOffsets.filter {
-				let newSeat = seat.offset($0)
-				return validSeat(pos: newSeat) && query(newSeat) == .occupied
-			}.count
 		}
 
 		func validSeat(pos: Position2D) -> Bool {
@@ -88,30 +70,55 @@ class Solve11: PuzzleSolver {
 			states.filter { $0 == .occupied }.count
 		}
 
-		func morph() -> Seats {
+		func morph(transform: (Seats, Int) -> SeatState?) -> Seats {
 			let morphed = Seats(maxSeat: maxSeat)
 
 			let maxArrayIndex = maxSeat.arrayIndex(numCols: numCols)
 			for index in 0 ..< maxArrayIndex {
-				let pos = Position2D(from: index, numCols: numCols)
-				switch query(pos) {
-				case .open:
-					let nearby = neighbors(pos)
-					morphed.assign(pos, nearby == 0 ? .occupied : .open)
-
-				case .occupied:
-					let nearby = neighbors(pos)
-					morphed.assign(pos, nearby >= 4 ? .open : .occupied)
-
-				case .none:
-					break
+				if let newState = transform(self, index) {
+					morphed.states[index] = newState
 				}
 			}
 			return morphed
 		}
 	}
+	
+	private static let neighborOffsets = [
+		   Position2D(1, 0),
+		   Position2D(1, -1),
+		   Position2D(1, 1),
+		   Position2D(0, -1),
+		   Position2D(0, 1),
+		   Position2D(-1, 0),
+		   Position2D(-1, -1),
+		   Position2D(-1, 1),
+	   ]
 
-	private func solve(_ filename: String) -> String {
+	
+	func neighbors(_ seats: Seats, _ seat: Position2D) -> Int {
+		Self.neighborOffsets.filter {
+			   let newSeat = seat.offset($0)
+			return seats.validSeat(pos: newSeat) && seats.query(newSeat) == .occupied
+		   }.count
+	   }
+	
+	func transformA(seats: Seats, index: Int) -> SeatState? {
+		let pos = Position2D(from: index, numCols: seats.numCols)
+		switch seats.query(pos) {
+		   case .open:
+			   let nearby = neighbors(seats, pos)
+			   return nearby == 0 ? .occupied : .open
+
+		   case .occupied:
+			   let nearby = neighbors(seats, pos)
+			   return nearby >= 4 ? .open : .occupied
+
+		   case .none:
+			   return nil
+		   }
+	}
+
+	private func solve(_ filename: String, transform: (Seats, Int) -> SeatState?) -> String {
 		var seats = loadSeats(filename)
 
 		var uniqueFilled = Set<[Int]>()
@@ -122,7 +129,7 @@ class Solve11: PuzzleSolver {
 				return seats.numOccupied.description
 			}
 			uniqueFilled.insert(unique)
-			seats = seats.morph()
+			seats = seats.morph(transform: transform)
 		}
 	}
 
