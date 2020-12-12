@@ -58,11 +58,11 @@ class Solve10: PuzzleSolver {
 		if let val = indexToCount[index] {
 			return val
 		}
-	
+
 		// Valid next adapters, highest first (so that memoizing works better)
-		let currentValue = -1 == index ? 0 : values[index]
-		let possibleNexts = (index + 1...index + 3).filter { next in next < values.count && values[next] - currentValue < 4 }.reversed()
-		
+		let currentValue = index == -1 ? 0 : values[index]
+		let possibleNexts = (index + 1 ... index + 3).filter { next in next < values.count && values[next] - currentValue < 4 }.reversed()
+
 		// Base case, nowhere to go.
 		if possibleNexts.isEmpty {
 			return 1
@@ -76,6 +76,7 @@ class Solve10: PuzzleSolver {
 		}
 		return count
 	}
+
 	// Memoize the count for a given index.
 	private var indexToCount: [Int: Int] = [:]
 }

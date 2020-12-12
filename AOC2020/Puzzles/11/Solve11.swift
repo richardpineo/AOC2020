@@ -10,7 +10,7 @@ class Solve11: PuzzleSolver {
 	}
 
 	func solveBExamples() -> Bool {
-		solveB(exampleFile) == "26"
+		solve(exampleFile, transform: transformB) == "26"
 	}
 
 	func solveA() -> String {
@@ -18,7 +18,7 @@ class Solve11: PuzzleSolver {
 	}
 
 	func solveB() -> String {
-		""
+		solve(inputFile, transform: transformB)
 	}
 
 	enum SeatState: Int {
@@ -82,40 +82,68 @@ class Solve11: PuzzleSolver {
 			return morphed
 		}
 	}
-	
-	private static let neighborOffsets = [
-		   Position2D(1, 0),
-		   Position2D(1, -1),
-		   Position2D(1, 1),
-		   Position2D(0, -1),
-		   Position2D(0, 1),
-		   Position2D(-1, 0),
-		   Position2D(-1, -1),
-		   Position2D(-1, 1),
-	   ]
 
-	
-	func neighbors(_ seats: Seats, _ seat: Position2D) -> Int {
-		Self.neighborOffsets.filter {
-			   let newSeat = seat.offset($0)
-			return seats.validSeat(pos: newSeat) && seats.query(newSeat) == .occupied
-		   }.count
-	   }
-	
+	static let neighborOffsets = [
+		Position2D(1, 0),
+		Position2D(1, -1),
+		Position2D(1, 1),
+		Position2D(0, -1),
+		Position2D(0, 1),
+		Position2D(-1, 0),
+		Position2D(-1, -1),
+		Position2D(-1, 1),
+	]
+
 	func transformA(seats: Seats, index: Int) -> SeatState? {
+		func neighbors(_ seats: Seats, _ seat: Position2D) -> Int {
+			Self.neighborOffsets.filter {
+				let newSeat = seat.offset($0)
+				return seats.validSeat(pos: newSeat) && seats.query(newSeat) == .occupied
+			}.count
+		}
+
 		let pos = Position2D(from: index, numCols: seats.numCols)
 		switch seats.query(pos) {
-		   case .open:
-			   let nearby = neighbors(seats, pos)
-			   return nearby == 0 ? .occupied : .open
+		case .open:
+			return neighbors(seats, pos) == 0 ? .occupied : .open
 
-		   case .occupied:
-			   let nearby = neighbors(seats, pos)
-			   return nearby >= 4 ? .open : .occupied
+		case .occupied:
+			return neighbors(seats, pos) >= 4 ? .open : .occupied
 
-		   case .none:
-			   return nil
-		   }
+		case .none:
+			return nil
+		}
+	}
+
+	func transformB(seats: Seats, index: Int) -> SeatState? {
+		func visible(_ seats: Seats, _ seat: Position2D) -> Int {
+			Self.neighborOffsets.filter { direction in
+				var trySeat = seat.offset(direction)
+				var toCheck = [Position2D]()
+				while seats.validSeat(pos: trySeat) {
+					toCheck.append(trySeat)
+					trySeat = trySeat.offset(direction)
+				}
+				
+				let firstSeat = toCheck.first { seats.query($0) != nil }
+				guard let hasSeat = firstSeat else {
+					return false
+				}
+				return seats.query(hasSeat) == .occupied
+			}.count
+		}
+		
+		let pos = Position2D(from: index, numCols: seats.numCols)
+		switch seats.query(pos) {
+		case .open:
+			return visible(seats, pos) == 0 ? .occupied : .open
+
+		case .occupied:
+			return visible(seats, pos) >= 5 ? .open : .occupied
+
+		case .none:
+			return nil
+		}
 	}
 
 	private func solve(_ filename: String, transform: (Seats, Int) -> SeatState?) -> String {
@@ -131,10 +159,6 @@ class Solve11: PuzzleSolver {
 			uniqueFilled.insert(unique)
 			seats = seats.morph(transform: transform)
 		}
-	}
-
-	private func solveB(_: String) -> String {
-		"dunno"
 	}
 
 	private func loadSeats(_ filename: String) -> Seats {
