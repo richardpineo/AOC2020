@@ -29,6 +29,7 @@ struct MainView: View {
 										HStack {
 											Spacer()
 											Image(systemName: "eye.slash")
+												.foregroundColor(Color(.systemPink))
 												.padding()
 										}
 										Spacer()
