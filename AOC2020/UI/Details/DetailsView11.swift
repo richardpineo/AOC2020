@@ -5,6 +5,7 @@ struct DetailsView11: View, Solve11Delegate {
 	@State var seats: [Solve11.Seats] = []
 	@State var isA: Bool = true
 	@State var isExample: Bool = true
+	@State var images: Bool = true
 	@State var isWorking: Bool = false
 	@State var iteration: Double = 0
 
@@ -14,8 +15,8 @@ struct DetailsView11: View, Solve11Delegate {
 				Button(action: {
 					self.process()
 				}) {
-					Image(systemName: "forward")
-					Text("Process")
+					Image(systemName: "play")
+					Text("Go")
 				}
 				.padding()
 				.foregroundColor(.white)
@@ -39,6 +40,15 @@ struct DetailsView11: View, Solve11Delegate {
 				}
 				.padding()
 
+				HStack {
+					Text("Images")
+					Toggle(isOn: $images) {
+						Text("Images")
+					}
+					.labelsHidden()
+				}
+				.padding()
+				
 				Text("\(seats.count) iterations")
 					.padding()
 
@@ -47,7 +57,6 @@ struct DetailsView11: View, Solve11Delegate {
 				} else {
 					if self.seats.count > 0 {
 						Slider(value: $iteration, in: 0 ... Double(self.seats.count - 1), step: 1.0)
-							.frame(width: 250)
 						Text("\(Int(iteration))")
 							.padding()
 					}
@@ -60,9 +69,14 @@ struct DetailsView11: View, Solve11Delegate {
 				ScrollView([.horizontal, .vertical]) {
 					LazyVGrid(columns: gridLayout) {
 						ForEach(0 ..< seat.maxIndex) { index in
-							let (imageName, color) = image(seat, index)
-							Image(systemName: imageName)
-								.foregroundColor(color)
+							if images {
+								let (imageName, color) = image(seat, index)
+								Image(systemName: imageName)
+									.foregroundColor(color)
+							}
+							else {
+								Text(text(seat, index))
+							}
 						}
 					}
 				}
@@ -89,6 +103,17 @@ struct DetailsView11: View, Solve11Delegate {
 			return ("person", .secondary)
 		case .none:
 			return ("square", .secondary)
+		}
+	}
+
+	func text(_ seats: Solve11.Seats, _ index: Int) -> String {
+		switch seats.query(at: index) {
+		case .occupied:
+			return "#"
+		case .open:
+			return "L"
+		case .none:
+			return "."
 		}
 	}
 
@@ -120,7 +145,7 @@ struct DetailsView11: View, Solve11Delegate {
 			}
 		}
 	}
-
+	
 	func newState(seats: Solve11.Seats?) {
 		DispatchQueue.main.async {
 			if let s = seats {
