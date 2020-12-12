@@ -10,7 +10,7 @@ class Solve12: PuzzleSolver {
 	}
 
 	func solveBExamples() -> Bool {
-		false
+		solveB(exampleFile) ==  "286"
 	}
 
 	func solveA() -> String {
@@ -76,6 +76,15 @@ class Solve12: PuzzleSolver {
 	}
 
 	private func solve(_ filename: String) -> String {
+		let steps = loadSteps(filename)
+		
+		var ship = Ship(position: .origin, heading: .east)
+		steps.forEach { ship = ship.step($0) }
+		
+		return ship.position.distance().description
+	}
+	
+	private func solveB(_ filename: String) -> String {
 		let steps = loadSteps(filename)
 		
 		var ship = Ship(position: .origin, heading: .east)
