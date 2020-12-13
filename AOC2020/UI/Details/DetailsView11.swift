@@ -48,7 +48,7 @@ struct DetailsView11: View, Solve11Delegate {
 					.labelsHidden()
 				}
 				.padding()
-				
+
 				Text("\(seats.count) iterations")
 					.padding()
 
@@ -73,8 +73,7 @@ struct DetailsView11: View, Solve11Delegate {
 								let (imageName, color) = image(seat, index)
 								Image(systemName: imageName)
 									.foregroundColor(color)
-							}
-							else {
+							} else {
 								Text(text(seat, index))
 							}
 						}
@@ -145,7 +144,7 @@ struct DetailsView11: View, Solve11Delegate {
 			}
 		}
 	}
-	
+
 	func newState(seats: Solve11.Seats?) {
 		DispatchQueue.main.async {
 			if let s = seats {

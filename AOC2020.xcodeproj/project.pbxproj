@@ -53,6 +53,9 @@
 		BFB23DFC2585DB7C00B7B7BD /* Example13-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB23DF92585DB7C00B7B7BD /* Example13-3.txt */; };
 		BFB23DFD2585DB7C00B7B7BD /* Example13-4.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB23DFA2585DB7C00B7B7BD /* Example13-4.txt */; };
 		BFB23E012585DBD800B7B7BD /* Example13-6.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB23E002585DBD800B7B7BD /* Example13-6.txt */; };
+		BFB23E092585EC3A00B7B7BD /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB23E082585EC3A00B7B7BD /* MathHelper.swift */; };
+		BFB23E0D2585EC9900B7B7BD /* TestMathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB23E0C2585EC9900B7B7BD /* TestMathHelper.swift */; };
+		BFB23E102585ED0800B7B7BD /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB23E082585EC3A00B7B7BD /* MathHelper.swift */; };
 		BFB7219C257F3AB80021C4C4 /* Input8.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB72199257F3AB80021C4C4 /* Input8.txt */; };
 		BFB7219D257F3AB80021C4C4 /* Solve8.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7219A257F3AB80021C4C4 /* Solve8.swift */; };
 		BFB7219E257F3AB80021C4C4 /* Example8.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB7219B257F3AB80021C4C4 /* Example8.txt */; };
@@ -233,6 +236,8 @@
 		BFB23DF92585DB7C00B7B7BD /* Example13-3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Example13-3.txt"; sourceTree = "<group>"; };
 		BFB23DFA2585DB7C00B7B7BD /* Example13-4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Example13-4.txt"; sourceTree = "<group>"; };
 		BFB23E002585DBD800B7B7BD /* Example13-6.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example13-6.txt"; sourceTree = "<group>"; };
+		BFB23E082585EC3A00B7B7BD /* MathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
+		BFB23E0C2585EC9900B7B7BD /* TestMathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMathHelper.swift; sourceTree = "<group>"; };
 		BFB72199257F3AB80021C4C4 /* Input8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input8.txt; sourceTree = "<group>"; };
 		BFB7219A257F3AB80021C4C4 /* Solve8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solve8.swift; sourceTree = "<group>"; };
 		BFB7219B257F3AB80021C4C4 /* Example8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example8.txt; sourceTree = "<group>"; };
@@ -411,6 +416,7 @@
 				BFF06E4E2578AC6C00725DE7 /* Position.swift */,
 				BFF2376D258486E20019D2F2 /* Heading.swift */,
 				BFF06E552578B18300725DE7 /* StringExtensions.swift */,
+				BFB23E082585EC3A00B7B7BD /* MathHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -521,6 +527,7 @@
 				BFF7521F258315CC0033BD7C /* TestPuzzle24.swift */,
 				BFF7521E258315CC0033BD7C /* TestPuzzle25.swift */,
 				BF60D4062571B42800DA3C27 /* Info.plist */,
+				BFB23E0C2585EC9900B7B7BD /* TestMathHelper.swift */,
 			);
 			path = AOC2020Tests;
 			sourceTree = "<group>";
@@ -944,6 +951,7 @@
 				BF60D42F2571B56500DA3C27 /* Puzzles.swift in Sources */,
 				BF60D4392571BCD500DA3C27 /* SolutionView.swift in Sources */,
 				BFE59D4B257A0ECB00CBE639 /* DetailsView4.swift in Sources */,
+				BFB23E092585EC3A00B7B7BD /* MathHelper.swift in Sources */,
 				BF60D4412571C10A00DA3C27 /* PuzzleDetails.swift in Sources */,
 				BFF2376E258486E20019D2F2 /* Heading.swift in Sources */,
 				BF9513BD257627D9002C3100 /* DetailsView1.swift in Sources */,
@@ -1014,6 +1022,7 @@
 				BF4F527F25775A2C0036DE28 /* Solve2.swift in Sources */,
 				BF125BD725760C0C00B6C3B3 /* Solve1.swift in Sources */,
 				BFE59D52257A15E400CBE639 /* ProcessingIndicatorView.swift in Sources */,
+				BFB23E0D2585EC9900B7B7BD /* TestMathHelper.swift in Sources */,
 				BFF751F3258314A70033BD7C /* Solve15.swift in Sources */,
 				BFB8FEF3257DFC58001CE683 /* Solve7.swift in Sources */,
 				BF9513B62576255D002C3100 /* TestPuzzle.swift in Sources */,
@@ -1044,6 +1053,7 @@
 				BFE59D1E2579FBB000CBE639 /* Solve4.swift in Sources */,
 				BFF75229258315CC0033BD7C /* TestPuzzle22.swift in Sources */,
 				BFF75227258315CC0033BD7C /* TestPuzzle12.swift in Sources */,
+				BFB23E102585ED0800B7B7BD /* MathHelper.swift in Sources */,
 				BFF7522F258315CC0033BD7C /* TestPuzzle18.swift in Sources */,
 				BF4F5267257755E80036DE28 /* Solve1Status.swift in Sources */,
 				BFB721A4257F3B300021C4C4 /* TestPuzzle8.swift in Sources */,
