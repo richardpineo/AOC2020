@@ -1,9 +1,16 @@
 
 import Foundation
 
+protocol Solve12Delegate {
+	// nil is passed on completion. waypoint is nil for part A
+	func shipMoved(ship: Solve12.Ship?, waypoint: Position2D?)
+}
+
 class Solve12: PuzzleSolver {
 	let exampleFile = "Example12"
 	let inputFile = "Input12"
+
+	var delegate: Solve12Delegate?
 
 	func solveAExamples() -> Bool {
 		solve(exampleFile) == "25"
@@ -70,7 +77,12 @@ class Solve12: PuzzleSolver {
 			}
 		}
 
-		steps.forEach { ship = step($0) }
+		delegate?.shipMoved(ship: ship, waypoint: nil)
+		steps.forEach {
+			ship = step($0)
+			delegate?.shipMoved(ship: ship, waypoint: nil)
+		}
+		delegate?.shipMoved(ship: nil, waypoint: nil)
 		return ship.position.cityDistance().description
 	}
 
@@ -114,7 +126,12 @@ class Solve12: PuzzleSolver {
 			// print("Ship at \(ship.position.displayString), waypoint at \(waypoint.displayString)")
 		}
 
-		steps.forEach { wayPointStep($0) }
+		delegate?.shipMoved(ship: ship, waypoint: nil)
+		steps.forEach {
+			wayPointStep($0)
+			delegate?.shipMoved(ship: ship, waypoint: nil)
+		}
+		delegate?.shipMoved(ship: nil, waypoint: nil)
 		return ship.position.cityDistance().description
 	}
 

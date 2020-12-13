@@ -56,6 +56,7 @@
 		BFB23E092585EC3A00B7B7BD /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB23E082585EC3A00B7B7BD /* MathHelper.swift */; };
 		BFB23E0D2585EC9900B7B7BD /* TestMathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB23E0C2585EC9900B7B7BD /* TestMathHelper.swift */; };
 		BFB23E102585ED0800B7B7BD /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB23E082585EC3A00B7B7BD /* MathHelper.swift */; };
+		BFB23E162585F0B500B7B7BD /* DetailsView12.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB23E152585F0B500B7B7BD /* DetailsView12.swift */; };
 		BFB7219C257F3AB80021C4C4 /* Input8.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB72199257F3AB80021C4C4 /* Input8.txt */; };
 		BFB7219D257F3AB80021C4C4 /* Solve8.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7219A257F3AB80021C4C4 /* Solve8.swift */; };
 		BFB7219E257F3AB80021C4C4 /* Example8.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB7219B257F3AB80021C4C4 /* Example8.txt */; };
@@ -238,6 +239,7 @@
 		BFB23E002585DBD800B7B7BD /* Example13-6.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example13-6.txt"; sourceTree = "<group>"; };
 		BFB23E082585EC3A00B7B7BD /* MathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		BFB23E0C2585EC9900B7B7BD /* TestMathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMathHelper.swift; sourceTree = "<group>"; };
+		BFB23E152585F0B500B7B7BD /* DetailsView12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView12.swift; sourceTree = "<group>"; };
 		BFB72199257F3AB80021C4C4 /* Input8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input8.txt; sourceTree = "<group>"; };
 		BFB7219A257F3AB80021C4C4 /* Solve8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solve8.swift; sourceTree = "<group>"; };
 		BFB7219B257F3AB80021C4C4 /* Example8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example8.txt; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 				BF9513BC257627D9002C3100 /* DetailsView1.swift */,
 				BFE59D4A257A0ECB00CBE639 /* DetailsView4.swift */,
 				BFB23DF02585653800B7B7BD /* DetailsView11.swift */,
+				BFB23E152585F0B500B7B7BD /* DetailsView12.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -961,6 +964,7 @@
 				BFB7221F257F3D740021C4C4 /* Solve20.swift in Sources */,
 				BFB721F9257F3D740021C4C4 /* Solve18.swift in Sources */,
 				BF56417E2571C70900FC14B7 /* PuzzleProcessing.swift in Sources */,
+				BFB23E162585F0B500B7B7BD /* DetailsView12.swift in Sources */,
 				BF9513A925761E8C002C3100 /* ControlCenter.swift in Sources */,
 				BFF06E442578AB2000725DE7 /* Solve3.swift in Sources */,
 				BFB72212257F3D740021C4C4 /* Solve9.swift in Sources */,

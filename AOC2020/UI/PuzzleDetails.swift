@@ -11,12 +11,14 @@ extension Puzzle {
 			return AnyView(DetailsView4())
 		case 11:
 			return AnyView(DetailsView11())
+		case 12:
+			return AnyView(DetailsView12())
 		default:
 			return nil
 		}
 	}
 
 	var hasDetailView: Bool {
-		detailView() != nil
+		[1, 4, 11, 12].contains(id)
 	}
 }
