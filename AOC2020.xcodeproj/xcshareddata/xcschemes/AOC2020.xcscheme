@@ -42,9 +42,6 @@
                   Identifier = "TestPuzzle13/testB()">
                </Test>
                <Test
-                  Identifier = "TestPuzzle13/testExampleB()">
-               </Test>
-               <Test
                   Identifier = "TestPuzzle14">
                </Test>
                <Test
