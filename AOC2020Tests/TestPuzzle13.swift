@@ -18,6 +18,6 @@ class TestPuzzle13: XCTestCase {
 	}
 
 	func testB() throws {
-		try solveB(solver(), "")
+		try solveB(solver(), "402251700208309")
 	}
 }

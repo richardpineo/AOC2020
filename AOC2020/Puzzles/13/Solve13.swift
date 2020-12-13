@@ -23,7 +23,7 @@ class Solve13: PuzzleSolver {
 			solveB(exampleFile4) == "779210" &&
 			solveB(exampleFile5) == "1261476" &&
 			solveB(exampleFile6) == "1202161486" &&
-			solveB(exampleFile) == "1068788"
+			solveB(exampleFile) == "1068781"
 	}
 
 	func solveA() -> String {
@@ -31,7 +31,7 @@ class Solve13: PuzzleSolver {
 	}
 
 	func solveB() -> String {
-		""
+		solveB(inputFile)
 	}
 
 	private func solve(_ filename: String) -> String {
@@ -114,29 +114,48 @@ class Solve13: PuzzleSolver {
 		busNum * t + busIndex = T
 		*/
 		
-		var constraints: [(bus: UInt64, offset: UInt64)] = []
+		var constraints: [(bus: Int, offset: Int)] = []
 		for index in 0..<busses.count {
-			if let bus = UInt64(busses[index]) {
-				constraints.append((bus: bus, offset: UInt64(index)))
+			if let bus = Int(busses[index]) {
+				constraints.append((bus: bus, offset: index))
 			}
 		}
 		
-		func passesContraints(_ t: UInt64) -> Bool {
-			constraints.allSatisfy { (bus, offset) in
-				(t + offset) % bus == 0
+		func passesConstraints(_ t: UInt64) -> [Bool] {
+			constraints.map { (bus, offset) in
+				(t + UInt64(offset)) % UInt64(bus) == 0
 			}
 		}
 		
-		let step: UInt64 = 1 // constraints.min { $0.bus < $1.bus }!.bus
-
+		let lcm = lcm_of_array_elements(constraints.map { Int($0.bus) })
+		
+		var memoizedSteps: [[Bool]: Int] = [:]
+		func calculateStep(_ passing: [Bool] ) -> Int {
+			if let found = memoizedSteps[passing] {
+				return found
+			}
+			var passingBusses: [Int] = []
+			for index in 0..<passing.count {
+				if passing[index] {
+					passingBusses.append(constraints[index].bus)
+				}
+			}
+			let lcm = Int(lcm_of_array_elements(passingBusses))
+			memoizedSteps[passing] = lcm
+			return lcm
+		}
+		
 		var t = UInt64(constraints[0].bus)
 		while (true) {
 			
-			if passesContraints(t) {
+			let passing = passesConstraints(t)
+			if passing.allSatisfy({ $0 }) {
 				return t.description
 			}
 			
-			t = t + step
+			let step = calculateStep(passing)
+			
+			t = t + UInt64(step)
 		}
 	}
 }
