@@ -18,7 +18,7 @@ class Puzzles: ObservableObject {
 			Puzzle(id: 10, name: "Adapter Array") { Solve10() },
 			Puzzle(id: 11, name: "Seating System") { Solve11() },
 			Puzzle(id: 12, name: "Rain Risk") { Solve12() },
-			Puzzle(id: 13, name: "") { Solve13() },
+			Puzzle(id: 13, name: "Shuttle Search") { Solve13() },
 			Puzzle(id: 14, name: "") { Solve14() },
 			Puzzle(id: 15, name: "") { Solve15() },
 			Puzzle(id: 16, name: "") { Solve16() },
