@@ -24,15 +24,7 @@ class Solve14: PuzzleSolver {
 
 	struct Command {
 		var address: UInt64
-		var assignment: UInt64
-
-		var binaryAssignment: String {
-			String(fromBinary: assignment)
-		}
-
-		var binaryAddress: String {
-			String(fromBinary: address)
-		}
+		var value: UInt64
 	}
 
 	struct Program {
@@ -52,12 +44,12 @@ class Solve14: PuzzleSolver {
 		}
 	}
 
-	private func solve(_ filename: String, processCommand: (_ memory: Memory, _ program: Program, _ command: Command) -> Void) -> String {
+	private func solve(_ filename: String, process: (_ memory: Memory, _ program: Program, _ command: Command) -> Void) -> String {
 		let programs = loadPrograms(filename)
 		let memory = Memory()
 		programs.forEach { program in
 			program.commands.forEach { command in
-				processCommand(memory, program, command)
+				process(memory, program, command)
 			}
 		}
 		let answer = memory.valueSum
@@ -82,13 +74,13 @@ class Solve14: PuzzleSolver {
 	private func solveA(_ filename: String) -> String {
 		func processCommand(memory: Memory, program: Program, command: Command) {
 			// Apply mask to assignment
-			let maskedAssignment = applyValueMask(mask: program.mask, val: command.binaryAssignment)
+			let maskedAssignment = applyValueMask(mask: program.mask, val: String(fromBinary: command.value))
 
 			// Assign to the memory space
 			memory.values[command.address] = maskedAssignment
 		}
 
-		return solve(filename, processCommand: processCommand)
+		return solve(filename, process: processCommand)
 	}
 
 	private func permuteAddress(_ address: String, output: inout [String]) {
@@ -123,15 +115,15 @@ class Solve14: PuzzleSolver {
 	private func solveB(_ filename: String) -> String {
 		func processCommand(memory: Memory, program: Program, command: Command) {
 			// Apply mask to address
-			let addresses = applyAddressMask(mask: program.mask, address: command.binaryAddress)
+			let addresses = applyAddressMask(mask: program.mask, address: String(fromBinary: command.address))
 
 			// Assign to all the memory spaces
 			addresses.forEach {
-				memory.values[$0] = command.assignment
+				memory.values[$0] = command.value
 			}
 		}
 
-		return solve(filename, processCommand: processCommand)
+		return solve(filename, process: processCommand)
 	}
 
 	private func loadPrograms(_ filename: String) -> [Program] {
@@ -159,7 +151,7 @@ class Solve14: PuzzleSolver {
 					// get the two values.
 					let v1 = tokenized[0]
 					let v2 = tokenized[4]
-					let command = Command(address: UInt64(v1)!, assignment: UInt64(v2)!)
+					let command = Command(address: UInt64(v1)!, value: UInt64(v2)!)
 					currentProgram?.commands.append(command)
 				}
 			}
