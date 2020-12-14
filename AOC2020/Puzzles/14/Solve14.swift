@@ -3,22 +3,23 @@ import Foundation
 
 class Solve14: PuzzleSolver {
 	let exampleFile = "Example14"
+	let exampleFile2 = "Example14-2"
 	let inputFile = "Input14"
 
 	func solveAExamples() -> Bool {
-		solve(exampleFile) == "165"
+		solveA(exampleFile) == "165"
 	}
 
 	func solveBExamples() -> Bool {
-		false
+		solveB(exampleFile2) == "208"
 	}
 
 	func solveA() -> String {
-		solve(inputFile)
+		solveA(inputFile)
 	}
 
 	func solveB() -> String {
-		""
+		solveB(inputFile)
 	}
 
 	struct Command {
@@ -36,6 +37,18 @@ class Solve14: PuzzleSolver {
 		var commands: [Command] = []
 	}
 
+	class Memory {
+		var values: [UInt64: UInt64] = [:]
+
+		var valueSum: UInt64 {
+			var answer: UInt64 = 0
+			values.forEach {
+				answer += $0.value
+			}
+			return answer
+		}
+	}
+
 	private func applyMask(mask: String, val: String) -> UInt64 {
 		var newVal = val
 		for index in 0 ..< mask.count {
@@ -51,31 +64,40 @@ class Solve14: PuzzleSolver {
 		return newVal.binaryToNumber()
 	}
 
-	private func solve(_ filename: String) -> String {
+	private func solve(_ filename: String, processCommand: (_ memory: Memory, _ program: Program, _ command: Command) -> Void) -> String {
 		let programs = loadPrograms(filename)
-
-		var memorySpace: [UInt64: UInt64] = [:]
-
-		func applyProgram(_ program: Program) {
+		let memory = Memory()
+		programs.forEach { program in
 			program.commands.forEach { command in
-
-				// Apply mask to assignment
-				let maskedAssignment = applyMask(mask: program.mask, val: command.binaryAssignment)
-
-				// Assign to the memory space
-				memorySpace[command.address] = maskedAssignment
+				processCommand(memory, program, command)
 			}
 		}
-
-		programs.forEach {
-			applyProgram($0)
-		}
-
-		var answer: UInt64 = 0
-		memorySpace.forEach {
-			answer += $0.value
-		}
+		let answer = memory.valueSum
 		return answer.description
+	}
+
+	private func solveA(_ filename: String) -> String {
+		func processCommand(memory: Memory, program: Program, command: Command) {
+			// Apply mask to assignment
+			let maskedAssignment = applyMask(mask: program.mask, val: command.binaryAssignment)
+
+			// Assign to the memory space
+			memory.values[command.address] = maskedAssignment
+		}
+
+		return solve(filename, processCommand: processCommand)
+	}
+
+	private func solveB(_ filename: String) -> String {
+		func processCommand(memory: Memory, program: Program, command: Command) {
+			// Apply mask to assignment
+			let maskedAssignment = applyMask(mask: program.mask, val: command.binaryAssignment)
+
+			// Assign to the memory space
+			memory.values[command.address] = maskedAssignment
+		}
+
+		return solve(filename, processCommand: processCommand)
 	}
 
 	private func loadPrograms(_ filename: String) -> [Program] {
