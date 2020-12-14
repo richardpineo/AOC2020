@@ -27,11 +27,11 @@ class Solve14: PuzzleSolver {
 		var assignment: UInt64
 
 		var binaryAssignment: String {
-			return String(fromBinary: assignment)
+			String(fromBinary: assignment)
 		}
-		
+
 		var binaryAddress: String {
-			return String(fromBinary: address)
+			String(fromBinary: address)
 		}
 	}
 
@@ -63,7 +63,7 @@ class Solve14: PuzzleSolver {
 		let answer = memory.valueSum
 		return answer.description
 	}
-	
+
 	private func applyValueMask(mask: String, val: String) -> UInt64 {
 		var newVal = val
 		for index in 0 ..< mask.count {
@@ -90,22 +90,15 @@ class Solve14: PuzzleSolver {
 
 		return solve(filename, processCommand: processCommand)
 	}
-	
-	private func permuteAddress(address: String) -> [String] {
-		// Walk through the string
-		for index in 0 ..< address.count {
-			if address.character(at: index) == "X" {
-				// recurse
-				let addr1 = address.assignCharacter(at: index, with: "0")
-				let addr2 = address.assignCharacter(at: index, with: "1")
-				
-				let permute1 = permuteAddress(address: addr1)
-				let permute2 = permuteAddress(address: addr2)
 
-				return permute1 + permute2
-			}
+	private func permuteAddress(_ address: String, output: inout [String]) {
+		if let index = address.firstIndex(of: "X") {
+			let i = index.utf16Offset(in: address)
+			permuteAddress(address.assignCharacter(at: i, with: "0"), output: &output)
+			permuteAddress(address.assignCharacter(at: i, with: "1"), output: &output)
+		} else {
+			output.append(address)
 		}
-		return [address]
 	}
 
 	private func applyAddressMask(mask: String, address: String) -> [UInt64] {
@@ -120,16 +113,18 @@ class Solve14: PuzzleSolver {
 				break
 			}
 		}
-		
+
 		// Walk through again and find all the addresses.
-		return permuteAddress(address: masked).map { $0.binaryToNumber() }
+		var output: [String] = []
+		permuteAddress(masked, output: &output)
+		return output.map { $0.binaryToNumber() }
 	}
-	
+
 	private func solveB(_ filename: String) -> String {
 		func processCommand(memory: Memory, program: Program, command: Command) {
 			// Apply mask to address
 			let addresses = applyAddressMask(mask: program.mask, address: command.binaryAddress)
-			
+
 			// Assign to all the memory spaces
 			addresses.forEach {
 				memory.values[$0] = command.assignment

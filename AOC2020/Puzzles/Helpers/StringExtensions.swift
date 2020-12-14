@@ -29,9 +29,9 @@ extension String {
 	func binaryToNumber() -> UInt64 {
 		UInt64(self, radix: 2)!
 	}
-	
+
 	init(fromBinary value: UInt64) {
 		let ass = String(value, radix: 2)
 		self = ass.pad(toSize: 36)
-	}	
+	}
 }
