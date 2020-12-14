@@ -44,7 +44,7 @@ enum Heading {
 	func turnLeft(_ numTurns: Int = 1) -> Heading {
 		turn(right: false, numTurns)
 	}
-	
+
 	// Degrees rotated from facing east.
 	var clockwiseFromEast: Int {
 		switch self {
@@ -52,6 +52,6 @@ enum Heading {
 		case .east: return 0
 		case .south: return 90
 		case .west: return 180
-	}
+		}
 	}
 }

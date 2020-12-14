@@ -28,7 +28,7 @@ struct DetailsView12: View, Solve12Delegate {
 				.padding()
 				.foregroundColor(.white)
 				.background(RoundedRectangle(cornerRadius: 10)
-								.foregroundColor(.blue))
+					.foregroundColor(.blue))
 
 				HStack {
 					Text("Part A")
@@ -42,7 +42,7 @@ struct DetailsView12: View, Solve12Delegate {
 				if !shipStates.isEmpty {
 					Text("\(step % shipStates.count)/\(shipStates.count)")
 				}
-				
+
 				Text("this one is the lame")
 					.font(.system(size: 13, weight: .bold))
 
@@ -53,16 +53,16 @@ struct DetailsView12: View, Solve12Delegate {
 			ZStack {
 				RoundedRectangle(cornerRadius: 15)
 					.fill(Color(.systemBlue))
-				
+
 				Rectangle()
 					.stroke(lineWidth: 1)
 					.foregroundColor(.secondary)
-					.frame(width:1)
-				
+					.frame(width: 1)
+
 				Rectangle()
 					.stroke(lineWidth: 1)
 					.foregroundColor(.secondary)
-					.frame(height:1)
+					.frame(height: 1)
 
 				Image(systemName: "airplane")
 					.rotationEffect(shipAngle)
@@ -71,7 +71,7 @@ struct DetailsView12: View, Solve12Delegate {
 			}
 			.frame(width: oceanDim, height: oceanDim)
 			.padding()
-			
+
 			Spacer()
 		}
 		.onReceive(self.timer) { _ in
@@ -81,7 +81,7 @@ struct DetailsView12: View, Solve12Delegate {
 			}
 		}
 	}
-	
+
 	let oceanDim = CGFloat(700)
 
 	private func updateShip() {
@@ -92,10 +92,11 @@ struct DetailsView12: View, Solve12Delegate {
 		let ship = shipStates[index].ship
 
 		let factor = CGFloat(oceanDim / shipDim)
-		
+
 		shipOffset = CGSize(
 			width: CGFloat(ship.position.x) * factor,
-			height: CGFloat(ship.position.y) * factor)
+			height: CGFloat(ship.position.y) * factor
+		)
 
 		shipAngle = .init(degrees: Double(ship.heading.clockwiseFromEast))
 	}
