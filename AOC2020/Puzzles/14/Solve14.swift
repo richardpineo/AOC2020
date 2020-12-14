@@ -27,8 +27,11 @@ class Solve14: PuzzleSolver {
 		var assignment: UInt64
 
 		var binaryAssignment: String {
-			let ass = String(assignment, radix: 2)
-			return ass.pad(toSize: 36)
+			return String(fromBinary: assignment)
+		}
+		
+		var binaryAddress: String {
+			return String(fromBinary: address)
 		}
 	}
 
@@ -49,7 +52,19 @@ class Solve14: PuzzleSolver {
 		}
 	}
 
-	private func applyMask(mask: String, val: String) -> UInt64 {
+	private func solve(_ filename: String, processCommand: (_ memory: Memory, _ program: Program, _ command: Command) -> Void) -> String {
+		let programs = loadPrograms(filename)
+		let memory = Memory()
+		programs.forEach { program in
+			program.commands.forEach { command in
+				processCommand(memory, program, command)
+			}
+		}
+		let answer = memory.valueSum
+		return answer.description
+	}
+	
+	private func applyValueMask(mask: String, val: String) -> UInt64 {
 		var newVal = val
 		for index in 0 ..< mask.count {
 			switch mask.character(at: index) {
@@ -64,22 +79,10 @@ class Solve14: PuzzleSolver {
 		return newVal.binaryToNumber()
 	}
 
-	private func solve(_ filename: String, processCommand: (_ memory: Memory, _ program: Program, _ command: Command) -> Void) -> String {
-		let programs = loadPrograms(filename)
-		let memory = Memory()
-		programs.forEach { program in
-			program.commands.forEach { command in
-				processCommand(memory, program, command)
-			}
-		}
-		let answer = memory.valueSum
-		return answer.description
-	}
-
 	private func solveA(_ filename: String) -> String {
 		func processCommand(memory: Memory, program: Program, command: Command) {
 			// Apply mask to assignment
-			let maskedAssignment = applyMask(mask: program.mask, val: command.binaryAssignment)
+			let maskedAssignment = applyValueMask(mask: program.mask, val: command.binaryAssignment)
 
 			// Assign to the memory space
 			memory.values[command.address] = maskedAssignment
@@ -87,14 +90,50 @@ class Solve14: PuzzleSolver {
 
 		return solve(filename, processCommand: processCommand)
 	}
+	
+	private func permuteAddress(address: String) -> [String] {
+		// Walk through the string
+		for index in 0 ..< address.count {
+			if address.character(at: index) == "X" {
+				// recurse
+				let addr1 = address.assignCharacter(at: index, with: "0")
+				let addr2 = address.assignCharacter(at: index, with: "1")
+				
+				let permute1 = permuteAddress(address: addr1)
+				let permute2 = permuteAddress(address: addr2)
 
+				return permute1 + permute2
+			}
+		}
+		return [address]
+	}
+
+	private func applyAddressMask(mask: String, address: String) -> [UInt64] {
+		var masked = address
+		for index in 0 ..< mask.count {
+			switch mask.character(at: index) {
+			case "X":
+				masked = masked.assignCharacter(at: index, with: "X")
+			case "1":
+				masked = masked.assignCharacter(at: index, with: "1")
+			default:
+				break
+			}
+		}
+		
+		// Walk through again and find all the addresses.
+		return permuteAddress(address: masked).map { $0.binaryToNumber() }
+	}
+	
 	private func solveB(_ filename: String) -> String {
 		func processCommand(memory: Memory, program: Program, command: Command) {
-			// Apply mask to assignment
-			let maskedAssignment = applyMask(mask: program.mask, val: command.binaryAssignment)
-
-			// Assign to the memory space
-			memory.values[command.address] = maskedAssignment
+			// Apply mask to address
+			let addresses = applyAddressMask(mask: program.mask, address: command.binaryAddress)
+			
+			// Assign to all the memory spaces
+			addresses.forEach {
+				memory.values[$0] = command.assignment
+			}
 		}
 
 		return solve(filename, processCommand: processCommand)
