@@ -33,27 +33,30 @@ class Solve15: PuzzleSolver {
 
 	class GameNumber: CustomDebugStringConvertible {
 		init(turn: Int) {
-			previous = turn
+			speak(turn: turn)
 		}
 
-		private var previous: Int
-		private var maybeLatency: Int = -1
+		var previous: Int?
+		var twoBack: Int?
 
 		var hasSpokenTwice: Bool {
-			maybeLatency != -1
+			twoBack != nil
 		}
 
 		func speak(turn: Int) {
-			maybeLatency = turn - previous
+			twoBack = previous
 			previous = turn
 		}
 
 		var latency: Int {
-			return maybeLatency
+			guard let b = twoBack else {
+				return 666
+			}
+			return previous! - b
 		}
 
 		var debugDescription: String {
-			hasSpokenTwice ? "\(previous), \(latency) turns ago" : "never said before"
+			hasSpokenTwice ? "\(previous!), \(latency) turns ago" : "never said before"
 		}
 	}
 
@@ -66,8 +69,8 @@ class Solve15: PuzzleSolver {
 	}
 
 	private func process(values: [Int], stopCount: Int) -> String {
-		var state: [Int: GameNumber] = [:]
-
+		var state = [GameNumber?](repeating: nil, count: stopCount)
+	
 		var spoken = 0
 		for value in values {
 			state[value] = GameNumber(turn: spoken)
@@ -75,21 +78,22 @@ class Solve15: PuzzleSolver {
 		}
 
 		var lastSpoken = values[spoken - 1]
-		var lastState: GameNumber = state[lastSpoken]!
-		
-		// The main event
 		for count in spoken ..< stopCount {
-			lastSpoken = lastState.latency
+			guard let lastState = state[lastSpoken] else {
+				return "GRR"
+			}
+
+			lastSpoken = 0
+			if lastState.hasSpokenTwice {
+				lastSpoken = lastState.latency
+			}
 
 			if let s = state[lastSpoken] {
-				lastState = s
 				s.speak(turn: count)
 			} else {
-				lastState = GameNumber(turn: count)
-				state[lastSpoken] = lastState
+				state[lastSpoken] = GameNumber(turn: count)
 			}
 		}
-		print("\(state.count) values in state")
 		return lastSpoken.description
 	}
 }

@@ -11,8 +11,7 @@ class TestPuzzle15: XCTestCase {
 
 	func testExampleB() throws {
 		// TOO SLOW
-		return
-//		try solveBExamples(solver())
+		//		try solveBExamples(solver())
 	}
 
 	func testA() throws {
@@ -21,7 +20,6 @@ class TestPuzzle15: XCTestCase {
 
 	func testB() throws {
 		// TOO SLOW
-		return
-//		try solveB(solver(), "63644")
+		//		try solveB(solver(), "63644")
 	}
 }
