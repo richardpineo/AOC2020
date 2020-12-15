@@ -74,20 +74,12 @@ class Solve15: PuzzleSolver {
 			spoken += 1
 		}
 
-		// print("initialized with \(state.debugDescription)")
-
 		var lastSpoken = values[spoken - 1]
 		var lastState: GameNumber = state[lastSpoken]!
+		
+		// The main event
 		for count in spoken ..< stopCount {
-
-			// print("\(count + 1): last said was \(lastSpoken): \(lastState.debugDescription)")
-
-			lastSpoken = 0
-			if lastState.hasSpokenTwice {
-				lastSpoken = lastState.latency
-			}
-
-			// print("\(count + 1): said \(lastSpoken)")
+			lastSpoken = lastState.latency
 
 			if let s = state[lastSpoken] {
 				lastState = s
@@ -97,6 +89,7 @@ class Solve15: PuzzleSolver {
 				state[lastSpoken] = lastState
 			}
 		}
+		print("\(state.count) values in state")
 		return lastSpoken.description
 	}
 }
