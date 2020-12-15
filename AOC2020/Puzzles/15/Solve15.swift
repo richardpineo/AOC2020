@@ -33,30 +33,27 @@ class Solve15: PuzzleSolver {
 
 	class GameNumber: CustomDebugStringConvertible {
 		init(turn: Int) {
-			speak(turn: turn)
+			previous = turn
 		}
 
-		var previous: Int?
-		var twoBack: Int?
+		private var previous: Int
+		private var maybeLatency: Int = -1
 
 		var hasSpokenTwice: Bool {
-			twoBack != nil
+			maybeLatency != -1
 		}
 
 		func speak(turn: Int) {
-			twoBack = previous
+			maybeLatency = turn - previous
 			previous = turn
 		}
 
 		var latency: Int {
-			guard let b = twoBack else {
-				return 666
-			}
-			return previous! - b
+			return maybeLatency
 		}
 
 		var debugDescription: String {
-			hasSpokenTwice ? "\(previous!), \(latency) turns ago" : "never said before"
+			hasSpokenTwice ? "\(previous), \(latency) turns ago" : "never said before"
 		}
 	}
 
@@ -80,10 +77,8 @@ class Solve15: PuzzleSolver {
 		// print("initialized with \(state.debugDescription)")
 
 		var lastSpoken = values[spoken - 1]
+		var lastState: GameNumber = state[lastSpoken]!
 		for count in spoken ..< stopCount {
-			guard let lastState = state[lastSpoken] else {
-				return "GRR"
-			}
 
 			// print("\(count + 1): last said was \(lastSpoken): \(lastState.debugDescription)")
 
@@ -95,9 +90,11 @@ class Solve15: PuzzleSolver {
 			// print("\(count + 1): said \(lastSpoken)")
 
 			if let s = state[lastSpoken] {
+				lastState = s
 				s.speak(turn: count)
 			} else {
-				state[lastSpoken] = GameNumber(turn: count)
+				lastState = GameNumber(turn: count)
+				state[lastSpoken] = lastState
 			}
 		}
 		return lastSpoken.description
