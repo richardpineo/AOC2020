@@ -24,6 +24,7 @@
 		BF125C032576107100B6C3B3 /* PuzzleSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125C022576107100B6C3B3 /* PuzzleSolver.swift */; };
 		BF1A1A6D2580910A003F885D /* TestPuzzle9.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1A1A6C2580910A003F885D /* TestPuzzle9.swift */; };
 		BF1A1A7225809123003F885D /* Solve9.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB721DA257F3D740021C4C4 /* Solve9.swift */; };
+		BF3B15F32589D75900061C31 /* Example16-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF3B15F22589D75900061C31 /* Example16-2.txt */; };
 		BF4F5267257755E80036DE28 /* Solve1Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513C4257628CE002C3100 /* Solve1Status.swift */; };
 		BF4F526C257756B70036DE28 /* Solve2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F526B257756B70036DE28 /* Solve2.swift */; };
 		BF4F5272257756D60036DE28 /* Example2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF4F5271257756D60036DE28 /* Example2.txt */; };
@@ -206,6 +207,7 @@
 		BF125BD225760BDB00B6C3B3 /* TestPuzzle1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle1.swift; sourceTree = "<group>"; };
 		BF125C022576107100B6C3B3 /* PuzzleSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleSolver.swift; sourceTree = "<group>"; };
 		BF1A1A6C2580910A003F885D /* TestPuzzle9.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle9.swift; sourceTree = "<group>"; };
+		BF3B15F22589D75900061C31 /* Example16-2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example16-2.txt"; sourceTree = "<group>"; };
 		BF4F526B257756B70036DE28 /* Solve2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve2.swift; sourceTree = "<group>"; };
 		BF4F5271257756D60036DE28 /* Example2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Example2.txt; sourceTree = "<group>"; };
 		BF4F52752577572C0036DE28 /* Input2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input2.txt; sourceTree = "<group>"; };
@@ -638,6 +640,7 @@
 			isa = PBXGroup;
 			children = (
 				BFB721CF257F3D740021C4C4 /* Example16.txt */,
+				BF3B15F22589D75900061C31 /* Example16-2.txt */,
 				BFB721CE257F3D740021C4C4 /* Input16.txt */,
 				BFB721CD257F3D740021C4C4 /* Solve16.swift */,
 			);
@@ -878,6 +881,7 @@
 				BFB721F8257F3D740021C4C4 /* Example10.txt in Resources */,
 				BFB7220D257F3D740021C4C4 /* Example23.txt in Resources */,
 				BFF751DD2583140C0033BD7C /* Example10-2.txt in Resources */,
+				BF3B15F32589D75900061C31 /* Example16-2.txt in Resources */,
 				BFB72215257F3D740021C4C4 /* Input13.txt in Resources */,
 				BF60D3FA2571B42800DA3C27 /* Preview Assets.xcassets in Resources */,
 				BFB7221D257F3D740021C4C4 /* Input20.txt in Resources */,
