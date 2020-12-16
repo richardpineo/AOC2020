@@ -48,11 +48,11 @@ class Solve16: PuzzleSolver {
 		var invalid: [Int] = []
 		tickets.nearbyTickets.forEach { ticket in
 			ticket.values.forEach { value in
-				let outcomes = tickets.rules.map { rule in
-					!rule.range1.contains(value) && !rule.range2.contains(value)
+				let passing = tickets.rules.map { rule in
+					rule.range1.contains(value) || rule.range2.contains(value)
 				}
 				
-				if outcomes.allSatisfy({ $0 }) {
+				if passing.allSatisfy({ !$0 }) {
 					invalid.append(value)
 				}
 			}
