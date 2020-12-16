@@ -14,16 +14,16 @@ class Solve15: PuzzleSolver {
 
 	func solveBExamples() -> Bool {
 		// This one takes several seconds to run. Just skip it when not actively developing.
-		return true
+		true
 		/*
-		processB(values: [0, 3, 6]) == "175594" &&
-			processB(values: [1, 3, 2]) == "2578" &&
-			processB(values: [2, 1, 3]) == "3544142" &&
-			processB(values: [1, 2, 3]) == "261214" &&
-			processB(values: [2, 3, 1]) == "6895259" &&
-			processB(values: [3, 2, 1]) == "18" &&
-			processB(values: [3, 1, 2]) == "362"
-*/
+		 processB(values: [0, 3, 6]) == "175594" &&
+		 	processB(values: [1, 3, 2]) == "2578" &&
+		 	processB(values: [2, 1, 3]) == "3544142" &&
+		 	processB(values: [1, 2, 3]) == "261214" &&
+		 	processB(values: [2, 3, 1]) == "6895259" &&
+		 	processB(values: [3, 2, 1]) == "18" &&
+		 	processB(values: [3, 1, 2]) == "362"
+		 */
 	}
 
 	func solveA() -> String {
@@ -32,7 +32,7 @@ class Solve15: PuzzleSolver {
 
 	func solveB() -> String {
 		// Takes several seconds so just return the answer.
-		return "63644"
+		"63644"
 		// processB(values: [1, 20, 8, 12, 0, 14])
 	}
 
@@ -75,7 +75,7 @@ class Solve15: PuzzleSolver {
 
 	private func process(values: [Int], stopCount: Int) -> String {
 		var state = [GameNumber?](repeating: nil, count: stopCount)
-	
+
 		var spoken = 0
 		for value in values {
 			state[value] = GameNumber(turn: spoken)
