@@ -7,7 +7,7 @@ struct Position3D: Hashable {
 		self.y = y
 		self.z = z
 	}
-	
+
 	static let origin = Position3D(0, 0, 0)
 
 	var x: Int
@@ -29,17 +29,17 @@ struct Position3D: Hashable {
 	func cityDistance(_ from: Position3D = .origin) -> Int {
 		abs(x - from.x) + abs(y - from.y) + abs(z - from.z)
 	}
-	
+
 	// Includes self
 	var neighbors: [Position3D] {
-		var ns:  [Position3D] = []
-		for x in -1...1 {
-			for y in -1...1 {
-				for z in -1...1 {
-					ns.append(Position3D(x,y,z))
+		var ns: [Position3D] = []
+		for x in -1 ... 1 {
+			for y in -1 ... 1 {
+				for z in -1 ... 1 {
+					ns.append(Position3D(x, y, z))
 				}
 			}
 		}
-		return ns.map { self.offset($0)}
+		return ns.map { self.offset($0) }
 	}
 }

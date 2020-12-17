@@ -12,7 +12,7 @@ class Solve16: PuzzleSolver {
 
 	func solveBExamples() -> Bool {
 		let tickets = load(exampleFile2)
-		return solveB(tickets) == ["row","class","seat"]
+		return solveB(tickets) == ["row", "class", "seat"]
 	}
 
 	func solveA() -> String {
@@ -23,7 +23,7 @@ class Solve16: PuzzleSolver {
 		let tickets = load(inputFile)
 		let solved = solveB(tickets)
 		var answer = 1
-		for index in 0..<solved.count {
+		for index in 0 ..< solved.count {
 			let rule = solved[index]
 			if rule.starts(with: "departure") {
 				answer *= tickets.myTicket.values[index]
@@ -54,14 +54,13 @@ class Solve16: PuzzleSolver {
 		let sum = invalidValues.reduce(0) { $0 + $1 }
 		return sum.description
 	}
-	
+
 	private func solveB(_ tickets: Tickets) -> [String] {
-		
 		let validTickets = tickets.nearbyTickets.filter { isValid(tickets, $0) }
-		
+
 		// Find which values go with which on my ticket
 		var possibleRules: [[Rule]] = []
-		for valueIndex in 0..<tickets.myTicket.values.count {
+		for valueIndex in 0 ..< tickets.myTicket.values.count {
 			// Find the first rule that works for all the valid tickets.
 			let foundRules = tickets.rules.filter { rule in
 				validTickets.allSatisfy { ticket in
@@ -73,21 +72,21 @@ class Solve16: PuzzleSolver {
 
 		// Now that we have all the possible rules, reduce them down to the final set.
 		var finalRules: [String: Int] = [:]
-		while(finalRules.count != tickets.myTicket.values.count) {
+		while finalRules.count != tickets.myTicket.values.count {
 			let candidate = findCandidateRule(possibleRules)
 			finalRules[candidate.name] = candidate.position
-		
+
 			possibleRules = possibleRules.map { rules in
 				rules.filter { $0.name != candidate.name }
 			}
 		}
 		let ordered = Array(finalRules).sorted { $0.value < $1.value }
-		
-		return ordered.map { $0.key }
+
+		return ordered.map(\.key)
 	}
-	
+
 	private func findCandidateRule(_ possibleRules: [[Rule]]) -> (name: String, position: Int) {
-		let foundIndex = possibleRules.firstIndex{ $0.count == 1 }!
+		let foundIndex = possibleRules.firstIndex { $0.count == 1 }!
 		return (possibleRules[foundIndex][0].name, foundIndex)
 	}
 
@@ -100,22 +99,22 @@ class Solve16: PuzzleSolver {
 		}
 		return invalid
 	}
-	
+
 	private func isValid(_ rule: Rule, _ value: Int) -> Bool {
 		rule.range1.contains(value) || rule.range2.contains(value)
 	}
-	
+
 	private func isValid(_ rules: [Rule], _ value: Int) -> Bool {
-		let passing = rules.map { isValid( $0, value) }
-		return !passing.allSatisfy({ !$0 })
+		let passing = rules.map { isValid($0, value) }
+		return !passing.allSatisfy { !$0 }
 	}
-	
+
 	private func isValid(_ tickets: Tickets, _ ticket: Ticket) -> Bool {
-		return nil == badValue(tickets, ticket)
+		badValue(tickets, ticket) == nil
 	}
-	
+
 	private func badValue(_ tickets: Tickets, _ ticket: Ticket) -> Int? {
-		return ticket.values.first { !isValid(tickets.rules, $0 ) }
+		ticket.values.first { !isValid(tickets.rules, $0) }
 	}
 
 	private func load(_ filename: String) -> Tickets {
@@ -157,7 +156,7 @@ class Solve16: PuzzleSolver {
 		let range2Start = Int(values2[2])!
 		let range2End = Int(values[3])!
 
-		return Rule(name: name, range1: range1Start...range1End, range2: range2Start...range2End)
+		return Rule(name: name, range1: range1Start ... range1End, range2: range2Start ... range2End)
 	}
 
 	private func loadTicket(_ line: String) -> Ticket {
