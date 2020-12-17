@@ -26,7 +26,7 @@ class Solve17: PuzzleSolver {
 		solve(inputFile, is3D: false)
 	}
 
-	struct State<dimension>: Morphable where dimension: Positional, dimension: Hashable {
+	struct State<dimension>: Morphable where dimension: Positional {
 		typealias dimensional = dimension
 
 		var active: Set<dimensional> = .init()
@@ -92,7 +92,7 @@ class Solve17: PuzzleSolver {
 		for y in 0 ..< lines.count {
 			for x in 0 ..< lines[y].count {
 				if lines[y].character(at: x) == "#" {
-					active.insert(dimension.alloc(x: x, y: y) as! dimension)
+					active.insert(dimension(x, y))
 				}
 			}
 		}

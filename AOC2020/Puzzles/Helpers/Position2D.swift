@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Position2D: Hashable, Comparable {
+struct Position2D: Comparable, Positional {
 	init(_ x: Int, _ y: Int) {
 		self.x = x
 		self.y = y
@@ -12,7 +12,7 @@ struct Position2D: Hashable, Comparable {
 		y = arrayIndex / numCols
 	}
 
-	static let origin = Position2D(0, 0)
+	static var origin: Position2D { Position2D(0, 0) }
 
 	var x: Int
 	var y: Int
@@ -39,5 +39,18 @@ struct Position2D: Hashable, Comparable {
 
 	static func < (lhs: Position2D, rhs: Position2D) -> Bool {
 		lhs.x == rhs.x ? lhs.y < rhs.y : lhs.x < rhs.x
+	}
+	
+	func neighbors(includeSelf: Bool) -> [Position2D] {
+		var ns: [Position2D] = []
+		for x in -1 ... 1 {
+			for y in -1 ... 1 {
+				let pos = Position2D(x, y)
+				if includeSelf || pos != .origin {
+					ns.append(pos)
+				}
+			}
+		}
+		return ns.map { self.offset($0) }
 	}
 }

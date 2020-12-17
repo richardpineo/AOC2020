@@ -7,9 +7,9 @@ struct Position3D: Hashable, Positional {
 		self.y = y
 		self.z = z
 	}
-
-	static func alloc(x: Int, y: Int) -> Position3D {
-		Position3D(x, y, 0)
+	
+	init(_ x: Int, _ y: Int) {
+		self.init(x, y, 0)
 	}
 
 	static let origin = Position3D(0, 0, 0)
@@ -39,11 +39,13 @@ struct Position3D: Hashable, Positional {
 		for x in -1 ... 1 {
 			for y in -1 ... 1 {
 				for z in -1 ... 1 {
-					ns.append(Position3D(x, y, z))
+					let pos = Position3D(x, y, z)
+					if includeSelf || pos != .origin {
+						ns.append(pos)
+					}
 				}
 			}
 		}
-		let all = ns.map { self.offset($0) }
-		return includeSelf ? all : all.filter { $0 != self }
+		return ns.map { self.offset($0) }
 	}
 }

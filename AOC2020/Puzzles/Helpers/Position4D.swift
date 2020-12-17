@@ -8,11 +8,11 @@ struct Position4D: Hashable, Positional {
 		self.z = z
 		self.w = w
 	}
-
-	static func alloc(x: Int, y: Int) -> Position4D {
-		Position4D(x, y, 0, 0)
+	
+	init(_ x: Int, _ y: Int) {
+		self.init(x, y, 0, 0)
 	}
-
+	
 	static let origin = Position4D(0, 0, 0, 0)
 
 	var x: Int
@@ -42,12 +42,14 @@ struct Position4D: Hashable, Positional {
 			for y in -1 ... 1 {
 				for z in -1 ... 1 {
 					for w in -1 ... 1 {
-						ns.append(Position4D(x, y, z, w))
+						let pos = Position4D(x, y, z, w)
+						if includeSelf || pos != .origin {
+							ns.append(pos)
+						}
 					}
 				}
 			}
 		}
-		let all = ns.map { self.offset($0) }
-		return includeSelf ? all : all.filter { $0 != self }
+		return ns.map { self.offset($0) }
 	}
 }
