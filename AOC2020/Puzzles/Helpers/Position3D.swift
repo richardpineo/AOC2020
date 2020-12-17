@@ -7,7 +7,7 @@ struct Position3D: Hashable, Positional {
 		self.y = y
 		self.z = z
 	}
-	
+
 	init(_ x: Int, _ y: Int) {
 		self.init(x, y, 0)
 	}

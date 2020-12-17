@@ -40,7 +40,7 @@ struct Position2D: Comparable, Positional {
 	static func < (lhs: Position2D, rhs: Position2D) -> Bool {
 		lhs.x == rhs.x ? lhs.y < rhs.y : lhs.x < rhs.x
 	}
-	
+
 	func neighbors(includeSelf: Bool) -> [Position2D] {
 		var ns: [Position2D] = []
 		for x in -1 ... 1 {

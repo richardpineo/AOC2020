@@ -8,11 +8,11 @@ struct Position4D: Hashable, Positional {
 		self.z = z
 		self.w = w
 	}
-	
+
 	init(_ x: Int, _ y: Int) {
 		self.init(x, y, 0, 0)
 	}
-	
+
 	static let origin = Position4D(0, 0, 0, 0)
 
 	var x: Int
