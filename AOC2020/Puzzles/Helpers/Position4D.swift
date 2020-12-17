@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Position4D: Hashable {
+struct Position4D: Hashable, Positional {
 	init(_ x: Int, _ y: Int, _ z: Int, _ w: Int) {
 		self.x = x
 		self.y = y
@@ -32,8 +32,7 @@ struct Position4D: Hashable {
 		abs(x - from.x) + abs(y - from.y) + abs(z - from.z)
 	}
 
-	// Includes self
-	var neighbors: [Position4D] {
+	func neighbors(includeSelf: Bool) -> [Position4D] {
 		var ns: [Position4D] = []
 		for x in -1 ... 1 {
 			for y in -1 ... 1 {
@@ -44,6 +43,7 @@ struct Position4D: Hashable {
 				}
 			}
 		}
-		return ns.map { self.offset($0) }
+		let all = ns.map { self.offset($0) }
+		return includeSelf ? all : all.filter { $0 != self }
 	}
 }

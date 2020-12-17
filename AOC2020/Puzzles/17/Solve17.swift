@@ -27,7 +27,7 @@ class Solve17: PuzzleSolver {
 		func morph() -> State {
 			// determine all positions to consider
 			let toConsider = active.reduce(Set<Position3D>()) { complete, pos in
-				complete.union(pos.neighbors)
+				complete.union(pos.neighbors(includeSelf: true))
 			}
 
 			// Find new active positions
@@ -48,7 +48,7 @@ class Solve17: PuzzleSolver {
 		}
 
 		func activeNeighbors(_ pos: Position3D) -> Int {
-			pos.neighbors.filter { $0 != pos && active.contains($0) }.count
+			pos.neighbors(includeSelf: false).filter { active.contains($0) }.count
 		}
 	}
 
