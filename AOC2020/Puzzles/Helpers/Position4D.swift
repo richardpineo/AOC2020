@@ -9,6 +9,10 @@ struct Position4D: Hashable, Positional {
 		self.w = w
 	}
 
+	static func alloc(x: Int, y: Int) -> Position4D {
+		Position4D(x, y, 0, 0)
+	}
+
 	static let origin = Position4D(0, 0, 0, 0)
 
 	var x: Int

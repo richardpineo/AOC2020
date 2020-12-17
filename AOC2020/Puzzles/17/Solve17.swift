@@ -1,6 +1,11 @@
 
 import Foundation
 
+protocol Morphable {
+	func morph() -> Morphable
+	func activeCount() -> Int
+}
+
 class Solve17: PuzzleSolver {
 	let exampleFile = "Example17"
 	let inputFile = "Input17"
@@ -18,16 +23,22 @@ class Solve17: PuzzleSolver {
 	}
 
 	func solveB() -> String {
-		""
+		solve(inputFile, is3D: false)
 	}
 
-	struct State {
-		var active: Set<Position3D> = .init()
+	struct State<dimension>: Morphable where dimension: Positional, dimension: Hashable {
+		typealias dimensional = dimension
 
-		func morph() -> State {
+		var active: Set<dimensional> = .init()
+
+		func morph() -> Morphable {
 			// determine all positions to consider
-			let toConsider = active.reduce(Set<Position3D>()) { complete, pos in
-				complete.union(pos.neighbors(includeSelf: true))
+			var toConsider = Set<dimension>()
+			active.forEach { dim in
+				let neighbors = dim.neighbors(includeSelf: true)
+				neighbors.forEach {
+					toConsider.insert($0 as! dimension)
+				}
 			}
 
 			// Find new active positions
@@ -38,7 +49,11 @@ class Solve17: PuzzleSolver {
 			return morphed
 		}
 
-		func willBeActive(_ pos: Position3D) -> Bool {
+		func activeCount() -> Int {
+			active.count
+		}
+
+		func willBeActive(_ pos: dimension) -> Bool {
 			let nearby = activeNeighbors(pos)
 			if active.contains(pos) {
 				return nearby == 2 || nearby == 3
@@ -47,30 +62,37 @@ class Solve17: PuzzleSolver {
 			}
 		}
 
-		func activeNeighbors(_ pos: Position3D) -> Int {
-			pos.neighbors(includeSelf: false).filter { active.contains($0) }.count
+		func activeNeighbors(_ pos: dimensional) -> Int {
+			pos.neighbors(includeSelf: false).filter { active.contains($0 as! dimension) }.count
 		}
 	}
 
-	private func solve(_ filename: String, is3D _: Bool) -> String {
-		var state = load(filename)
+	private func solve(_ filename: String, is3D: Bool) -> String {
+		var state: Morphable?
+		if is3D {
+			let state3d: State<Position3D> = load(filename)
+			state = state3d
+		} else {
+			let state4d: State<Position4D> = load(filename)
+			state = state4d
+		}
 
 		let iterations = 6
 		for _ in 0 ..< iterations {
-			state = state.morph()
+			state = state!.morph()
 		}
 
-		return state.active.count.description
+		return state!.activeCount().description
 	}
 
-	private func load(_ filename: String) -> State {
+	private func load<dimension>(_ filename: String) -> State<dimension> where dimension: Positional {
 		let lines = FileHelper.load(filename)!
-		var active = Set<Position3D>()
+		var active = Set<dimension>()
 		// by convention, 'top-left' at 0,0,0
 		for y in 0 ..< lines.count {
 			for x in 0 ..< lines[y].count {
 				if lines[y].character(at: x) == "#" {
-					active.insert(Position3D(x, y, 0))
+					active.insert(dimension.alloc(x: x, y: y) as! dimension)
 				}
 			}
 		}

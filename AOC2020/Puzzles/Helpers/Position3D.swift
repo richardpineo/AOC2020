@@ -8,6 +8,10 @@ struct Position3D: Hashable, Positional {
 		self.z = z
 	}
 
+	static func alloc(x: Int, y: Int) -> Position3D {
+		Position3D(x, y, 0)
+	}
+
 	static let origin = Position3D(0, 0, 0)
 
 	var x: Int
@@ -40,5 +44,6 @@ struct Position3D: Hashable, Positional {
 			}
 		}
 		let all = ns.map { self.offset($0) }
-		return includeSelf ? all : all.filter { $0 != self }	}
+		return includeSelf ? all : all.filter { $0 != self }
+	}
 }

@@ -29,6 +29,7 @@
 		BF1AFCB1258B26650013C8CC /* Position4D.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFCB0258B26650013C8CC /* Position4D.swift */; };
 		BF1AFCB5258B26EE0013C8CC /* Positional.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFCB4258B26EE0013C8CC /* Positional.swift */; };
 		BF1AFCB8258B27E90013C8CC /* Positional.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFCB4258B26EE0013C8CC /* Positional.swift */; };
+		BF1AFCBB258B2CCC0013C8CC /* Position4D.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFCB0258B26650013C8CC /* Position4D.swift */; };
 		BF3B15F32589D75900061C31 /* Example16-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF3B15F22589D75900061C31 /* Example16-2.txt */; };
 		BF4F5267257755E80036DE28 /* Solve1Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513C4257628CE002C3100 /* Solve1Status.swift */; };
 		BF4F526C257756B70036DE28 /* Solve2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F526B257756B70036DE28 /* Solve2.swift */; };
@@ -1071,6 +1072,7 @@
 				BFF7520B258314C70033BD7C /* Solve23.swift in Sources */,
 				BF125BDB25760C2900B6C3B3 /* FileHelper.swift in Sources */,
 				BFE59D1E2579FBB000CBE639 /* Solve4.swift in Sources */,
+				BF1AFCBB258B2CCC0013C8CC /* Position4D.swift in Sources */,
 				BFF75229258315CC0033BD7C /* TestPuzzle22.swift in Sources */,
 				BFF75227258315CC0033BD7C /* TestPuzzle12.swift in Sources */,
 				BFB23E102585ED0800B7B7BD /* MathHelper.swift in Sources */,
