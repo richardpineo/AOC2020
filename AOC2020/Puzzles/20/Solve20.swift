@@ -5,7 +5,7 @@ class Solve20: PuzzleSolver {
 	let exampleFile = "Example20"
 
 	func solveAExamples() -> Bool {
-		solve(exampleFile) == ""
+		solve(exampleFile) == "20899048083289"
 	}
 
 	func solveBExamples() -> Bool {
