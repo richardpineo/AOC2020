@@ -46,8 +46,6 @@ class Solve18: PuzzleSolver {
 	indirect enum Node {
 		case add(Node, Node)
 		case multiply(Node, Node)
-		case value(Int)
-
 		case rawValue(Character)
 
 		func matches(_ character: Character) -> Bool {
@@ -55,10 +53,6 @@ class Solve18: PuzzleSolver {
 				return c == character
 			}
 			return false
-		}
-
-		var isAddition: Bool {
-			return matches("+")
 		}
 		
 		var rawValueToNumber: Int {
@@ -70,8 +64,6 @@ class Solve18: PuzzleSolver {
 
 		var evaluated: Int {
 			switch self {
-			case let .value(v):
-				return v
 			case let .add(a, b):
 				return a.evaluated + b.evaluated
 			case let .multiply(a, b):
@@ -84,7 +76,7 @@ class Solve18: PuzzleSolver {
 
 	private func reduce3(_ lhs: Node, _ oper: Node, _ rhs: Node) -> Node {
 		guard case let .rawValue(c) = oper else {
-			return .value(-666)
+			return .rawValue("💩")
 		}
 
 		switch c {
@@ -93,11 +85,11 @@ class Solve18: PuzzleSolver {
 		case "*":
 			return .multiply(lhs, rhs)
 		default:
-			return .value(-666)
+			return .rawValue("💩")
 		}
 	}
 
-	// All the tokens are one of [0-9+*]
+	// All the tokens are one of [0-9+*], all parens removed.
 	private func simpleReduce(_ tokens: [Node], applyPrecedence: Bool) -> Node {
 		if tokens.count == 1 {
 			return tokens[0]
@@ -106,7 +98,7 @@ class Solve18: PuzzleSolver {
 		// If we apply precedence then we find the first + in the tokens
 		var startingOffset = 0
 		if applyPrecedence {
-			if let found = tokens.firstIndex(where: { $0.isAddition }) {
+			if let found = tokens.firstIndex(where: { $0.matches("+") }) {
 				startingOffset = found - 1
 			}
 		}
@@ -121,24 +113,24 @@ class Solve18: PuzzleSolver {
 
 	private func reduce(_ tokens: [Node], applyPrecedence: Bool) -> Node {
 		//  We'll do this by pulling out tokens surrounded by parens
-		guard let nested = tokens.lastIndex(where: { $0.matches("(") }) else {
+		guard let firstParenIndex = tokens.lastIndex(where: { $0.matches("(") }) else {
 			// No parens found - reduce simply.
 			return simpleReduce(tokens, applyPrecedence: applyPrecedence)
 		}
 
-		for index in nested + 1 ..< tokens.count {
+		for index in firstParenIndex + 1 ..< tokens.count {
 			if tokens[index].matches(")") {
 				// pull out the innards
-				let subRange = Array(tokens[nested + 1 ... index - 1])
+				let subRange = Array(tokens[firstParenIndex + 1 ... index - 1])
 				let reduced = reduce(subRange, applyPrecedence: applyPrecedence)
 				var newTokens = tokens
-				newTokens.removeSubrange(nested ... index)
-				newTokens.insert(reduced, at: nested)
+				newTokens.removeSubrange(firstParenIndex ... index)
+				newTokens.insert(reduced, at: firstParenIndex)
 				return reduce(newTokens, applyPrecedence: applyPrecedence)
 			}
 		}
 		// should never get here
-		return Node.value(-666)
+		return .rawValue("💩")
 	}
 
 	private func parse(_ line: String) -> [Node] {
