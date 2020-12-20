@@ -80,7 +80,6 @@
 		BFB721F8257F3D740021C4C4 /* Example10.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB721B7257F3D730021C4C4 /* Example10.txt */; };
 		BFB721F9257F3D740021C4C4 /* Solve18.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB721B9257F3D740021C4C4 /* Solve18.swift */; };
 		BFB721FA257F3D740021C4C4 /* Input18.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB721BA257F3D740021C4C4 /* Input18.txt */; };
-		BFB721FB257F3D740021C4C4 /* Example18.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB721BB257F3D740021C4C4 /* Example18.txt */; };
 		BFB721FC257F3D740021C4C4 /* Input22.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB721BD257F3D740021C4C4 /* Input22.txt */; };
 		BFB721FD257F3D740021C4C4 /* Example22.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB721BE257F3D740021C4C4 /* Example22.txt */; };
 		BFB721FE257F3D740021C4C4 /* Solve22.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB721BF257F3D740021C4C4 /* Solve22.swift */; };
@@ -265,7 +264,6 @@
 		BFB721B7257F3D730021C4C4 /* Example10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example10.txt; sourceTree = "<group>"; };
 		BFB721B9257F3D740021C4C4 /* Solve18.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solve18.swift; sourceTree = "<group>"; };
 		BFB721BA257F3D740021C4C4 /* Input18.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input18.txt; sourceTree = "<group>"; };
-		BFB721BB257F3D740021C4C4 /* Example18.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example18.txt; sourceTree = "<group>"; };
 		BFB721BD257F3D740021C4C4 /* Input22.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input22.txt; sourceTree = "<group>"; };
 		BFB721BE257F3D740021C4C4 /* Example22.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example22.txt; sourceTree = "<group>"; };
 		BFB721BF257F3D740021C4C4 /* Solve22.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solve22.swift; sourceTree = "<group>"; };
@@ -601,7 +599,6 @@
 		BFB721B8257F3D740021C4C4 /* 18 */ = {
 			isa = PBXGroup;
 			children = (
-				BFB721BB257F3D740021C4C4 /* Example18.txt */,
 				BFB721BA257F3D740021C4C4 /* Input18.txt */,
 				BFB721B9257F3D740021C4C4 /* Solve18.swift */,
 			);
@@ -923,7 +920,6 @@
 				BFEBED0625873851007EAE49 /* Example14-2.txt in Resources */,
 				BFB7221E257F3D740021C4C4 /* Example20.txt in Resources */,
 				BFB72213257F3D740021C4C4 /* Example9.txt in Resources */,
-				BFB721FB257F3D740021C4C4 /* Example18.txt in Resources */,
 				BFF06E382578AB0600725DE7 /* Example3.txt in Resources */,
 				BFB721F4257F3D740021C4C4 /* Example19.txt in Resources */,
 				BFB721F7257F3D740021C4C4 /* Input10.txt in Resources */,

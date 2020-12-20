@@ -39,12 +39,6 @@
             </BuildableReference>
             <SkippedTests>
                <Test
-                  Identifier = "TestPuzzle18">
-               </Test>
-               <Test
-                  Identifier = "TestPuzzle19">
-               </Test>
-               <Test
                   Identifier = "TestPuzzle20">
                </Test>
                <Test
