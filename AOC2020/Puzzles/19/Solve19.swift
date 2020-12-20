@@ -3,17 +3,18 @@ import Foundation
 
 class Solve19: PuzzleSolver {
 	let exampleFile = "Example19"
+	let inputFile = "Input19"
 
 	func solveAExamples() -> Bool {
 		solve(exampleFile) == "2"
 	}
 
 	func solveBExamples() -> Bool {
-		false
+		return false
 	}
 
 	func solveA() -> String {
-		""
+		solve(inputFile)
 	}
 
 	func solveB() -> String {
@@ -25,12 +26,78 @@ class Solve19: PuzzleSolver {
 		case either([Int], [Int])
 		case character(Character)
 	}
-	
-	private func solve(_ filename: String) -> String {
 		
+	private func solve(_ filename: String) -> String {
 		let (rules, messages) = load(filename)
+		let solver = Solver(rules: rules)
+		let allWords = solver.allWords()
+		let passing = messages.reduce(0) { (count, message) in
+			let passes = allWords.contains(message)
+			return count + (passes ? 1 : 0)
+		}
+		return passing.description
+	}
+	
+	class Solver {
+		init(rules: [Int: Rule]) {
+			self.rules = rules
+		}
+		private let rules: [Int: Rule]
+		
+		func allWords() -> Set<String> {
+			var words = Set<String>()
+			rules.keys.forEach { id in
+				let forRule = wordsForRule(id: id)
+				words.formUnion(forRule)
+			}
+			return words
+		}
 
-		return messages.count.description
+		func wordsForRule(id: Int) -> [String] {
+			if let found = memoized[id] {
+				return found
+			}
+			
+			let words = wordsForRuleRaw(id: id)
+			memoized[id] = words
+			return words
+		}
+		
+		private func compoundWords(ids: [Int]) -> [String] {
+			if ids.count == 1 {
+				return wordsForRule(id: ids[0])
+			}
+			
+			let first = self.wordsForRule(id: ids[0])
+			let subWords = compoundWords(ids: Array(ids.dropFirst(1)))
+			var words: [String] = []
+			for prefix in first {
+				for sub in subWords {
+					words.append(prefix + sub)
+				}
+			}
+			return words
+		}
+		
+		private func wordsForRuleRaw(id: Int) -> [String] {
+			switch rules[id] {
+			case let .character(c):
+				return [String(c)]
+			
+			case let .compound(subs):
+				return compoundWords(ids: subs)
+				
+			case let .either(first, second):
+				let firstWords = compoundWords(ids: first)
+				let secondWords = compoundWords(ids: second)
+				return firstWords + secondWords
+				
+			case .none:
+				return []
+			}
+		}
+
+		var memoized: [Int: [String]] = [:]
 	}
 	
 	private func loadSubRules(_ line: String) -> [Int] {
