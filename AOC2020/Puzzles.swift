@@ -26,7 +26,7 @@ class Puzzles: ObservableObject {
 			Puzzle(id: 18, name: "Operation Order") { Solve18() },
 			Puzzle(id: 19, name: "Monster Messages") { Solve19() },
 			Puzzle(id: 20, name: "Jurassic Jigsaw") { Solve20() },
-			Puzzle(id: 21, name: "") { Solve21() },
+			Puzzle(id: 21, name: "Allergen Assessment") { Solve21() },
 			Puzzle(id: 22, name: "") { Solve22() },
 			Puzzle(id: 23, name: "") { Solve23() },
 			Puzzle(id: 24, name: "") { Solve24() },
