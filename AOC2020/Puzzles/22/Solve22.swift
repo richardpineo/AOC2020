@@ -3,9 +3,10 @@ import Foundation
 
 class Solve22: PuzzleSolver {
 	let exampleFile = "Example22"
+	let inputFile = "Input22"
 
 	func solveAExamples() -> Bool {
-		solve(exampleFile) == ""
+		solve(exampleFile) == "306"
 	}
 
 	func solveBExamples() -> Bool {
@@ -13,7 +14,7 @@ class Solve22: PuzzleSolver {
 	}
 
 	func solveA() -> String {
-		""
+		solve(inputFile)
 	}
 
 	func solveB() -> String {
@@ -23,6 +24,23 @@ class Solve22: PuzzleSolver {
 	class Game {
 		var player1 = Deck()
 		var player2 = Deck()
+
+		func play() -> Int? {
+			guard let card1 = player1.cards.dequeue() else {
+				return 1
+			}
+			guard let card2 = player2.cards.dequeue() else {
+				return 0
+			}
+			if card1 > card2 {
+				player1.cards.enqueue(card1)
+				player1.cards.enqueue(card2)
+			} else {
+				player2.cards.enqueue(card2)
+				player2.cards.enqueue(card1)
+			}
+			return nil
+		}
 	}
 
 	class Deck {
@@ -31,8 +49,20 @@ class Solve22: PuzzleSolver {
 
 	private func solve(_ filename: String) -> String {
 		let game = load(filename)
-		
-		return "Not yet"
+
+		while true {
+			if let winner = game.play() {
+				let winningDeck = winner == 1 ? game.player2 : game.player1
+
+				let deck = winningDeck.cards.array
+				var sum = 0
+				for index in 0 ..< deck.count {
+					let mult = deck.count - index
+					sum += mult * deck[index]
+				}
+				return sum.description
+			}
+		}
 	}
 
 	private func load(_ filename: String) -> Game {
@@ -51,7 +81,7 @@ class Solve22: PuzzleSolver {
 			game.player2.cards.enqueue(card)
 			index += 1
 		}
-		
+
 		return game
 	}
 }

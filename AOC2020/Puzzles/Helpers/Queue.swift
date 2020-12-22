@@ -27,4 +27,8 @@ public struct Queue<T> {
 			return nil
 		}
 	}
+
+	var array: [T] {
+		list
+	}
 }
