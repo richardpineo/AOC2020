@@ -25,7 +25,7 @@ class Solve18: PuzzleSolver {
 			evaluate(example1b, applyPrecedence: true) == 51 &&
 			evaluate(example2, applyPrecedence: true) == 46 &&
 			evaluate(example3, applyPrecedence: true) == 1445 &&
-			evaluate(example4, applyPrecedence: true) == 669060 &&
+			evaluate(example4, applyPrecedence: true) == 669_060 &&
 			evaluate(example5, applyPrecedence: true) == 23340
 	}
 
@@ -36,8 +36,8 @@ class Solve18: PuzzleSolver {
 	func solveB() -> String {
 		solve(applyPrecedence: true)
 	}
-	
-	private func solve( applyPrecedence: Bool) -> String {
+
+	private func solve(applyPrecedence: Bool) -> String {
 		let input = load(inputFile1)
 		let sum = input.reduce(0) { $0 + evaluate($1, applyPrecedence: applyPrecedence) }
 		return sum.description
@@ -54,7 +54,7 @@ class Solve18: PuzzleSolver {
 			}
 			return false
 		}
-		
+
 		var rawValueToNumber: Int {
 			if case let .rawValue(c) = self {
 				return Int(String(c))!
@@ -102,11 +102,11 @@ class Solve18: PuzzleSolver {
 				startingOffset = found - 1
 			}
 		}
-		
+
 		// reduce the first 3
 		let oneExpr = reduce3(tokens[startingOffset], tokens[startingOffset + 1], tokens[startingOffset + 2])
 		var newTokens = tokens
-		newTokens.removeSubrange(startingOffset...startingOffset+2)
+		newTokens.removeSubrange(startingOffset ... startingOffset + 2)
 		newTokens.insert(oneExpr, at: startingOffset)
 		return simpleReduce(newTokens, applyPrecedence: applyPrecedence)
 	}
@@ -146,7 +146,7 @@ class Solve18: PuzzleSolver {
 		let answer = reduced.evaluated
 		return answer
 	}
-	
+
 	private func load(_ filename: String) -> [String] {
 		let lines = FileHelper.load(filename)!.filter { !$0.isEmpty }
 		return lines
