@@ -4,6 +4,14 @@ import Foundation
 public struct Queue<T> {
 	private var list = [T]()
 
+	public init() {
+		list = [T]()
+	}
+
+	public init(from: [T]) {
+		list = from
+	}
+
 	public var isEmpty: Bool {
 		list.isEmpty
 	}
@@ -26,6 +34,10 @@ public struct Queue<T> {
 		} else {
 			return nil
 		}
+	}
+
+	var count: Int {
+		list.count
 	}
 
 	var array: [T] {
