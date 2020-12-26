@@ -41,7 +41,7 @@ struct SolutionView: View {
 			self.processingStep = self.processingStep + 1
 		}
 	}
-	
+
 	private func shortenIfNeeded(_ solution: String) -> String {
 		let max = 20
 		return solution.count > max ? "Too Long" : solution

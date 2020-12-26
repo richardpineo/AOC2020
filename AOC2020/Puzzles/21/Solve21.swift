@@ -29,7 +29,7 @@ class Solve21: PuzzleSolver {
 	private func solveA(_ filename: String) -> String {
 		let foods = load(filename)
 		let dangerFoods = danger(foods: foods)
-		
+
 		var count = 0
 		foods.forEach { food in
 			food.ingredients.forEach { ingredient in
@@ -40,18 +40,17 @@ class Solve21: PuzzleSolver {
 		}
 		return count.description
 	}
-	
+
 	private func solveB(_ filename: String) -> String {
 		let foods = load(filename)
-		let dangerFoods = Array( danger(foods: foods))
+		let dangerFoods = Array(danger(foods: foods))
 		let canonical = dangerFoods.sorted(by: { $0.key < $1.key })
-		let solution = canonical.map { $0.value }.joined(separator: ",")
+		let solution = canonical.map(\.value).joined(separator: ",")
 		return solution
 	}
 
 	// returns allegen -> food
 	private func danger(foods: [Food]) -> [String: String] {
-		
 		// From allergen to possible ingredient.
 		var allergens = [String: Set<String>]()
 		foods.forEach { food in
@@ -59,32 +58,31 @@ class Solve21: PuzzleSolver {
 				if var a = allergens[allergen] {
 					a.formIntersection(food.ingredients)
 					allergens[allergen] = a
-				}
-				else {
+				} else {
 					allergens[allergen] = Set<String>(food.ingredients)
 				}
 			}
 		}
-		
+
 		var solution: [String: String] = [:]
-		
-		while allergens.count > 0{
+
+		while allergens.count > 0 {
 			// Add any singtons to our solution
-			allergens.filter { (key, value) in value.count == 1 }.forEach {
+			allergens.filter { _, value in value.count == 1 }.forEach {
 				solution[$0.key] = $0.value.first
 			}
-			
+
 			// Find new set to reduce.
 			var reduced = [String: Set<String>]()
-			allergens.forEach { (key, value) in
-				let newValues = value.filter { !solution.values.contains( $0 ) }
+			allergens.forEach { key, value in
+				let newValues = value.filter { !solution.values.contains($0) }
 				if newValues.count > 0 {
 					reduced[key] = newValues
 				}
 			}
 			allergens = reduced
 		}
-		
+
 		return solution
 	}
 
