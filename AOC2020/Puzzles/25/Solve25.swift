@@ -15,7 +15,7 @@ class Solve25: PuzzleSolver {
 	}
 
 	func solveBExamples() -> Bool {
-		false
+		true
 	}
 
 	func solveA() -> String {
