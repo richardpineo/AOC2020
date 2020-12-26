@@ -47,9 +47,6 @@
                <Test
                   Identifier = "TestPuzzle24">
                </Test>
-               <Test
-                  Identifier = "TestPuzzle25">
-               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>
