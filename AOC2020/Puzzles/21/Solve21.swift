@@ -6,19 +6,19 @@ class Solve21: PuzzleSolver {
 	let inputFile = "Input21"
 
 	func solveAExamples() -> Bool {
-		solve(exampleFile) == "5"
+		solveA(exampleFile) == "5"
 	}
 
 	func solveBExamples() -> Bool {
-		false
+		solveB(exampleFile) == "mxmxvkd,sqjhc,fvjkl"
 	}
 
 	func solveA() -> String {
-		solve(inputFile)
+		solveA(inputFile)
 	}
 
 	func solveB() -> String {
-		""
+		solveB(inputFile)
 	}
 
 	struct Food {
@@ -26,8 +26,31 @@ class Solve21: PuzzleSolver {
 		var allergens: [String]
 	}
 
-	private func solve(_ filename: String) -> String {
+	private func solveA(_ filename: String) -> String {
 		let foods = load(filename)
+		let dangerFoods = danger(foods: foods)
+		
+		var count = 0
+		foods.forEach { food in
+			food.ingredients.forEach { ingredient in
+				if !dangerFoods.values.contains(ingredient) {
+					count += 1
+				}
+			}
+		}
+		return count.description
+	}
+	
+	private func solveB(_ filename: String) -> String {
+		let foods = load(filename)
+		let dangerFoods = Array( danger(foods: foods))
+		let canonical = dangerFoods.sorted(by: { $0.key < $1.key })
+		let solution = canonical.map { $0.value }.joined(separator: ",")
+		return solution
+	}
+
+	// returns allegen -> food
+	private func danger(foods: [Food]) -> [String: String] {
 		
 		// From allergen to possible ingredient.
 		var allergens = [String: Set<String>]()
@@ -43,7 +66,6 @@ class Solve21: PuzzleSolver {
 			}
 		}
 		
-		// allegen -> food, will be 1:1
 		var solution: [String: String] = [:]
 		
 		while allergens.count > 0{
@@ -63,16 +85,7 @@ class Solve21: PuzzleSolver {
 			allergens = reduced
 		}
 		
-		var count = 0
-		foods.forEach { food in
-			food.ingredients.forEach { ingredient in
-				if !solution.values.contains(ingredient) {
-					count += 1
-				}
-			}
-		}
-		
-		return count.description
+		return solution
 	}
 
 	private func load(_ filename: String) -> [Food] {

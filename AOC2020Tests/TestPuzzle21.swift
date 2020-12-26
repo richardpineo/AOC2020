@@ -18,6 +18,6 @@ class TestPuzzle21: XCTestCase {
 	}
 
 	func testB() throws {
-		try solveB(solver(), "")
+		try solveB(solver(), "lmcqt,kcddk,npxrdnd,cfb,ldkt,fqpt,jtfmtpd,tsch")
 	}
 }

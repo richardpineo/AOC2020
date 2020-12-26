@@ -21,7 +21,7 @@ struct SolutionView: View {
 					if sol.isEmpty {
 						Text("UNSOLVED")
 					} else {
-						Text(sol)
+						Text(shortenIfNeeded(sol))
 							.lineLimit(1)
 							.minimumScaleFactor(0.5)
 					}
@@ -40,6 +40,11 @@ struct SolutionView: View {
 		.onReceive(self.timer) { _ in
 			self.processingStep = self.processingStep + 1
 		}
+	}
+	
+	private func shortenIfNeeded(_ solution: String) -> String {
+		let max = 20
+		return solution.count > max ? "Too Long" : solution
 	}
 
 	private static let updateHz = 0.1
