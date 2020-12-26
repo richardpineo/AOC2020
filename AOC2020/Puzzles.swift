@@ -28,8 +28,8 @@ class Puzzles: ObservableObject {
 			Puzzle(id: 20, name: "Jurassic Jigsaw") { Solve20() },
 			Puzzle(id: 21, name: "Allergen Assessment") { Solve21() },
 			Puzzle(id: 22, name: "Crab Combat") { Solve22() },
-			Puzzle(id: 23, name: "") { Solve23() },
-			Puzzle(id: 24, name: "") { Solve24() },
+			Puzzle(id: 23, name: "Crab Cups") { Solve23() },
+			Puzzle(id: 24, name: "Lobby Layout") { Solve24() },
 			Puzzle(id: 25, name: "Combo Breaker") { Solve25() },
 		]
 
