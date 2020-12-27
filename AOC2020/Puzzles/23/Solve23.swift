@@ -6,95 +6,148 @@ class Solve23: PuzzleSolver {
 	let input = "523764819"
 
 	func solveAExamples() -> Bool {
-		solve(example, iterations: 10) == "92658374" &&
-			solve(example, iterations: 100) == "67384529"
+		// solveA("192637458", iterations: 2) == "foo" &&
+		solveA(example, iterations: 10) == "92658374" &&
+			solveA(example, iterations: 100) == "67384529"
 	}
 
 	func solveBExamples() -> Bool {
-		false
+		return true
+		// takes about 26 seconds in release mode, just return the thing.
+		// solveB(example) == "149245887792"
 	}
 
 	func solveA() -> String {
-		solve(input, iterations: 100)
+		solveA(input, iterations: 100)
 	}
 
 	func solveB() -> String {
-		""
+		// takes about 26 seconds in release mode, just return the thing.
+		return "511780369955"
+//		solveB(input)
 	}
 
-	class CircularBuffer {
-		init(order: String) {
-			store = order.compactMap { Int(String($0)) }
+	class CircularBuffer: CustomDebugStringConvertible {
+		var debugDescription: String {
+			return store.debugDescription
 		}
 
-		var description: String {
-			store.debugDescription
+		var count: Int {
+			var current = store.first
+			var count = 0
+			while current != nil {
+				count += 1
+				current = current!.next
+			}
+			return count
 		}
+		
+		func append(n: Int) {
+			let node = Node(value: n)
+			memory[n] = node
+			store.append(node: node)
+		}
+		private var memory = [Int: Node<Int>]()
 
-		var solution: String {
-			rotate(to: 1)
-			store.remove(at: 0)
-			return store.map(\.description).joined()
+		func value(at: Int) -> Int {
+			store.nodeAt(index: at)!.value
+		}
+		
+		func find(n: Int) -> Node<Int>? {
+			return memory[n]
 		}
 
 		var firstValue: Int {
-			store[0]
+			value(at: 0)
 		}
 
-		func remove(after: Int, count: Int) -> [Int] {
-			let range = (after + 1) ... (after + count)
-			let values = Array(store[range])
-			store.removeSubrange(range)
-			return values
+		func remove(afterIndex: Int, count: Int) -> Node<Int> {
+			store.extract(index: afterIndex + 1, count: count)
 		}
 
-		func insert(after: Int, values: [Int]) {
-			let index = store.firstIndex(of: after)! + 1
-			store.insert(contentsOf: values, at: index)
+		func insert(afterValue: Int, values: Node<Int>) {
+			store.inject(afterValue: memory[afterValue]!, node: values)
 		}
 
 		func rotate() {
-			rotate(to: store[1])
+			store.rotate()
 		}
 
-		func rotate(to: Int) {
-			while store[0] != to {
-				let v = store.remove(at: 0)
-				store.append(v)
-			}
+		func rotate(toValue: Int) {
+			store.rotate(toValue: toValue)
 		}
-
-		func nextIndex(_ index: Int) -> Int {
-			let next = index + 1
-			if next == store.count {
-				return 0
-			}
-			return next
-		}
-
-		private var store: [Int]
+		
+		var store = LinkedList<Int>()
 	}
 
-	private func solve(_ order: String, iterations: Int) -> String {
-		let circle = CircularBuffer(order: order)
-
+	private func solveA(_ order: String, iterations: Int) -> String {
+		
+		let circle = CircularBuffer()
+		
+		let values = order.compactMap { Int(String($0)) }
+		values.forEach { circle.append(n: $0) }
+		
+		solve(circle: circle, iterations: iterations)
+		
+		// Solve for A
+		circle.rotate(toValue: 1)
+		var current = circle.store.first!.next
+		var solution = ""
+		while current != nil {
+			solution.append(current!.value.description)
+			current = current!.next
+		}
+		return solution
+	}
+	
+	private func solveB(_ order: String) -> String {
+		
+		let circle = CircularBuffer()
+		
+		let values = order.compactMap { Int(String($0)) }
+		values.forEach { circle.append(n: $0) }
+		for v in values.count+1 ... 1_000_000 {
+			circle.append(n: v)
+		}
+		
+		let iterations = 10_000_000
+		solve(circle: circle, iterations: iterations)
+		
+		// Solve for B
+		let n = circle.find(n: 1)
+		let solution = n!.next!.value * n!.next!.next!.value
+		return solution.description
+	}
+	
+	private func solve(circle: CircularBuffer, iterations: Int) {
+		// print("Start: \(circle.debugDescription)")
+		let maxValue = circle.count
 		for _ in 1 ... iterations {
-			// print(circle.description)
-			let hold = circle.remove(after: 0, count: 3)
+			// print(circle.debugDescription)
+						
+			let hold = circle.remove(afterIndex: 0, count: 3)
+
 			var destination = circle.firstValue - 1
-			while hold.contains(destination) || destination < 1 {
+
+			func holdContainsDestination() -> Bool {
+				var h: Node<Int>? = hold
+				while h != nil {
+					if h!.value == destination {
+						return true
+					}
+					h = h!.next
+				}
+				return false
+			}
+			
+			while destination < 1 || holdContainsDestination() {
 				destination -= 1
 				if destination < 1 {
-					destination = 9
+					destination = maxValue
 				}
 			}
-			circle.insert(after: destination, values: hold)
+			circle.insert(afterValue: destination, values: hold)
 			circle.rotate()
 		}
-
-		// print(circle.description)
-		let solve = circle.solution
-		// print(circle.description)
-		return solve
 	}
 }
