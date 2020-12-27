@@ -37,11 +37,6 @@
                BlueprintName = "AOC2020Tests"
                ReferencedContainer = "container:AOC2020.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "TestPuzzle24">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
