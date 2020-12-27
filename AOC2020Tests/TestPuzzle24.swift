@@ -14,10 +14,10 @@ class TestPuzzle24: XCTestCase {
 	}
 
 	func testA() throws {
-		try solveA(solver(), "")
+		try solveA(solver(), "312")
 	}
 
 	func testB() throws {
-		try solveB(solver(), "")
+		try solveB(solver(), "3733")
 	}
 }
