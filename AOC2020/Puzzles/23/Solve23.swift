@@ -12,7 +12,7 @@ class Solve23: PuzzleSolver {
 	}
 
 	func solveBExamples() -> Bool {
-		return true
+		true
 		// takes about 26 seconds in release mode, just return the thing.
 		// solveB(example) == "149245887792"
 	}
@@ -23,13 +23,13 @@ class Solve23: PuzzleSolver {
 
 	func solveB() -> String {
 		// takes about 26 seconds in release mode, just return the thing.
-		return "511780369955"
+		"511780369955"
 //		solveB(input)
 	}
 
 	class CircularBuffer: CustomDebugStringConvertible {
 		var debugDescription: String {
-			return store.debugDescription
+			store.debugDescription
 		}
 
 		var count: Int {
@@ -41,20 +41,21 @@ class Solve23: PuzzleSolver {
 			}
 			return count
 		}
-		
+
 		func append(n: Int) {
 			let node = Node(value: n)
 			memory[n] = node
 			store.append(node: node)
 		}
+
 		private var memory = [Int: Node<Int>]()
 
 		func value(at: Int) -> Int {
 			store.nodeAt(index: at)!.value
 		}
-		
+
 		func find(n: Int) -> Node<Int>? {
-			return memory[n]
+			memory[n]
 		}
 
 		var firstValue: Int {
@@ -76,19 +77,18 @@ class Solve23: PuzzleSolver {
 		func rotate(toValue: Int) {
 			store.rotate(toValue: toValue)
 		}
-		
+
 		var store = LinkedList<Int>()
 	}
 
 	private func solveA(_ order: String, iterations: Int) -> String {
-		
 		let circle = CircularBuffer()
-		
+
 		let values = order.compactMap { Int(String($0)) }
 		values.forEach { circle.append(n: $0) }
-		
+
 		solve(circle: circle, iterations: iterations)
-		
+
 		// Solve for A
 		circle.rotate(toValue: 1)
 		var current = circle.store.first!.next
@@ -99,32 +99,31 @@ class Solve23: PuzzleSolver {
 		}
 		return solution
 	}
-	
+
 	private func solveB(_ order: String) -> String {
-		
 		let circle = CircularBuffer()
-		
+
 		let values = order.compactMap { Int(String($0)) }
 		values.forEach { circle.append(n: $0) }
-		for v in values.count+1 ... 1_000_000 {
+		for v in values.count + 1 ... 1_000_000 {
 			circle.append(n: v)
 		}
-		
+
 		let iterations = 10_000_000
 		solve(circle: circle, iterations: iterations)
-		
+
 		// Solve for B
 		let n = circle.find(n: 1)
 		let solution = n!.next!.value * n!.next!.next!.value
 		return solution.description
 	}
-	
+
 	private func solve(circle: CircularBuffer, iterations: Int) {
 		// print("Start: \(circle.debugDescription)")
 		let maxValue = circle.count
 		for _ in 1 ... iterations {
 			// print(circle.debugDescription)
-						
+
 			let hold = circle.remove(afterIndex: 0, count: 3)
 
 			var destination = circle.firstValue - 1
@@ -139,7 +138,7 @@ class Solve23: PuzzleSolver {
 				}
 				return false
 			}
-			
+
 			while destination < 1 || holdContainsDestination() {
 				destination -= 1
 				if destination < 1 {

@@ -24,7 +24,7 @@ public class LinkedList<T>: CustomDebugStringConvertible where T: Equatable {
 		}
 		return values.debugDescription
 	}
-	
+
 	// 2. Change the head and tail variables to be constrained to type T
 	private weak var head: Node<T>?
 	private weak var tail: Node<T>?
@@ -67,42 +67,40 @@ public class LinkedList<T>: CustomDebugStringConvertible where T: Equatable {
 		}
 		return nil
 	}
-	
+
 	// very unsafe
 	public func extract(index: Int, count: Int) -> Node<T> {
 		let start = nodeAt(index: index)
 		var end = start
-		for _ in 1..<count {
+		for _ in 1 ..< count {
 			end = end!.next
 		}
-		
+
 		if let p = start!.previous {
 			p.next = end!.next
-		}
-		else {
+		} else {
 			head = end!.next
 		}
 		if let t = end!.next {
 			t.previous = start!.previous
-		}
-		else {
+		} else {
 			tail = start!.previous
 		}
 
 		start!.previous = nil
 		end!.next = nil
-		
+
 		return start!
 	}
-	
+
 	public func rotate() {
 		let n = head!
 		remove(node: head!)
 		append(node: n)
 	}
-	
+
 	public func rotate(toValue: T) {
-		while  head!.value != toValue {
+		while head!.value != toValue {
 			rotate()
 		}
 	}
@@ -113,11 +111,10 @@ public class LinkedList<T>: CustomDebugStringConvertible where T: Equatable {
 		while end.next != nil {
 			end = end.next!
 		}
-		
+
 		if let n = injectPos.next {
 			n.previous = end
-		}
-		else {
+		} else {
 			tail = end
 		}
 
@@ -125,16 +122,14 @@ public class LinkedList<T>: CustomDebugStringConvertible where T: Equatable {
 		injectPos.next = node
 		node.previous = injectPos
 	}
-	
+
 	public func insertAfter(node: Node<T>, value: T) -> Node<T> {
-		
 		let n = Node(value: value)
 		n.next = node.next
 		n.previous = node
 		if let nodeNext = node.next {
 			nodeNext.previous = n
-		}
-		else {
+		} else {
 			tail = n
 		}
 		node.next = n
@@ -145,19 +140,19 @@ public class LinkedList<T>: CustomDebugStringConvertible where T: Equatable {
 		head = nil
 		tail = nil
 	}
-	
+
 	/*
-	public func find(value: T) -> Node<T>? {
-		weak var current = head
-		while current != nil {
-			if current!.value == value {
-				return current
-			}
-			current = current!.next
-		}
-		return nil
-	}
-*/
+	 public func find(value: T) -> Node<T>? {
+	 	weak var current = head
+	 	while current != nil {
+	 		if current!.value == value {
+	 			return current
+	 		}
+	 		current = current!.next
+	 	}
+	 	return nil
+	 }
+	 */
 
 	// 7. Update the parameter of the remove function to take a node of type T. Update the return value to type T.
 	public func remove(node: Node<T>) {
