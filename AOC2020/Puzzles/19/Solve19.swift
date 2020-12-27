@@ -10,7 +10,7 @@ class Solve19: PuzzleSolver {
 	}
 
 	func solveBExamples() -> Bool {
-		false
+		return Solve19StolenPart2.run(example: true)  == 12
 	}
 
 	func solveA() -> String {
@@ -18,7 +18,7 @@ class Solve19: PuzzleSolver {
 	}
 
 	func solveB() -> String {
-		""
+		return Solve19StolenPart2.run(example: false).description
 	}
 
 	indirect enum Rule {
