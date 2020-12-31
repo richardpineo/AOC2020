@@ -1,6 +1,11 @@
 
 import Foundation
 
+
+func arrayIndex(_ row: Int, _ col: Int) -> Int {
+	Position2D(row, col).arrayIndex(numCols: 10)
+}
+
 class Solve20: PuzzleSolver {
 	let exampleFile = "Example20"
 	let inputFile = "Input20"
@@ -10,7 +15,7 @@ class Solve20: PuzzleSolver {
 	}
 
 	func solveBExamples() -> Bool {
-		false
+		solveB(.example) == "273"
 	}
 
 	func solveA() -> String {
@@ -18,17 +23,18 @@ class Solve20: PuzzleSolver {
 	}
 
 	func solveB() -> String {
-		""
+		solveB(.challenge)
 	}
 
 	class Tiles {
 		var tiles: [Tile] = []
 	}
-
+	
 	struct Tile: Hashable {
 		// 10x10 array of bits
 		init(id: Int, bits: [Bool]) {
 			self.id = id
+			self.bits = bits
 
 			func get(at: Position2D) -> Bool {
 				bits[at.arrayIndex(numCols: 10)]
@@ -43,10 +49,10 @@ class Solve20: PuzzleSolver {
 			var b: [Bool] = []
 			var r: [Bool] = []
 			for index in 0 ... 9 {
-				t.append(get(at: .init(index, 0)))
-				l.append(get(at: .init(0, index)))
-				b.append(get(at: .init(index, 9)))
-				r.append(get(at: .init(9, index)))
+				t.append(bits[arrayIndex(index, 0)])
+				l.append(bits[arrayIndex(0, index)])
+				b.append(bits[arrayIndex(index, 9)])
+				r.append(bits[arrayIndex(9, index)])
 			}
 
 			top = makeEdge(t)
@@ -56,13 +62,67 @@ class Solve20: PuzzleSolver {
 		}
 
 		var id: Int
+		let bits: [Bool]
 
 		// All that really matters are the edges
 		let top: String
 		let right: String
 		let bottom: String
 		let left: String
+		
+		func flipX() -> Tile {
+			var newBits = [Bool](repeating: false, count: bits.count)
+			for row in 0 ... 9 {
+				for col in 0 ... 9 {
+					if bits[Position2D(row, col).arrayIndex(numCols: 10)] {
+						newBits[Position2D(9-row, col).arrayIndex(numCols: 10)] = true
+					}
+				}
+			}
+			return Tile(id: self.id, bits: newBits)
+		}
 
+		func flipY() -> Tile {
+			var newBits = [Bool](repeating: false, count: bits.count)
+			for row in 0 ... 9 {
+				for col in 0 ... 9 {
+					if bits[Position2D(row, col).arrayIndex(numCols: 10)] {
+						newBits[Position2D(row, 9-col).arrayIndex(numCols: 10)] = true
+					}
+				}
+			}
+			return Tile(id: self.id, bits: newBits)
+		}
+		
+		func rotate() -> Tile {
+			return Tile(id: self.id, bits: rotate(bits: bits))
+		}
+		
+		private func rotate(bits: [Bool]) -> [Bool] {
+			
+			var newBits = [Bool](repeating: false, count: bits.count)
+			let layers = 5
+			for layer in 0 ..< layers {
+				
+				let first = layer
+				let last  = 10 - 1 - layer
+				
+				for i in first..<last {
+					
+					let top      = arrayIndex(first, i)
+					let left     = arrayIndex(last - (i - first), first)
+					let bottom   = arrayIndex(last, last - (i - first))
+					let right    = arrayIndex(i, last)
+					
+					newBits[top]    = bits[left]
+					newBits[left]   = bits[bottom]
+					newBits[bottom] = bits[right]
+					newBits[right]  = bits[top]
+				}
+			}
+			return newBits
+		}
+		
 		var edges: [String] {
 			[top, right, bottom, left,
 			 String(top.reversed()), String(right.reversed()), String(left.reversed()), String(bottom.reversed())]
@@ -73,8 +133,8 @@ class Solve20: PuzzleSolver {
 				return false
 			}
 
-			let otherEdgs = other.edges
-			return edges.first { otherEdgs.contains($0) } != nil
+			let otherEdges = other.edges
+			return edges.first { otherEdges.contains($0) } != nil
 		}
 	}
 
@@ -98,6 +158,13 @@ class Solve20: PuzzleSolver {
 		}
 
 		return "So fail"
+	}
+	
+	
+	private func solveB(_ data: Stolen20InputData) -> String {
+		
+		let answer = Stolen20Part2.run(data)
+		return answer.description
 	}
 
 	private func loadTile(data: [String]) -> Tile {
