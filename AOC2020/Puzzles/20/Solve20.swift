@@ -1,7 +1,6 @@
 
 import Foundation
 
-
 func arrayIndex(_ row: Int, _ col: Int) -> Int {
 	Position2D(row, col).arrayIndex(numCols: 10)
 }
@@ -29,7 +28,7 @@ class Solve20: PuzzleSolver {
 	class Tiles {
 		var tiles: [Tile] = []
 	}
-	
+
 	struct Tile: Hashable {
 		// 10x10 array of bits
 		init(id: Int, bits: [Bool]) {
@@ -69,17 +68,17 @@ class Solve20: PuzzleSolver {
 		let right: String
 		let bottom: String
 		let left: String
-		
+
 		func flipX() -> Tile {
 			var newBits = [Bool](repeating: false, count: bits.count)
 			for row in 0 ... 9 {
 				for col in 0 ... 9 {
 					if bits[Position2D(row, col).arrayIndex(numCols: 10)] {
-						newBits[Position2D(9-row, col).arrayIndex(numCols: 10)] = true
+						newBits[Position2D(9 - row, col).arrayIndex(numCols: 10)] = true
 					}
 				}
 			}
-			return Tile(id: self.id, bits: newBits)
+			return Tile(id: id, bits: newBits)
 		}
 
 		func flipY() -> Tile {
@@ -87,42 +86,39 @@ class Solve20: PuzzleSolver {
 			for row in 0 ... 9 {
 				for col in 0 ... 9 {
 					if bits[Position2D(row, col).arrayIndex(numCols: 10)] {
-						newBits[Position2D(row, 9-col).arrayIndex(numCols: 10)] = true
+						newBits[Position2D(row, 9 - col).arrayIndex(numCols: 10)] = true
 					}
 				}
 			}
-			return Tile(id: self.id, bits: newBits)
+			return Tile(id: id, bits: newBits)
 		}
-		
+
 		func rotate() -> Tile {
-			return Tile(id: self.id, bits: rotate(bits: bits))
+			Tile(id: id, bits: rotate(bits: bits))
 		}
-		
+
 		private func rotate(bits: [Bool]) -> [Bool] {
-			
 			var newBits = [Bool](repeating: false, count: bits.count)
 			let layers = 5
 			for layer in 0 ..< layers {
-				
 				let first = layer
-				let last  = 10 - 1 - layer
-				
-				for i in first..<last {
-					
-					let top      = arrayIndex(first, i)
-					let left     = arrayIndex(last - (i - first), first)
-					let bottom   = arrayIndex(last, last - (i - first))
-					let right    = arrayIndex(i, last)
-					
-					newBits[top]    = bits[left]
-					newBits[left]   = bits[bottom]
+				let last = 10 - 1 - layer
+
+				for i in first ..< last {
+					let top = arrayIndex(first, i)
+					let left = arrayIndex(last - (i - first), first)
+					let bottom = arrayIndex(last, last - (i - first))
+					let right = arrayIndex(i, last)
+
+					newBits[top] = bits[left]
+					newBits[left] = bits[bottom]
 					newBits[bottom] = bits[right]
-					newBits[right]  = bits[top]
+					newBits[right] = bits[top]
 				}
 			}
 			return newBits
 		}
-		
+
 		var edges: [String] {
 			[top, right, bottom, left,
 			 String(top.reversed()), String(right.reversed()), String(left.reversed()), String(bottom.reversed())]
@@ -159,10 +155,8 @@ class Solve20: PuzzleSolver {
 
 		return "So fail"
 	}
-	
-	
+
 	private func solveB(_ data: Stolen20InputData) -> String {
-		
 		let answer = Stolen20Part2.run(data)
 		return answer.description
 	}
