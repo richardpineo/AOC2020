@@ -136,6 +136,7 @@
 		BFE870CA2751E5E200D16C9E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60D3F42571B42700DA3C27 /* MainView.swift */; };
 		BFE870CB2751EA6900D16C9E /* ControlCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513A825761E8C002C3100 /* ControlCenter.swift */; };
 		BFE870CD2751EED200D16C9E /* PuzzleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE870CC2751EED200D16C9E /* PuzzleDetails.swift */; };
+		BFE870CF2751F6C300D16C9E /* PuzzlesRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE870CE2751F6C300D16C9E /* PuzzlesRepo.swift */; };
 		BFEBED0625873851007EAE49 /* Example14-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFEBED0525873851007EAE49 /* Example14-2.txt */; };
 		BFF06E382578AB0600725DE7 /* Example3.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFF06E372578AB0600725DE7 /* Example3.txt */; };
 		BFF06E3E2578AB1300725DE7 /* Input3.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFF06E3D2578AB1300725DE7 /* Input3.txt */; };
@@ -301,6 +302,7 @@
 		BFE59D50257A15E400CBE639 /* ProcessingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingIndicatorView.swift; sourceTree = "<group>"; };
 		BFE870C52751E1DB00D16C9E /* Puzzles2020.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzles2020.swift; sourceTree = "<group>"; };
 		BFE870CC2751EED200D16C9E /* PuzzleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleDetails.swift; sourceTree = "<group>"; };
+		BFE870CE2751F6C300D16C9E /* PuzzlesRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlesRepo.swift; sourceTree = "<group>"; };
 		BFEBED0525873851007EAE49 /* Example14-2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example14-2.txt"; sourceTree = "<group>"; };
 		BFF06E372578AB0600725DE7 /* Example3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Example3.txt; sourceTree = "<group>"; };
 		BFF06E3D2578AB1300725DE7 /* Input3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input3.txt; sourceTree = "<group>"; };
@@ -398,25 +400,14 @@
 			path = 1;
 			sourceTree = "<group>";
 		};
-		BF125BF825760F8000B6C3B3 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				BFE59D4F257A15D100CBE639 /* Common */,
-				BF9513BB257627B5002C3100 /* Details */,
-				BF60D4292571B53A00DA3C27 /* PuzzleCard.swift */,
-				BF60D4382571BCD500DA3C27 /* SolutionView.swift */,
-				BF60D4452571C5E500DA3C27 /* PuzzleProcessingView.swift */,
-				BF56417D2571C70900FC14B7 /* PuzzleProcessing.swift */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
 		BF125BF925760F9300B6C3B3 /* Program */ = {
 			isa = PBXGroup;
 			children = (
 				BF60D3F62571B42800DA3C27 /* Assets.xcassets */,
 				BF60D3F22571B42700DA3C27 /* AOC2020App.swift */,
 				BFE870C52751E1DB00D16C9E /* Puzzles2020.swift */,
+				BF125BB82576096F00B6C3B3 /* Puzzles */,
+				BF9513BB257627B5002C3100 /* Details */,
 			);
 			path = Program;
 			sourceTree = "<group>";
@@ -454,11 +445,9 @@
 			isa = PBXGroup;
 			children = (
 				BF60D3FB2571B42800DA3C27 /* Info.plist */,
-				BF125BB82576096F00B6C3B3 /* Puzzles */,
 				BF60D42E2571B56500DA3C27 /* Puzzles.swift */,
 				BF60D4332571B6A500DA3C27 /* Puzzle.swift */,
 				BFE870C42751E04D00D16C9E /* UILib */,
-				BF125BF825760F8000B6C3B3 /* UI */,
 				BF60D3F82571B42800DA3C27 /* Preview Content */,
 				BF125BF925760F9300B6C3B3 /* Program */,
 			);
@@ -737,13 +726,6 @@
 			path = 4;
 			sourceTree = "<group>";
 		};
-		BFE59D4F257A15D100CBE639 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		BFE870C42751E04D00D16C9E /* UILib */ = {
 			isa = PBXGroup;
 			children = (
@@ -751,6 +733,11 @@
 				BFE59D50257A15E400CBE639 /* ProcessingIndicatorView.swift */,
 				BF60D3F42571B42700DA3C27 /* MainView.swift */,
 				BF9513A825761E8C002C3100 /* ControlCenter.swift */,
+				BFE870CE2751F6C300D16C9E /* PuzzlesRepo.swift */,
+				BF60D4292571B53A00DA3C27 /* PuzzleCard.swift */,
+				BF60D4382571BCD500DA3C27 /* SolutionView.swift */,
+				BF60D4452571C5E500DA3C27 /* PuzzleProcessingView.swift */,
+				BF56417D2571C70900FC14B7 /* PuzzleProcessing.swift */,
 			);
 			path = UILib;
 			sourceTree = "<group>";
@@ -975,6 +962,7 @@
 				BFB721F6257F3D740021C4C4 /* Solve10.swift in Sources */,
 				BFB23DF12585653800B7B7BD /* DetailsView11.swift in Sources */,
 				BFB72205257F3D740021C4C4 /* Solve17.swift in Sources */,
+				BFE870CF2751F6C300D16C9E /* PuzzlesRepo.swift in Sources */,
 				BF4F526C257756B70036DE28 /* Solve2.swift in Sources */,
 				BFE59D51257A15E400CBE639 /* ProcessingIndicatorView.swift in Sources */,
 				BFB8FEF0257DFC55001CE683 /* Solve7.swift in Sources */,
