@@ -102,7 +102,7 @@ class PuzzleProcessing: ObservableObject {
 	private func solve(_ id: PuzzleProcessingId) -> String {
 		let puzzle = puzzles.get(byId: id.id)
 
-		guard let solver = puzzle?.makeSolver?() else {
+		guard let solver = puzzle?.solver else {
 			return ""
 		}
 

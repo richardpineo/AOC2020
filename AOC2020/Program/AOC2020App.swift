@@ -3,12 +3,11 @@ import SwiftUI
 
 @main
 struct AOC2020App: App {
-	let puzzles = Puzzles.application()
+	let puzzles = Puzzles2020()
 	var body: some Scene {
 		WindowGroup {
-			MainView()
-				.environmentObject(puzzles)
-				.environmentObject(PuzzleProcessing.application(puzzles: puzzles))
+			MainView(repo: puzzles)
+				.environmentObject(PuzzleProcessing.application(puzzles: puzzles.puzzles))
 		}
 	}
 }

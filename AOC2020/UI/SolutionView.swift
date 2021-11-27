@@ -77,8 +77,7 @@ struct Solutionview_Previews: PreviewProvider {
 			SolutionView(puzzle: PuzzlePreview.partSolved(), isA: true)
 			SolutionView(puzzle: PuzzlePreview.partSolved(), isA: false)
 		}
-		.environmentObject(PuzzlePreview.puzzles())
-		.environmentObject(PuzzlePreview.processing())
+		.environmentObject(PuzzlePreview().processing())
 		.previewLayout(.fixed(width: 200, height: 100))
 	}
 }

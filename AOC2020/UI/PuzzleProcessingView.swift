@@ -38,7 +38,7 @@ struct PuzzleProcessingView_Previews: PreviewProvider {
 			PuzzleProcessingView(processingStep: 0, processingId: PuzzleProcessingId(id: 1, isA: true))
 			PuzzleProcessingView(processingStep: 1, processingId: PuzzleProcessingId(id: 2, isA: true))
 		}
-		.environmentObject(PuzzleProcessing(puzzles: PuzzlePreview.puzzles()))
+		.environmentObject(PuzzleProcessing(puzzles: PuzzlePreview().puzzles))
 		.previewLayout(.fixed(width: 50, height: 50))
 	}
 }

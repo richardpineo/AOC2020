@@ -2,11 +2,11 @@
 import AOCLib
 import SwiftUI
 
-struct MainView: View {
-	@EnvironmentObject var puzzles: Puzzles
+struct MainView<Repo: PuzzlesRepo>: View {
+	var repo: Repo
 
 	// We want the OS to figure out the widths, just not smaller than our minimum.
-	private var gridItemLayout = [GridItem(.adaptive(minimum: 200))]
+	private let gridItemLayout = [GridItem(.adaptive(minimum: 200))]
 
 	var body: some View {
 		NavigationView {
@@ -16,10 +16,10 @@ struct MainView: View {
 						.padding(.bottom, 10)
 
 					LazyVGrid(columns: gridItemLayout) {
-						ForEach(puzzles.ordered) { puzzle in
-							if puzzle.hasDetailView {
+						ForEach(repo.puzzles.ordered) { puzzle in
+							if repo.hasDetails(id: puzzle.id) {
 								NavigationLink(
-									destination: puzzle.detailView()
+									destination: repo.details(id: puzzle.id)
 								) {
 									PuzzleCard(puzzle: puzzle)
 								}
@@ -44,7 +44,7 @@ struct MainView: View {
 
 					Spacer()
 				}
-				.navigationTitle("Advent of Code 2020")
+				.navigationTitle(repo.title)
 				.navigationBarTitleDisplayMode(.inline)
 				.padding()
 			}
@@ -56,7 +56,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
 	static var previews: some View {
-		MainView()
+		MainView(repo: PuzzlePreview())
 			.environmentObject(Puzzles())
 	}
 }
