@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,19 +17,11 @@
 		BF125BBB2576099700B6C3B3 /* Input1.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF125BBA2576099700B6C3B3 /* Input1.txt */; };
 		BF125BC3257609B700B6C3B3 /* Example1.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF125BC2257609B700B6C3B3 /* Example1.txt */; };
 		BF125BC8257609D600B6C3B3 /* Solve1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BC7257609D600B6C3B3 /* Solve1.swift */; };
-		BF125BCE25760A2D00B6C3B3 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BCD25760A2D00B6C3B3 /* FileHelper.swift */; };
 		BF125BD325760BDB00B6C3B3 /* TestPuzzle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BD225760BDB00B6C3B3 /* TestPuzzle1.swift */; };
 		BF125BD725760C0C00B6C3B3 /* Solve1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BC7257609D600B6C3B3 /* Solve1.swift */; };
-		BF125BDB25760C2900B6C3B3 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125BCD25760A2D00B6C3B3 /* FileHelper.swift */; };
 		BF125C032576107100B6C3B3 /* PuzzleSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125C022576107100B6C3B3 /* PuzzleSolver.swift */; };
 		BF1A1A6D2580910A003F885D /* TestPuzzle9.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1A1A6C2580910A003F885D /* TestPuzzle9.swift */; };
 		BF1A1A7225809123003F885D /* Solve9.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB721DA257F3D740021C4C4 /* Solve9.swift */; };
-		BF1AFCAA258B1E210013C8CC /* Position3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFCA9258B1E210013C8CC /* Position3D.swift */; };
-		BF1AFCAD258B1F920013C8CC /* Position3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFCA9258B1E210013C8CC /* Position3D.swift */; };
-		BF1AFCB1258B26650013C8CC /* Position4D.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFCB0258B26650013C8CC /* Position4D.swift */; };
-		BF1AFCB5258B26EE0013C8CC /* Positional.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFCB4258B26EE0013C8CC /* Positional.swift */; };
-		BF1AFCB8258B27E90013C8CC /* Positional.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFCB4258B26EE0013C8CC /* Positional.swift */; };
-		BF1AFCBB258B2CCC0013C8CC /* Position4D.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFCB0258B26650013C8CC /* Position4D.swift */; };
 		BF3B15F32589D75900061C31 /* Example16-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF3B15F22589D75900061C31 /* Example16-2.txt */; };
 		BF4F5267257755E80036DE28 /* Solve1Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9513C4257628CE002C3100 /* Solve1Status.swift */; };
 		BF4F526C257756B70036DE28 /* Solve2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F526B257756B70036DE28 /* Solve2.swift */; };
@@ -60,9 +52,6 @@
 		BFB23DFC2585DB7C00B7B7BD /* Example13-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB23DF92585DB7C00B7B7BD /* Example13-3.txt */; };
 		BFB23DFD2585DB7C00B7B7BD /* Example13-4.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB23DFA2585DB7C00B7B7BD /* Example13-4.txt */; };
 		BFB23E012585DBD800B7B7BD /* Example13-6.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB23E002585DBD800B7B7BD /* Example13-6.txt */; };
-		BFB23E092585EC3A00B7B7BD /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB23E082585EC3A00B7B7BD /* MathHelper.swift */; };
-		BFB23E0D2585EC9900B7B7BD /* TestMathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB23E0C2585EC9900B7B7BD /* TestMathHelper.swift */; };
-		BFB23E102585ED0800B7B7BD /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB23E082585EC3A00B7B7BD /* MathHelper.swift */; };
 		BFB23E162585F0B500B7B7BD /* DetailsView12.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB23E152585F0B500B7B7BD /* DetailsView12.swift */; };
 		BFB425FF259E787A007D4C37 /* Solve20Stolen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB425FE259E787A007D4C37 /* Solve20Stolen.swift */; };
 		BFB42602259E7A83007D4C37 /* Solve20Stolen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB425FE259E787A007D4C37 /* Solve20Stolen.swift */; };
@@ -127,8 +116,6 @@
 		BFB8FEF7257DFFA9001CE683 /* TestPuzzle7.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB8FEF6257DFFA9001CE683 /* TestPuzzle7.swift */; };
 		BFB8FEFD257E1002001CE683 /* Example7-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB8FEFC257E1002001CE683 /* Example7-2.txt */; };
 		BFDDD0EC259059AB003C7009 /* Example19-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFDDD0EB259059AB003C7009 /* Example19-2.txt */; };
-		BFDDD2952591CC12005E2424 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDDD2942591CC12005E2424 /* Queue.swift */; };
-		BFDDD2982591CD8E005E2424 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDDD2942591CC12005E2424 /* Queue.swift */; };
 		BFDDD29C2591D9FB005E2424 /* Example22-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFDDD29B2591D9FB005E2424 /* Example22-2.txt */; };
 		BFE59D1D2579FBB000CBE639 /* Solve4.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE59D1A2579FBB000CBE639 /* Solve4.swift */; };
 		BFE59D1E2579FBB000CBE639 /* Solve4.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE59D1A2579FBB000CBE639 /* Solve4.swift */; };
@@ -145,20 +132,13 @@
 		BFE59D4C257A0ECB00CBE639 /* DetailsView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE59D4A257A0ECB00CBE639 /* DetailsView4.swift */; };
 		BFE59D51257A15E400CBE639 /* ProcessingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE59D50257A15E400CBE639 /* ProcessingIndicatorView.swift */; };
 		BFE59D52257A15E400CBE639 /* ProcessingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE59D50257A15E400CBE639 /* ProcessingIndicatorView.swift */; };
+		BFE870C32751D7CE00D16C9E /* AOCLib in Frameworks */ = {isa = PBXBuildFile; productRef = BFE870C22751D7CE00D16C9E /* AOCLib */; };
 		BFEBED0625873851007EAE49 /* Example14-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFEBED0525873851007EAE49 /* Example14-2.txt */; };
 		BFF06E382578AB0600725DE7 /* Example3.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFF06E372578AB0600725DE7 /* Example3.txt */; };
 		BFF06E3E2578AB1300725DE7 /* Input3.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFF06E3D2578AB1300725DE7 /* Input3.txt */; };
 		BFF06E442578AB2000725DE7 /* Solve3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E432578AB2000725DE7 /* Solve3.swift */; };
 		BFF06E482578ABB400725DE7 /* TestPuzzle3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E472578ABB400725DE7 /* TestPuzzle3.swift */; };
 		BFF06E4B2578ABD000725DE7 /* Solve3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E432578AB2000725DE7 /* Solve3.swift */; };
-		BFF06E4F2578AC6C00725DE7 /* Position2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E4E2578AC6C00725DE7 /* Position2D.swift */; };
-		BFF06E522578ADB400725DE7 /* Position2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E4E2578AC6C00725DE7 /* Position2D.swift */; };
-		BFF06E562578B18300725DE7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E552578B18300725DE7 /* StringExtensions.swift */; };
-		BFF06E592578B24500725DE7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF06E552578B18300725DE7 /* StringExtensions.swift */; };
-		BFF2376E258486E20019D2F2 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF2376D258486E20019D2F2 /* Heading.swift */; };
-		BFF23771258488D10019D2F2 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF2376D258486E20019D2F2 /* Heading.swift */; };
-		BFF2539625980E3D004588CD /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF2539525980E3D004588CD /* LinkedList.swift */; };
-		BFF2539925981689004588CD /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF2539525980E3D004588CD /* LinkedList.swift */; };
 		BFF2539F25987300004588CD /* Solve19-Stolen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF2539E25987300004588CD /* Solve19-Stolen.swift */; };
 		BFF253A2259874C7004588CD /* Solve19-Stolen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF2539E25987300004588CD /* Solve19-Stolen.swift */; };
 		BFF751DD2583140C0033BD7C /* Example10-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFF751DC2583140C0033BD7C /* Example10-2.txt */; };
@@ -214,13 +194,9 @@
 		BF125BBA2576099700B6C3B3 /* Input1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input1.txt; sourceTree = "<group>"; };
 		BF125BC2257609B700B6C3B3 /* Example1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Example1.txt; sourceTree = "<group>"; };
 		BF125BC7257609D600B6C3B3 /* Solve1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve1.swift; sourceTree = "<group>"; };
-		BF125BCD25760A2D00B6C3B3 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		BF125BD225760BDB00B6C3B3 /* TestPuzzle1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle1.swift; sourceTree = "<group>"; };
 		BF125C022576107100B6C3B3 /* PuzzleSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleSolver.swift; sourceTree = "<group>"; };
 		BF1A1A6C2580910A003F885D /* TestPuzzle9.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle9.swift; sourceTree = "<group>"; };
-		BF1AFCA9258B1E210013C8CC /* Position3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position3D.swift; sourceTree = "<group>"; };
-		BF1AFCB0258B26650013C8CC /* Position4D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position4D.swift; sourceTree = "<group>"; };
-		BF1AFCB4258B26EE0013C8CC /* Positional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Positional.swift; sourceTree = "<group>"; };
 		BF3B15F22589D75900061C31 /* Example16-2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example16-2.txt"; sourceTree = "<group>"; };
 		BF4F526B257756B70036DE28 /* Solve2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve2.swift; sourceTree = "<group>"; };
 		BF4F5271257756D60036DE28 /* Example2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Example2.txt; sourceTree = "<group>"; };
@@ -252,8 +228,6 @@
 		BFB23DF92585DB7C00B7B7BD /* Example13-3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Example13-3.txt"; sourceTree = "<group>"; };
 		BFB23DFA2585DB7C00B7B7BD /* Example13-4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Example13-4.txt"; sourceTree = "<group>"; };
 		BFB23E002585DBD800B7B7BD /* Example13-6.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example13-6.txt"; sourceTree = "<group>"; };
-		BFB23E082585EC3A00B7B7BD /* MathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
-		BFB23E0C2585EC9900B7B7BD /* TestMathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMathHelper.swift; sourceTree = "<group>"; };
 		BFB23E152585F0B500B7B7BD /* DetailsView12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView12.swift; sourceTree = "<group>"; };
 		BFB425FE259E787A007D4C37 /* Solve20Stolen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve20Stolen.swift; sourceTree = "<group>"; };
 		BFB72199257F3AB80021C4C4 /* Input8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input8.txt; sourceTree = "<group>"; };
@@ -314,7 +288,6 @@
 		BFB8FEF6257DFFA9001CE683 /* TestPuzzle7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPuzzle7.swift; sourceTree = "<group>"; };
 		BFB8FEFC257E1002001CE683 /* Example7-2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Example7-2.txt"; sourceTree = "<group>"; };
 		BFDDD0EB259059AB003C7009 /* Example19-2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example19-2.txt"; sourceTree = "<group>"; };
-		BFDDD2942591CC12005E2424 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		BFDDD29B2591D9FB005E2424 /* Example22-2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Example22-2.txt"; sourceTree = "<group>"; };
 		BFE59D1A2579FBB000CBE639 /* Solve4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solve4.swift; sourceTree = "<group>"; };
 		BFE59D1B2579FBB000CBE639 /* Input4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input4.txt; sourceTree = "<group>"; };
@@ -329,10 +302,6 @@
 		BFF06E3D2578AB1300725DE7 /* Input3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input3.txt; sourceTree = "<group>"; };
 		BFF06E432578AB2000725DE7 /* Solve3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve3.swift; sourceTree = "<group>"; };
 		BFF06E472578ABB400725DE7 /* TestPuzzle3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle3.swift; sourceTree = "<group>"; };
-		BFF06E4E2578AC6C00725DE7 /* Position2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position2D.swift; sourceTree = "<group>"; };
-		BFF06E552578B18300725DE7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		BFF2376D258486E20019D2F2 /* Heading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heading.swift; sourceTree = "<group>"; };
-		BFF2539525980E3D004588CD /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		BFF2539E25987300004588CD /* Solve19-Stolen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Solve19-Stolen.swift"; sourceTree = "<group>"; };
 		BFF751DC2583140C0033BD7C /* Example10-2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example10-2.txt"; sourceTree = "<group>"; };
 		BFF751E0258314820033BD7C /* TestPuzzle10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle10.swift; sourceTree = "<group>"; };
@@ -358,6 +327,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE870C32751D7CE00D16C9E /* AOCLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +354,6 @@
 		BF125BB82576096F00B6C3B3 /* Puzzles */ = {
 			isa = PBXGroup;
 			children = (
-				BF125BCC25760A2200B6C3B3 /* Helpers */,
 				BF125BB92576097700B6C3B3 /* 1 */,
 				BF4F526A257756A80036DE28 /* 2 */,
 				BFF06E362578AAE600725DE7 /* 3 */,
@@ -424,23 +393,6 @@
 				BF9513C4257628CE002C3100 /* Solve1Status.swift */,
 			);
 			path = 1;
-			sourceTree = "<group>";
-		};
-		BF125BCC25760A2200B6C3B3 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				BF125BCD25760A2D00B6C3B3 /* FileHelper.swift */,
-				BFF06E4E2578AC6C00725DE7 /* Position2D.swift */,
-				BF1AFCA9258B1E210013C8CC /* Position3D.swift */,
-				BF1AFCB0258B26650013C8CC /* Position4D.swift */,
-				BF1AFCB4258B26EE0013C8CC /* Positional.swift */,
-				BFF2376D258486E20019D2F2 /* Heading.swift */,
-				BFF06E552578B18300725DE7 /* StringExtensions.swift */,
-				BFB23E082585EC3A00B7B7BD /* MathHelper.swift */,
-				BFDDD2942591CC12005E2424 /* Queue.swift */,
-				BFF2539525980E3D004588CD /* LinkedList.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		BF125BF825760F8000B6C3B3 /* UI */ = {
@@ -549,7 +501,6 @@
 				BFF7521F258315CC0033BD7C /* TestPuzzle24.swift */,
 				BFF7521E258315CC0033BD7C /* TestPuzzle25.swift */,
 				BF60D4062571B42800DA3C27 /* Info.plist */,
-				BFB23E0C2585EC9900B7B7BD /* TestMathHelper.swift */,
 			);
 			path = AOC2020Tests;
 			sourceTree = "<group>";
@@ -817,6 +768,9 @@
 			dependencies = (
 			);
 			name = AOC2020;
+			packageProductDependencies = (
+				BFE870C22751D7CE00D16C9E /* AOCLib */,
+			);
 			productName = AOC2020;
 			productReference = BF60D3EF2571B42700DA3C27 /* AOC2020.app */;
 			productType = "com.apple.product-type.application";
@@ -866,6 +820,9 @@
 				Base,
 			);
 			mainGroup = BF60D3E62571B42700DA3C27;
+			packageReferences = (
+				BFE870C12751D7CE00D16C9E /* XCRemoteSwiftPackageReference "AOCLib" */,
+			);
 			productRefGroup = BF60D3F02571B42700DA3C27 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -965,15 +922,12 @@
 				BFB8FEDE257CB45A001CE683 /* Solve6.swift in Sources */,
 				BF60D4342571B6A500DA3C27 /* Puzzle.swift in Sources */,
 				BF125BC8257609D600B6C3B3 /* Solve1.swift in Sources */,
-				BFF2539625980E3D004588CD /* LinkedList.swift in Sources */,
 				BF125C032576107100B6C3B3 /* PuzzleSolver.swift in Sources */,
 				BF60D3F52571B42700DA3C27 /* MainView.swift in Sources */,
 				BF60D42F2571B56500DA3C27 /* Puzzles.swift in Sources */,
 				BF60D4392571BCD500DA3C27 /* SolutionView.swift in Sources */,
 				BFE59D4B257A0ECB00CBE639 /* DetailsView4.swift in Sources */,
-				BFB23E092585EC3A00B7B7BD /* MathHelper.swift in Sources */,
 				BF60D4412571C10A00DA3C27 /* PuzzleDetails.swift in Sources */,
-				BFF2376E258486E20019D2F2 /* Heading.swift in Sources */,
 				BFF2539F25987300004588CD /* Solve19-Stolen.swift in Sources */,
 				BF9513BD257627D9002C3100 /* DetailsView1.swift in Sources */,
 				BF60D42A2571B53A00DA3C27 /* PuzzleCard.swift in Sources */,
@@ -988,7 +942,6 @@
 				BFF06E442578AB2000725DE7 /* Solve3.swift in Sources */,
 				BFB72212257F3D740021C4C4 /* Solve9.swift in Sources */,
 				BFB72220257F3D740021C4C4 /* Solve11.swift in Sources */,
-				BFF06E562578B18300725DE7 /* StringExtensions.swift in Sources */,
 				BFB721FF257F3D740021C4C4 /* Solve25.swift in Sources */,
 				BFB721F2257F3D740021C4C4 /* Solve21.swift in Sources */,
 				BF9513C5257628CE002C3100 /* Solve1Status.swift in Sources */,
@@ -997,25 +950,19 @@
 				BFB7221A257F3D740021C4C4 /* Solve14.swift in Sources */,
 				BF60D4462571C5E500DA3C27 /* PuzzleProcessingView.swift in Sources */,
 				BFB72202257F3D740021C4C4 /* Solve12.swift in Sources */,
-				BF1AFCB1258B26650013C8CC /* Position4D.swift in Sources */,
 				BFB721FE257F3D740021C4C4 /* Solve22.swift in Sources */,
 				BFB72217257F3D740021C4C4 /* Solve15.swift in Sources */,
 				BFB72208257F3D740021C4C4 /* Solve16.swift in Sources */,
 				BFB721F5257F3D740021C4C4 /* Solve19.swift in Sources */,
-				BF1AFCAA258B1E210013C8CC /* Position3D.swift in Sources */,
 				BFB72214257F3D740021C4C4 /* Solve13.swift in Sources */,
 				BF5641792571C66500FC14B7 /* PuzzlePreviewData.swift in Sources */,
 				BFE59D1D2579FBB000CBE639 /* Solve4.swift in Sources */,
 				BF0C3B7B257B5C8F0097E049 /* Solve5.swift in Sources */,
 				BFB721F6257F3D740021C4C4 /* Solve10.swift in Sources */,
-				BFDDD2952591CC12005E2424 /* Queue.swift in Sources */,
 				BFB23DF12585653800B7B7BD /* DetailsView11.swift in Sources */,
 				BFB72205257F3D740021C4C4 /* Solve17.swift in Sources */,
 				BF4F526C257756B70036DE28 /* Solve2.swift in Sources */,
 				BFE59D51257A15E400CBE639 /* ProcessingIndicatorView.swift in Sources */,
-				BFF06E4F2578AC6C00725DE7 /* Position2D.swift in Sources */,
-				BF125BCE25760A2D00B6C3B3 /* FileHelper.swift in Sources */,
-				BF1AFCB5258B26EE0013C8CC /* Positional.swift in Sources */,
 				BFB8FEF0257DFC55001CE683 /* Solve7.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1026,16 +973,13 @@
 			files = (
 				BFB8FEE1257CB45F001CE683 /* Solve6.swift in Sources */,
 				BFF751E7258314970033BD7C /* Solve11.swift in Sources */,
-				BFF06E592578B24500725DE7 /* StringExtensions.swift in Sources */,
 				BFF751ED2583149F0033BD7C /* Solve13.swift in Sources */,
 				BF1A1A6D2580910A003F885D /* TestPuzzle9.swift in Sources */,
 				BFE59D4C257A0ECB00CBE639 /* DetailsView4.swift in Sources */,
 				BFF751FF258314B50033BD7C /* Solve19.swift in Sources */,
 				BFF751FC258314B10033BD7C /* Solve18.swift in Sources */,
 				BFF75211258314CE0033BD7C /* Solve25.swift in Sources */,
-				BFF06E522578ADB400725DE7 /* Position2D.swift in Sources */,
 				BF4F527C25775A170036DE28 /* TestPuzzle2.swift in Sources */,
-				BFF23771258488D10019D2F2 /* Heading.swift in Sources */,
 				BF125BD325760BDB00B6C3B3 /* TestPuzzle1.swift in Sources */,
 				BFF7522C258315CC0033BD7C /* TestPuzzle14.swift in Sources */,
 				BFF7522E258315CC0033BD7C /* TestPuzzle24.swift in Sources */,
@@ -1044,18 +988,15 @@
 				BFF75208258314C00033BD7C /* Solve22.swift in Sources */,
 				BFB42602259E7A83007D4C37 /* Solve20Stolen.swift in Sources */,
 				BF0C3B91257B5DC50097E049 /* TestPuzzle5.swift in Sources */,
-				BF1AFCB8258B27E90013C8CC /* Positional.swift in Sources */,
 				BFB721A9257F3B450021C4C4 /* Solve8.swift in Sources */,
 				BFF75225258315CC0033BD7C /* TestPuzzle15.swift in Sources */,
 				BFF75231258315CC0033BD7C /* TestPuzzle23.swift in Sources */,
 				BF4F527F25775A2C0036DE28 /* Solve2.swift in Sources */,
 				BF125BD725760C0C00B6C3B3 /* Solve1.swift in Sources */,
 				BFE59D52257A15E400CBE639 /* ProcessingIndicatorView.swift in Sources */,
-				BFB23E0D2585EC9900B7B7BD /* TestMathHelper.swift in Sources */,
 				BFF751F3258314A70033BD7C /* Solve15.swift in Sources */,
 				BFB8FEF3257DFC58001CE683 /* Solve7.swift in Sources */,
 				BF9513B62576255D002C3100 /* TestPuzzle.swift in Sources */,
-				BFDDD2982591CD8E005E2424 /* Queue.swift in Sources */,
 				BFB8FEE5257CB48D001CE683 /* TestPuzzle6.swift in Sources */,
 				BFF75202258314B90033BD7C /* Solve20.swift in Sources */,
 				BF0C3B94257B5E050097E049 /* Solve5.swift in Sources */,
@@ -1067,7 +1008,6 @@
 				BF9513AE257624C7002C3100 /* PuzzleSolver.swift in Sources */,
 				BFF751F0258314A20033BD7C /* Solve14.swift in Sources */,
 				BFF06E482578ABB400725DE7 /* TestPuzzle3.swift in Sources */,
-				BFF2539925981689004588CD /* LinkedList.swift in Sources */,
 				BFF75228258315CC0033BD7C /* TestPuzzle13.swift in Sources */,
 				BFF75232258315CC0033BD7C /* TestPuzzle11.swift in Sources */,
 				BFF75230258315CC0033BD7C /* TestPuzzle17.swift in Sources */,
@@ -1075,19 +1015,15 @@
 				BFF751E4258314930033BD7C /* Solve10.swift in Sources */,
 				BFF75233258315CC0033BD7C /* TestPuzzle20.swift in Sources */,
 				BFF751EA2583149A0033BD7C /* Solve12.swift in Sources */,
-				BF1AFCAD258B1F920013C8CC /* Position3D.swift in Sources */,
 				BFF751F9258314AD0033BD7C /* Solve17.swift in Sources */,
 				BFF75226258315CC0033BD7C /* TestPuzzle21.swift in Sources */,
 				BFF7522D258315CC0033BD7C /* TestPuzzle25.swift in Sources */,
 				BFF7520E258314CA0033BD7C /* Solve24.swift in Sources */,
 				BFF253A2259874C7004588CD /* Solve19-Stolen.swift in Sources */,
 				BFF7520B258314C70033BD7C /* Solve23.swift in Sources */,
-				BF125BDB25760C2900B6C3B3 /* FileHelper.swift in Sources */,
 				BFE59D1E2579FBB000CBE639 /* Solve4.swift in Sources */,
-				BF1AFCBB258B2CCC0013C8CC /* Position4D.swift in Sources */,
 				BFF75229258315CC0033BD7C /* TestPuzzle22.swift in Sources */,
 				BFF75227258315CC0033BD7C /* TestPuzzle12.swift in Sources */,
-				BFB23E102585ED0800B7B7BD /* MathHelper.swift in Sources */,
 				BFF7522F258315CC0033BD7C /* TestPuzzle18.swift in Sources */,
 				BF4F5267257755E80036DE28 /* Solve1Status.swift in Sources */,
 				BFB721A4257F3B300021C4C4 /* TestPuzzle8.swift in Sources */,
@@ -1341,6 +1277,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BFE870C12751D7CE00D16C9E /* XCRemoteSwiftPackageReference "AOCLib" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/richardpineo/AOCLib";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BFE870C22751D7CE00D16C9E /* AOCLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFE870C12751D7CE00D16C9E /* XCRemoteSwiftPackageReference "AOCLib" */;
+			productName = AOCLib;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BF60D3E72571B42700DA3C27 /* Project object */;
 }

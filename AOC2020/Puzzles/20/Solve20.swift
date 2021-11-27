@@ -1,4 +1,5 @@
 
+import AOCLib
 import Foundation
 
 func arrayIndex(_ row: Int, _ col: Int) -> Int {

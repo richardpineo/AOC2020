@@ -1,4 +1,5 @@
 
+import AOCLib
 import Foundation
 
 class Solve24: PuzzleSolver {
@@ -79,7 +80,7 @@ class Solve24: PuzzleSolver {
 		}
 
 		var blackCount: Int {
-			black.filter { $0.value }.count
+			black.filter(\.value).count
 		}
 
 		func neighboringBlackCount(_ position: Position3D) -> Int {
